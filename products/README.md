@@ -23,24 +23,27 @@ Our GitHub Action needs help to pull update_csv_and_yaml.py every night
 
 2. In our products/pull folder myconfig.py file, you'll add a username and password.
 
-3. Get your login from the [BuildingTransparency.org](https://BuildingTransparency.org) website
+3. Get your login (and token) from the [BuildingTransparency.org](https://BuildingTransparency.org) website
 
 For products/pull/product-footprints.py set your BuildingTransparency email and password in [myconfig.py](https://github.com/ModelEarth/OpenFootprint/tree/main/products/pull/) to call the API.
 
 
+**Run in your OpenFootprint folder**  
+We have not yet tested "pip install functools" below yet
+
   python3 -m venv env
   source env/bin/activate
 
-For Windows,
+For Windows
 
   python3 -m venv env
   .\env\Scripts\activate
 
-Run in "pull" folder - Have not tested here functools yet
+Run and allow over 30 minutes
 
   pip install requests pandas pyyaml
   pip install functools
-  python product-footprints.py
+  python products/pull/product-footprints.py
 
 
 Current Error: Max retries exceeded with url: /api/rest-auth/login (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x104c69c70>, 'Connection to etl-api.cqd.io timed out. (connect timeout=None)'))
