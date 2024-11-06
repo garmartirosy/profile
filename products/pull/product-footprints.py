@@ -27,7 +27,8 @@ def log_error(status_code: int, response_body: str):
     logging.debug("Response body:" + response_body)
 
 def get_auth():
-    url_auth = "https://etl-api.cqd.io/api/rest-auth/login"
+    #url_auth = "https://etl-api.cqd.io/api/rest-auth/login"
+    url_auth = "https://buildingtransparency.org/api/rest-auth/login"
     headers_auth = {
         "accept": "application/json",
         "Content-Type": "application/json"

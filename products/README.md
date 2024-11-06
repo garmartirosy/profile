@@ -36,9 +36,10 @@ For Windows,
   python3 -m venv env
   .\env\Scripts\activate
 
-Run in "pull" folder
+Run in "pull" folder - Have not tested here functools yet
 
   pip install requests pandas pyyaml
+  pip install functools
   python product-footprints.py
 
 
@@ -75,14 +76,19 @@ NOTE: Your BuildingTransparency API Key will expire after 3 days. Our python pro
 **RETURNS**
 
 ~~~
-{"key":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx","last_login":"2021-08-12T02:49:09.850397Z"}%   
+{"key":"xxxxxxxxxxxxxxxxxxxxxxxx","last_login":"2021-08-12T02:49:09.850397Z"}%   
 ~~~
 
 Which you'll append as:
 
 ~~~
--H "Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+-H "Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxx"
 ~~~
+
+// https://buildingtransparency.org/ec3/manage-apps/api-doc/guide#/01_Overview/01_Introduction.md
+
+Click "Create API Key"
+https://buildingtransparency.org/ec3/manage-apps/keys
 
 **Example:**
 
@@ -91,7 +97,7 @@ curl -X 'GET' \
  'https://openepd.buildingtransparency.org/api/epds?page_number=1&page_size=100' \
  -H 'accept: application/json' \
  -H 'filter: {"epds.name":"ASTM International"}' \
- -H 'Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+ -H 'Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxx'
 ~~~
 
 **Tip:** Use the [EC3 frontend](https://buildingtransparency.org/ec3/material-search) of the tool and watch the commands it issues in the dev inspector's network tab. 
@@ -105,7 +111,7 @@ https://buildingtransparency.org/api/materials?page_number=1&page_size=25&soft_s
 curl -X 'GET' \
   'https://openepd.buildingtransparency.org/api/epds?page_number=1&page_size=1' \
   -H 'accept: application/json' \
-  -H "Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  -H "Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxx"
 ~~~
 
 <div id="postman"></div>
@@ -116,8 +122,9 @@ To convert to yaml, the json can be pasted in either: [json2yaml.com](https://ww
 
 # View API in Postman
 
-1. Click on "import" tab on the upper left side.
-2. Select the Raw Text option and paste your cURL command.
+0. Create a "Workspace" in Postman
+1. Click on "Import" tab on the upper left side.
+2. Paste your cURL command (which is Raw Text).
 3. Hit import and you will have the command in your Postman builder!
 4. Click Send to post the command.
 
