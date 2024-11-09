@@ -11,13 +11,24 @@ From BuildingTransparency.org API
 [Product Feed API](/io/template/feed) - [Current product profile in BuildingTransparency.org](https://buildingtransparency.org/ec3/epds/ec3mmgup)  
 <!--[View as Markdown](/io/template/product/product-concrete.html)-->
 
+[Fork and run two repos](/localsite/start/steps) (localsite and OpenFootprint) in a webroot on your computer.
 
-How to run our repos in a Webroot folder on your computer:
-[model.earth/localsite/start/steps](/localsite/start/steps)
+TO DO: Update the GitHub Action to save both the email and password as secrets to generate the token. Test in a fork then add steps here.
+
+TO DO: product-footprints.py and update_csv_and_yaml.py are very similar. Add "-DELETE" to the name of one (as long as we can use the other file two ways: locally and with the GitHub Action workflow). If retaining update_csv_and_yaml.py, change underscores to dashes.
+
+TO DO: Send the cement product rows to their own files in new state folders in OpenFootprint/cement/US
+
+TO DO: Pull csv lists with product emission impacts for all states by updating our [Python Profile pull](https://github.com/ModelEarth/OpenFootprint/tree/main/products/pull/)<!-- product-footprints.py -->. View [Resulting Data](https://github.com/ModelEarth/OpenFootprint/tree/main/products/US).
+
+TO DO: Save emissions info within our indvidual YAML files. Include all the impact (emmissions, etc) in each profile. Login to BuildingTransparency.org to view a [detail sample](https://buildingtransparency.org/ec3/epds/ec3mmgup).  Update our notes with your findings and progress. You can use Postman or another app to explore the BuildingTransparency APIs.
+
+TO DO: Change from using UUIDs in the yaml file names. Instead, let's use product names to create SEO-friendly file paths. Retain the subfolders that are product categories.
+
+TO DO: We can also experimenting with [pulling directly to json](pull/get-json/). (Might not work.)
+
 
 ## Fetch Product Data
-
-Our GitHub Action needs help to pull update_csv_and_yaml.py every night
 
 1. Fork and clone the [Openfootprint Repo](https://github.com/ModelEarth/OpenFootprint) for 
 
@@ -31,34 +42,29 @@ For products/pull/product-footprints.py set your BuildingTransparency email and 
 **Run in your OpenFootprint folder**  
 We have not yet tested "pip install functools" below yet
 
-  python3 -m venv env
-  source env/bin/activate
+    python3 -m venv env
+    source env/bin/activate
 
 For Windows
 
-  python3 -m venv env
-  .\env\Scripts\activate
+    python3 -m venv env
+    .\env\Scripts\activate
 
-Run and allow over 30 minutes
+Run the following in the root of the OpenFootprint repo. Takes over 30 minutes.
 
-  pip install requests pandas pyyaml
-  pip install functools
-  python products/pull/product-footprints.py
+    pip install requests pandas pyyaml
+    pip install functools
+    python products/pull/product-footprints.py
 
-
+<!-- Resolved by changing endpoint
 Current Error: Max retries exceeded with url: /api/rest-auth/login (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x104c69c70>, 'Connection to etl-api.cqd.io timed out. (connect timeout=None)'))
+-->
 
 
-4. TO DO: Pull csv lists with product emission impacts for all states (save cement products in other folder). 
-by updating our [Python Profile pull](https://github.com/ModelEarth/OpenFootprint/tree/main/products/pull/)<!-- product-footprints.py -->. View [Resulting Data](https://github.com/ModelEarth/OpenFootprint/tree/main/products/US).
 
-Save emissions info within our indvidual YAML files. Include all the impact (emmissions, etc) in each profile. Login to BuildingTransparency.org to view a [detail sample](https://buildingtransparency.org/ec3/epds/ec3mmgup).  Update our notes with your findings and progress. You can use Postman or another app to explore the BuildingTransparency APIs.
-
-June 3, 2024 - <!--Loren -->We copied [product-footprints.py](https://github.com/ModelEarth/OpenFootprint/tree/main/products/pull/) into [Product Footprints Colab](https://colab.research.google.com/drive/1TJ1fn0-_8EBryN3ih5hZiKLISomOrWDW?usp=sharing)
-(We haven't run as CoLab yet.)
-
-
-TO DO: Might not work. We're also experimenting with [pulling directly to json](pull/get-json/)
+<!--
+June 3, 2024 - We copied [product-footprints.py](https://github.com/ModelEarth/OpenFootprint/tree/main/products/pull/) into [Product Footprints Colab](https://colab.research.google.com/drive/1TJ1fn0-_8EBryN3ih5hZiKLISomOrWDW?usp=sharing) (We haven't run as CoLab yet.)
+-->
 
 
 ## Get API Key for Product Profile YAML
@@ -69,7 +75,7 @@ The [Central Concrete EPD data](https://github.com/modelearth/io/blob/master/tem
 
 **STEP 2:** Use your email and password to get your bearer "key" here in Swagger: [openepd.buildingtransparency.org](https://openepd.buildingtransparency.org) - Click Authorize.
 
-NOTE: Your BuildingTransparency API Key will expire after 3 days. Our python process automatically refreshes the key.
+NOTE: Your BuildingTransparency API Key will expire after 3 days. Our python process automatically refreshes the key using your settings added to products/pull/myconfig.py.
 
 **STEP 3:** Open a command terminal, and get the "Bearer" secret key entering YOUR EMAIL as the username and YOUR PASSWORD.
 
