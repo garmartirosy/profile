@@ -1,7 +1,7 @@
 # Used by Github Action workflow
 # But looks similar to product-footprints.py
 # TO DO: Get workflow working, documet how to set secret in Github 
-# Change from using a token (since it epires in 3 days) to using a BuildingTransparency.org accoun email and password.
+# Change from using a token (since it expires in 3 days) to using a BuildingTransparency.org accoun email and password.
 
 import requests, json, csv, logging, multiprocessing, pandas as pd, yaml, os
 from functools import partial
