@@ -14,7 +14,7 @@ From BuildingTransparency.org API
 TO CONTRIBUTE: [Fork and run two repos](/localsite/start/steps) (localsite and OpenFootprint) in a webroot on your computer.  
 Add your first name after the project you are working on below, send a PR and email Loren to pull.
 
-TO DO: Switch our [GitHub Action]() from using a process that loads the token a secret since the token expires every 72 hours.  Instead, update the GitHub Action to use an email and password as secrets to generate the token.  Test in a fork and document steps for adding the secrets here. The URL for the API may need to be updated to https://buildingtransparency.org/api/epds
+TO DO: The token expires every 72 hours, so switch our ["Update Data" GitHub Action](https://github.com/ModelEarth/OpenFootprint/actions) to use an email and password as the secrets which generate the token. (Look at how we use a myconfig file locally to get a new token and create a similar process in the GitHub Action.) Test in a fork and document steps for adding the secrets here. The URL for the API may need to be updated to https://buildingtransparency.org/api/epds
 
 TO DO: product-footprints.py and update\_csv\_and\_yaml.py are very similar. Add "-DELETE" to the name of one (as long as we can use the other file two ways: locally and with the GitHub Action workflow). If retaining update_csv_and_yaml.py, change underscores to dashes.
 
