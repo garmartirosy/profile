@@ -11,13 +11,14 @@ From BuildingTransparency.org API
 [Product Feed API](/io/template/feed) - [Current product profile in BuildingTransparency.org](https://buildingtransparency.org/ec3/epds/ec3mmgup)  
 <!--[View as Markdown](/io/template/product/product-concrete.html)-->
 
-[Fork and run two repos](/localsite/start/steps) (localsite and OpenFootprint) in a webroot on your computer.
+TO CONTRIBUTE: [Fork and run two repos](/localsite/start/steps) (localsite and OpenFootprint) in a webroot on your computer.  
+Add your first name after the project you are working on below, send a PR and email Loren to pull.
 
-TO DO: Update the GitHub Action to save both the email and password as secrets to generate the token. Test in a fork then add steps here.
+TO DO: Switch our [GitHub Action]() from using a process that loads the token a secret since the token expires every 72 hours.  Instead, update the GitHub Action to use an email and password as secrets to generate the token.  Test in a fork and document steps for adding the secrets here. The URL for the API may need to be updated to https://buildingtransparency.org/api/epds
 
-TO DO: product-footprints.py and update_csv_and_yaml.py are very similar. Add "-DELETE" to the name of one (as long as we can use the other file two ways: locally and with the GitHub Action workflow). If retaining update_csv_and_yaml.py, change underscores to dashes.
+TO DO: product-footprints.py and update\_csv\_and\_yaml.py are very similar. Add "-DELETE" to the name of one (as long as we can use the other file two ways: locally and with the GitHub Action workflow). If retaining update_csv_and_yaml.py, change underscores to dashes.
 
-TO DO: Send the cement product rows to their own files in new state folders in OpenFootprint/cement/US
+TO DO: Send the cement product rows to their own files in new state folders in OpenFootprint/cement/US. Save the cement listings within the same process that saves non-cement for states. (Avoid loading and process the CSV file containing all states.)
 
 TO DO: Pull csv lists with product emission impacts for all states by updating our [Python Profile pull](https://github.com/ModelEarth/OpenFootprint/tree/main/products/pull/)<!-- product-footprints.py -->. View [Resulting Data](https://github.com/ModelEarth/OpenFootprint/tree/main/products/US).
 
