@@ -20,7 +20,7 @@ TO DO: product-footprints.py and update\_csv\_and\_yaml.py are very similar. Add
 
 TO DO: Send the cement product rows to their own files in new state folders in OpenFootprint/cement/US. Save the cement listings within the same process that saves non-cement for states. (Avoid loading and process the CSV file containing all states.)
 
-TO DO: Pull csv lists with product emission impacts for all states by updating our [Python Profile pull](https://github.com/ModelEarth/OpenFootprint/tree/main/products/pull/)<!-- product-footprints.py -->. View [Resulting Data](https://github.com/ModelEarth/OpenFootprint/tree/main/products/US).
+TO DO: Use Postman to test pulling CO2 for products. Update csv list output with product emission impacts for all states by updating our [Python Profile pull](https://github.com/ModelEarth/OpenFootprint/tree/main/products/pull/)<!-- product-footprints.py -->. View [Resulting Data](https://github.com/ModelEarth/OpenFootprint/tree/main/products/US).
 
 TO DO: Save emissions info within our indvidual YAML files. Include all the impact (emmissions, etc) in each profile. Login to BuildingTransparency.org to view a [detail sample](https://buildingtransparency.org/ec3/epds/ec3mmgup).  Update our notes with your findings and progress. You can use Postman or another app to explore the BuildingTransparency APIs.
 
