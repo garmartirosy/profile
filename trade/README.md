@@ -6,7 +6,24 @@ Our SQL Team has been generating <a href="/OpenFootprint/prep/sql/supabase/">Sup
 
 We're imitating the data migration in [generate\_import\_factors.py](https://github.com/ModelEarth/USEEIO/tree/master/import_factors_exio) but we're push directly to Supabase (avoiding csv files).  We're changing FlowUUID to FactorID to reduce the data size.
 
-TO DO: Pulling from Exiobase directly to GitHub and sending to DuckDB and Supabase.  
+
+Each database instance (for a country-year) will contain these tables:
+
+**SQL Tables for a country and year**
+Factor (includes FactorID and FlowUUID)
+Sector
+SectorFactor
+Commodity
+CommodityFactor
+ImportSectorFactor
+ImportCommodityFactor
+ImportContributions
+ImportMultiplierFactor
+
+The sector is 5-char and the commodity is 6-char.
+
+IN PROGRESS: Gary's CoLab pulls from Exiobase, unzips and sends to GitHub.
+Next he's guiding the team in using Pymrio to send to DuckDB and Supabase.  
 
 **Contribute to:**   
 [Exiobase To Github Pipeline](https://colab.research.google.com/drive/1BQZZ5EZTFr422_SUH7iAQ7uuwsM1KUYj#scrollTo=DXUJfJENmzxu) - Gary and SQL team  
