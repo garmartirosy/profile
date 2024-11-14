@@ -11,16 +11,16 @@ Each database instance (for a country-year) will contain these tables:
 
 **SQL Tables for a country and year**
 Factor (includes FactorID and FlowUUID)
-Sector
-SectorFactor
+Industry
+IndustryFactor
 Commodity
 CommodityFactor
-ImportSectorFactor
+ImportIndustryFactor
 ImportCommodityFactor
 ImportContributions
 ImportMultiplierFactor
 
-The sector is 5-char and the commodity is 6-char.
+The Industry is 5-char and the Commodity is 6-char.
 
 IN PROGRESS: Gary's CoLab pulls from Exiobase, unzips and sends to GitHub.
 Next he's guiding the team in using Pymrio to send to DuckDB and Supabase.  
