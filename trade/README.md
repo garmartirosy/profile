@@ -1,7 +1,7 @@
 [Active Projects](../../projects/) - [State Javascript](/useeio.js/footprint/) and [State Models](/io/about/)
 <h1>International Trade Flow</h1>
 
-<b>Exiobase International Trade Data + US Bureau of Economic Analysis (BEA)</b>
+<b>Exiobase International Trade Data and Visualization</b>
 Our SQL Team has been generating <a href="/OpenFootprint/prep/sql/supabase/">Supabase</a> and <a href="/OpenFootprint/prep/sql/duckdb/">DuckDB</a> databases for comparing industries and identifying imports with positive environmental impacts.
 
 We're imitating the data migration in [generate\_import\_factors.py](https://github.com/ModelEarth/USEEIO/tree/master/import_factors_exio) but we're push directly to Supabase (avoiding csv files).  We're changing FlowUUID to FactorID to reduce the data size.
@@ -11,9 +11,9 @@ Each database instance (for a country-year) will contain these tables:
 
 **SQL Tables for a country and year**
 Factor (includes FactorID and FlowUUID)
-Industry
+Industry (5-char sector)
 IndustryFactor
-Commodity
+Commodity (6-char product)
 CommodityFactor
 ImportIndustryFactor
 ImportCommodityFactor
@@ -81,11 +81,13 @@ Our DuckDB parquet tables in [ObservableHQ Dashboard](https://observablehq.com/d
 <b>Python to pull CSV files into SQL</b>
 <a href="https://colab.research.google.com/drive/1qWgO_UjeoYYB3ZSzT3QdXSfVZb7j09_S?usp=sharing">Generate Supabase Exiobase (Colab)</a> - <a href="https://github.com/ModelEarth/OpenFootprint/tree/main/impacts/exiobase/US-source">Bkup</a>
 <a href="https://colab.research.google.com/drive/1Wm9Bvi9pC66xNtxKHfaJEeIYuXKpb1TA?usp=sharing">Generate DuckDB Exiobase (CoLab) - <a href="https://github.com/ModelEarth/OpenFootprint/tree/main/impacts/exiobase/US-source">Bkup</a>
+<br>
 
+# US EPA Trade Data Pipeline
 
-# Our Trade Data Pipeline
+The US EPA also merges in US Bureau of Economic Analysis (BEA) with Exiobase. We'd like to get close to this process for all the countries using just Exiobase (and possibly Google Data Commons).
 
-We first generate six [US-2020-17schema CSV files](https://github.com/ModelEarth/OpenFootprint/tree/main/impacts/exiobase/US-source/2022) by running <a href="https://github.com/ModelEarth/USEEIO/tree/master/import_factors_exio">generate\_import\_factors.py</a>. The merge combines US BEA and <a href="https://exiobase.eu">EXIOBASE</a> data emissions factors for annual trade data. (The ExiobaseSupabase CoLab above aims to send the same Exiobase data directly to Supabase and DuckDB for each country and year.)
+For the US EPA analysis, their repo generates six [US-2020-17schema CSV files](https://github.com/ModelEarth/OpenFootprint/tree/main/impacts/exiobase/US-source/2022) by running <a href="https://github.com/ModelEarth/USEEIO/tree/master/import_factors_exio">generate\_import\_factors.py</a>. The merge combines US BEA and <a href="https://exiobase.eu">EXIOBASE</a> data emissions factors for annual trade data. (The ExiobaseSupabase CoLab above aims to send the same Exiobase data directly to Supabase and DuckDB for each country and year.)
 
 Exiobase provides the equivalent to <a href="https://github.com/USEPA/useeior/blob/master/format_specs/Model.md">M, N, and x</a> which is used in the <a href="/io/about/">USEEIO models</a> for import emissions factors. Exiobase also provides gross trade data which has no equivalent in USEEIO.
 
