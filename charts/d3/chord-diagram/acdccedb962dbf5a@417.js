@@ -1,6 +1,5 @@
 function _1(md){return(
 md`
-<a href="../../../trade/">International Trade Flow SQL</a> - <a href="../chord-diagram-original">View original chord</a>
 <h1>D Matrix Chord Diagram</h1>
 
 Relates impacts to sectors
