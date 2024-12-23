@@ -1,14 +1,25 @@
-Sector:
-  SectorID: Sector
-  SectorName: SectorName
-
-SectorFactor:
-  similar: US_summary_import_factors_exio_2020_17sch.csv
+Factor:
   index: FactorID
   indextype: 1-based
   columns:
-    SectorID: Sector
-    FlowUUID: FlowUUID
+    FactorID: FactorID
+    FlowUUID: FlowUUID (to delete)
+    FactorName: Flowable
+    Unit: Unit
+    Context: Context
+
+Industry:
+  IndustryID: Sector
+  IndustryName: SectorName
+
+IndustryFactor:
+  similar: US_summary_import_factors_exio_2020_17sch.csv
+  index: IndustryID, FactorID
+  indextype: 1-based
+  columns:
+    IndustryID: Sector
+    FactorID: FactorID
+    FlowUUID: FlowUUID (to delete)
     FactorAmount: FlowAmount
   omit:
     - Year
@@ -25,11 +36,12 @@ Commodity:
 
 CommodityFactor:
   similar: US_detail_import_factors_exio_2020_17sch.csv
-  index: FactorID
+  index: CommodityID, FactorID
   indextype: 1-based
   columns:
     CommodityID: Sector
-    FlowUUID: FlowUUID
+    FactorID: FactorID
+    FlowUUID: FlowUUID (to delete)
     FactorAmount: FlowAmount
   omit:
     - Year
@@ -40,14 +52,14 @@ CommodityFactor:
     - Context
     - BaseIOLevel
 
-ImportSectorFactor:
+ImportIndustryFactor:
   similar: Regional_summary_import_factors_exio_2020_17sch.csv
   index: FactorID
   indextype: 1-based
   columns:
     CountryCode: Region
-    SectorID: Sector
-    FlowUUID: FlowUUID
+    IndustryID: Sector
+    FlowUUID: FlowUUID (to delete)
     FactorAmount: FlowAmount
   omit:
     - Year
@@ -119,13 +131,3 @@ ImportMultiplierFactor:
     - PriceType
     - Flowable
     - Context
-
-Factor:
-  index: FactorID
-  indextype: 1-based
-  columns:
-    FactorID: FactorID
-    FlowUUID: FlowUUID
-    FactorName: Flowable
-    Unit: Unit
-    Context: Context
