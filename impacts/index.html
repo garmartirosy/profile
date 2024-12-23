@@ -2,140 +2,146 @@
 <html lang="en-us">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>International Trade Flow - SQL Data Visualizations - Supabase and DuckDB</title>
-    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>International Trade Flow - SQL Data Visualizations - Supabase and DuckDB</title>
+<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link type="text/css" rel="stylesheet" href="https://model.earth/localsite/css/base.css"
-        id="/localsite/css/base.css" />
-    <script type="text/javascript"
-        src="https://model.earth/localsite/js/localsite.js?showheader=true&showsearch=true"></script>
+<link type="text/css" rel="stylesheet" href="https://model.earth/localsite/css/base.css"
+    id="/localsite/css/base.css" />
+<script type="text/javascript"
+    src="https://model.earth/localsite/js/localsite.js?showheader=true&showsearch=true"></script>
 
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
 
-        table,
-        th,
-        td {
-            border: 1px solid black;
-        }
+    table,
+    th,
+    td {
+        border: 1px solid black;
+    }
 
-        th,
-        td {
-            padding: 8px;
-            text-align: left;
-        }
-        .btn-grey {
-            background-color: #ccc;
-            color: black;
-            border: none;
-        }
+    th,
+    td {
+        padding: 8px;
+        text-align: left;
+    }
+    .btn-grey {
+        background-color: #ccc;
+        color: black;
+        border: none;
+    }
 
-        #query {
-            width: 100%;
-            height: 150px;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            display: none;
-            /* Hidden initially */
-        }
+    #query {
+        width: 100%;
+        height: 32px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
 
-        #results {
-            margin-top: 20px;
-        }
+    #results {
+        margin-top: 20px;
+    }
 
-        .dropdowns {
-            margin-bottom: 20px;
-        }
-        .dropdowns div {
-            float: left;
-            padding-right: 10px;
-        }
-        hr {
-            margin-top: 22px;
-            margin-bottom: 24px;
-        }
+    .dropdowns {
+        margin-bottom: 20px;
+    }
+    .dropdowns div {
+        float: left;
+        padding-right: 10px;
+    }
+    hr {
+        margin-top: 22px;
+        margin-bottom: 24px;
+    }
 
-        #customize-section,
-        #advanced-filters,
-        #clearButton,
-        #sqlTextArea {
-            display: none;
-        }
+    #customize-section,#advanced-filters,#clearButton,#sqlTextArea {
+        display: none;
+    }
 
-        #view-section {
-            display: block;
-        }
+    #view-section {
+        display: block;
+    }
 
-        .settings-icon {
-            float: right;
-            cursor: pointer;
-        }
-    </style>
+    .settings-icon {
+        cursor: pointer;
+    }
+</style>
 
 </head>
 
 <body>
     <div class="content contentpadding" style="padding-top:0px">
 
+        <div style="float:right">
+            <select id="dataset">
+                <option>US-2020-17schema</option>
+            </select>
+        </div>
         <div id="page-title">
-            <h3 style="display:inline-block;">International Trade Flow - SQL Results</h3>
-            <span class="material-icons settings-icon" style="font-size:24px;color:#777"
-                onclick="openFilters()">settings</span>
+            <h3 style="display:inline-block;">International Trade Flow</h3>
+        </div>
+
+        <div style="float:right">
+            <a href="../trade">Upcoming tables</a>
         </div>
 
         <!-- View Section -->
         <div id="view-section">
-            <label for="view-select">Select View:</label><br>
             <select id="view-select" onchange="fetchViewData(this.value)">
-                <option value="">Select a view</option>
-                <option value="industries">Industries (Sectors)</option>
-                <option value="commodities">Commodities</option>
+                <option value="commodities" selected>Commodities (6-char)</option>
+                <option value="industries">Industries (5-char)</option>
                 <option value="indicators">Impacts</option>
                 <option value="imports">Imports</option>
             </select>
 
+            <!--
             <button class="btn btn-success" onclick="showCustomize()">Customize</button>
+            -->
+
+            <span class="material-icons settings-icon" style="font-size:24px;color:#777"
+                onclick="openFilters()">&#xE8B8;</span>
         </div>
 
         <!-- Customize Section -->
         <div id="customize-section">
             <div class="dropdowns">
                 <div>
-                    <label for="table1-select">Select first table:</label><br>
-                    <select id="table1-select" onchange="populateColumnSelect()"></select>
+                    <select id="table1-select" onchange="populateColumnSelect()"></select> JOIN
                 </div>
                 <div>
-                    <label for="table2-select">Select second table:</label><br>
-                    <select id="table2-select" onchange="populateColumnSelect()"></select>
+                    <select id="table2-select" onchange="populateColumnSelect()"></select> ON
                 </div>
                 <div>
-                    <label for="column-select">Select common column:</label><br>
                     <select id="column-select"></select>
-                </div>
-                <div>
-                    <br>
-                    <button class="btn btn-success" style="width:80px" onclick="fetchAndPopulate()">View</button>
-                    <button class="btn btn-grey" onclick="hideFilters()">X</button>
                 </div>
             </div>
         </div>
 
-        <!-- SQL Textbox -->
-        <textarea id="query" placeholder="Write your SQL query here"></textarea>
+        <div style="clear:both"></div>
+        <div style="float:right;">
+            <button class="btn btn-grey" style="width:80px" onclick="fetchAndPopulate()">View</button>
+            <!--<button class="btn btn-grey" onclick="hideFilters()">X</button>-->
+        </div>
+        <div style="overflow:auto;padding-right:10px">
+            <!-- SQL Textbox -->
+            <textarea id="query" placeholder="Write your SQL query here"></textarea>
+        </div>
+        
         <div id="clearButton" class="btn btn-grey" style="max-width:100px" onclick="clearResults()">Clear</div>
+        
 
         <!-- Results Table -->
         <div id="results"></div>
 
         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
         <script>
+            // Ocassionally you'll need to turn on US-2020-17schema in mesupabase... account.
             let supabaseUrl = 'https://wovjoodfvamzysoxamdb.supabase.co';
             let supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indvdmpvb2RmdmFtenlzb3hhbWRiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjE3NzQ1MDYsImV4cCI6MjAzNzM1MDUwNn0.hHM2aiNfHQe5Z9u-bKDYf7rImf4FnKCoMyoIc3j2uuk';
             const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
@@ -149,6 +155,19 @@
                 'ImportSectorUS',
                 'SectorUS'
             ];
+
+            window.addEventListener('pageshow', function () {
+              // Oddly needing for backing up.
+              const dropdown = document.getElementById('view-select');
+              alert("test")
+              if (!dropdown.value) {
+                dropdown.selectedIndex = 0; // Set to the first option
+
+                // hack
+                $("table1-select").selectedIndex = 0;
+                $("table2-select").selectedIndex = 0;
+              }
+            });
 
             // Function to show the View button when Customize is clicked
             function showViewButton() {
@@ -207,12 +226,18 @@
                 }
 
                 // Fetch data from the corresponding table in Supabase (limit to 500 records)
+                const limit = 50
                 const { data, error } = await supabase
                     .from(tableName)
                     .select('*')
-                    .limit(500); // Limit to 500 records
+                    .limit(limit); // Limit to 500 records
+
+                // Construct the equivalent SQL query
+                const sqlQuery = `SELECT * FROM ${tableName} LIMIT ${limit}`;
+                document.getElementById("query").value = sqlQuery;
 
                 if (error) {
+                    alert('Error fetching data:' + error.message);
                     console.error('Error fetching data:', error.message);
                     document.getElementById('results').innerHTML = `<p style="color: red;">${error.message}</p>`;
                     return;
@@ -252,6 +277,7 @@
                     table.appendChild(thead);
                     table.appendChild(tbody);
                     resultsDiv.appendChild(table);
+
                 } else {
                     resultsDiv.innerHTML = '<p>No data found.</p>';
                 }
@@ -265,13 +291,15 @@
                 document.getElementById('query').value = ''; // Clear the query text area
             }
 
-
-
             async function fetchTableColumns(tableName) {
+                alert("fetchTableColumns tableName: " + tableName)
                 const { data, error } = await supabase.from(tableName).select('*').limit(1);
-                return error ? [] : data.length > 0 ? Object.keys(data[0]) : [];
+                if (error) {
+                    alert(`Error fetching columns from table "${tableName}": ${error.message}`);
+                    return [];
+                }
+                return data.length > 0 ? Object.keys(data[0]) : [];
             }
-
             async function populateTableSelects() {
                 const table1Select = document.getElementById('table1-select');
                 const table2Select = document.getElementById('table2-select');
@@ -306,7 +334,7 @@
             }
 
             function showCustomize() {
-                document.getElementById('view-section').style.display = 'none';
+                //document.getElementById('view-section').style.display = 'none';
                 document.getElementById('customize-section').style.display = 'block';
                 document.getElementById('query').style.display = 'block';
                 document.getElementById('clearButton').style.display = 'block';
@@ -315,15 +343,22 @@
             function hideFilters() {
                 document.getElementById('customize-section').style.display = 'none';
                 document.getElementById('query').style.display = 'none';
-                document.getElementById('clearButton').style.display = 'none';
+                //document.getElementById('clearButton').style.display = 'none';
                 document.getElementById('view-section').style.display = 'block';
             }
 
             function openFilters() {
-                document.getElementById('customize-section').style.display = 'block';
-                document.getElementById('query').style.display = 'block';
-                document.getElementById('clearButton').style.display = 'block';
-                document.getElementById('view-section').style.display = 'none';
+                if(document.getElementById('customize-section').style.display != 'block')
+                {
+                    document.getElementById('customize-section').style.display = 'block';
+                    document.getElementById('query').style.display = 'block';
+                    //document.getElementById('clearButton').style.display = 'block';
+                    //document.getElementById('view-section').style.display = 'none';
+                } else {
+                    document.getElementById('customize-section').style.display = 'none';
+                    document.getElementById('query').style.display = 'none';
+                    //document.getElementById('clearButton').style.display = 'none';
+                }
             }
 
             // Fetch data for the selected tables and join them on the selected column
