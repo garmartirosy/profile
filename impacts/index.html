@@ -94,9 +94,9 @@
         <!-- View Section -->
         <div id="view-section">
             <select id="view-select" onchange="fetchViewData(this.value)">
-                <option value="commodities" selected>Commodities (6-char)</option>
                 <option value="industries">Industries (5-char)</option>
-                <option value="indicators">Impacts</option>
+                <option value="commodities" selected>Commodities (6-char)</option>
+                <option value="factors">Factors</option>
                 <option value="imports">Imports</option>
             </select>
 
@@ -112,20 +112,21 @@
         <div id="customize-section">
             <div class="dropdowns">
                 <div>
-                    <select id="table1-select" onchange="populateColumnSelect()"></select> JOIN
+                    <select id="table1-select" onchange="populateColumnSelect()"></select> LEFT JOIN
                 </div>
                 <div>
                     <select id="table2-select" onchange="populateColumnSelect()"></select> ON
                 </div>
                 <div>
                     <select id="column-select"></select>
+                    <button class="btn btn-grey" style="width:80px" onclick="buildQuery()">Apply</button>
                 </div>
             </div>
         </div>
 
         <div style="clear:both"></div>
         <div style="float:right;">
-            <button class="btn btn-grey" style="width:80px" onclick="fetchAndPopulate()">View</button>
+            <button class="btn btn-grey" style="width:60px" onclick="fetchAndPopulate()">GO</button>
             <!--<button class="btn btn-grey" onclick="hideFilters()">X</button>-->
         </div>
         <div style="overflow:auto;padding-right:10px">
@@ -157,15 +158,20 @@
             ];
 
             window.addEventListener('pageshow', function () {
-              // Oddly needing for backing up.
+              // Oddly needed for backing up.
               const dropdown = document.getElementById('view-select');
               if (!dropdown.value) {
-                dropdown.selectedIndex = 0; // Set to the first option
-
-                // hack
-                $("table1-select").selectedIndex = 0;
-                $("table2-select").selectedIndex = 0;
+                dropdown.selectedIndex = 1; // Set to the Commodities option
               }
+              const dataset = document.getElementById('dataset');
+              if (!dataset.value) {
+                dataset.selectedIndex = 0; // Set to the first option
+              }
+
+              // hack
+                $("#table1-select").prop("selectedIndex", 1);
+                $("#table2-select").prop("selectedIndex", 1);
+
             });
 
             // Function to show the View button when Customize is clicked
@@ -180,20 +186,6 @@
                 customizeButton.style.display = 'none';
             }
 
-            // Function to handle view selection changes
-            function handleViewSelection() {
-                const view = document.getElementById('view-select').value;
-                const viewButton = document.getElementById('view-button');
-                const resultsDiv = document.getElementById('results');
-                const queryTextArea = document.getElementById('query');
-
-                // If the default "Select a view" option is chosen, clear the page and hide the View button
-                if (!view) {
-                    resultsDiv.innerHTML = ''; // Clear the results
-                    queryTextArea.value = '';  // Clear the SQL query area
-                    viewButton.style.display = 'none'; // Hide the View button
-                }
-            }
 
             // Function to fetch data when the View button is clicked
             async function fetchViewData() {
@@ -213,7 +205,7 @@
                     case 'commodities':
                         tableName = 'Commodity';
                         break;
-                    case 'indicators':
+                    case 'factors':
                         tableName = 'Flow';
                         break;
                     case 'imports':
@@ -229,7 +221,7 @@
                 const { data, error } = await supabase
                     .from(tableName)
                     .select('*')
-                    .limit(limit); // Limit to 500 records
+                    .limit(limit); // Limit records
 
                 // Construct the equivalent SQL query
                 const sqlQuery = `SELECT * FROM ${tableName} LIMIT ${limit}`;
@@ -291,7 +283,7 @@
             }
 
             async function fetchTableColumns(tableName) {
-                alert("fetchTableColumns tableName: " + tableName)
+                //alert("fetchTableColumns tableName: " + tableName)
                 const { data, error } = await supabase.from(tableName).select('*').limit(1);
                 if (error) {
                     alert(`Error fetching columns from table "${tableName}": ${error.message}`);
@@ -353,6 +345,34 @@
                     document.getElementById('query').style.display = 'block';
                     //document.getElementById('clearButton').style.display = 'block';
                     //document.getElementById('view-section').style.display = 'none';
+
+                    /*
+                    const dropdown = document.getElementById('view-select');
+                    if (!dropdown.value) {
+                        dropdown.selectedIndex = 1; // Set to the Commodities option
+                      }
+                      const dataset = document.getElementById('dataset');
+                      if (!dataset.value) {
+                        dataset.selectedIndex = 0; // Set to the first option
+                      }
+                    */
+
+                      // hack
+                        $("#table1-select").prop("selectedIndex", 1);
+                        $("#table2-select").prop("selectedIndex", 1);
+
+                        //const columns1 = await fetchTableColumns(table1);
+                        //const columns2 = await fetchTableColumns(table2);
+                        /*
+                        const commonColumns = columns1.filter(col => columns2.includes(col));
+                        commonColumns.forEach(column => {
+                            const option = document.createElement('option');
+                            option.value = column;
+                            option.textContent = column;
+                            columnSelect.appendChild(option);
+                        });
+                        */
+                        
                 } else {
                     document.getElementById('customize-section').style.display = 'none';
                     document.getElementById('query').style.display = 'none';
@@ -361,7 +381,7 @@
             }
 
             // Fetch data for the selected tables and join them on the selected column
-            async function fetchAndPopulate() {
+            async function buildQuery() {
                 const table1 = document.getElementById('table1-select').value;
                 const table2 = document.getElementById('table2-select').value;
                 const commonColumn = document.getElementById('column-select').value;
@@ -369,12 +389,12 @@
 
                 // Check if the user has selected both tables and the common column
                 if (!table1 || !table2 || !commonColumn) {
-                    alert('Please select both tables and a common column.');
-                    return;
+                    //alert('Please select both tables and a common column.');
+                    //return;
                 }
 
                 // Construct a SQL query to show in the query text area
-                const generatedQuery = `SELECT * FROM ${table1} t1 INNER JOIN ${table2} t2 ON t1.${commonColumn} = t2.${commonColumn} LIMIT 500;`;
+                const generatedQuery = `SELECT * FROM ${table1} t1 LEFT JOIN ${table2} t2 ON t1.${commonColumn} = t2.${commonColumn} LIMIT 50`;
                 queryTextArea.value = generatedQuery; // Set the SQL query text in the textarea
 
                 // Fetch data from the first table (limit to 500 records)
@@ -393,7 +413,7 @@
                 const { data: data2, error: error2 } = await supabase
                     .from(table2)
                     .select('*')
-                    .limit(500); // Limit the records to 500
+                    .limit(50); // Limit the records to 500
 
                 if (error2) {
                     console.error('Error fetching data from the second table:', error2.message);
@@ -413,11 +433,15 @@
                     return;
                 }
 
-                // Display the joined data in a table (show only the first 500 rows)
-                const limitedJoinedData = joinedData.slice(0, 500); // Limit to 500 records
+                // Display the joined data in a table (show only the first 50 rows)
+                const limitedJoinedData = joinedData.slice(0, 50); // Limit to 500 records
                 displayResults(limitedJoinedData);
             }
+            async function fetchAndPopulate() {
+                const sql = document.getElementById('query').value;
+                alert(sql);
 
+            }
 
             // Function to join data from two tables based on a common column
             function joinData(data1, data2, column) {
