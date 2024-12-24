@@ -9,7 +9,7 @@ We're imitating the data migration in [generate\_import\_factors.py](https://git
 
 Each database instance (for a country-year) will contain these tables:
 
-**SQL Tables for a country and year**
+**GOAL: Output these SQL Tables for a country and year (2020)**
 Factor (includes FactorID and FlowUUID)
 Industry (5-char sector)
 IndustryFactor
@@ -22,23 +22,17 @@ ImportMultiplierFactor
 
 The Industry is 5-char and the Commodity is 6-char.
 
-IN PROGRESS: Gary's CoLab pulls from Exiobase, unzips and sends to GitHub.
-Next he's guiding the team in using Pymrio to send to DuckDB and Supabase.  
-
-**Contribute to:**   
-[Exiobase To Github Pipeline](https://colab.research.google.com/drive/1N47_pfTUyOzeukgf4KYX1pmN_Oj1N3r_?usp=sharing) - Pull and unzip 
+**Contribute to these CoLabs:**   
+[Exiobase To Github Pipeline](https://colab.research.google.com/drive/1N47_pfTUyOzeukgf4KYX1pmN_Oj1N3r_?usp=sharing) - Pulls zip of year from Exiobase and unzips 
 [Create Database from Panda Dataframe](https://colab.research.google.com/drive/1IMpOYzT6oXbZXaJKugi5vCmUB_tIHo0J?usp=sharing) - Output SQL 
+[Pymrio Exiobase Industry Final](https://colab.research.google.com/drive/1bXUO1iXyBGbmZODmnl0NVn3yFpWwBCOi?usp=sharing) - Send to Supabase
+[Satwick's PYMRIO.ipynb CoLab](https://colab.research.google.com/drive/1AZPfBlG0iUKmKRZjlNxn8uOuvtAfEarn?usp=sharing)
 
-- Pulls zip of year from Exiobase and unzips  
-- Will send to DuckDB instance for a country and year - See our [zip code DuckDB](https://model.earth/community-zipcodes/) sample
+TO DO: Send about 8 countries to unique Supabase instances for the year 2020.
+TO DO: Send to DuckDB instances for a country and year - See DuckDB example in our [zip code processing](https://model.earth/community-zipcodes/) 
 
-We'll send about 8 countries to unique Supabase instances for the year 2020.
 
-Copy and add to Satwick's [PYMRIO.ipynb CoLab](https://colab.research.google.com/drive/1AZPfBlG0iUKmKRZjlNxn8uOuvtAfEarn?usp=sharing)
-
-TO DO: Experiment in our [Pymiro CoLab](https://colab.research.google.com/drive/1Q9_1AhdY8uPUfLVUN71X6mKbEy_kqPuQ?usp=sharing) using the [Pymiro for Exiobase library](https://pymrio.readthedocs.io/en/latest/) to add to the DuckDB country-year data instances.
-
-Jaya and Satwick are investigating using .feather within the Pymiro CoLab.
+TO DO: Experiment in our [Pymiro CoLab](https://colab.research.google.com/drive/1Q9_1AhdY8uPUfLVUN71X6mKbEy_kqPuQ?usp=sharing) using the [Pymiro for Exiobase library](https://pymrio.readthedocs.io/en/latest/). Save DuckDB country-year data instances. Jaya and Satwick are investigating using .feather within the Pymiro CoLab.
 
 The [Big Sankey](https://github.com/baptiste-an/Application-mapping-GHG) ([view chart](https://sankey.theshiftproject.org/)) uses Plotly with .feather files. We could do the same with [Anvil](https://anvil.works) and Google Looker. 
 
