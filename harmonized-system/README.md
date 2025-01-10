@@ -1,13 +1,25 @@
 [International Trade](/OpenFootprint/trade/)
 # Harmonized System (HS)
 
-TO DO: Create a copy of the [Supabase SQL insert python](../prep/sql/supabase/) and add HS tables.
+<!-- Initial work by Wenjie (and Chen) -->
+
+TO DO:
+
+Using Tabulator, relate Harmonized System (HS) .csv to NAICS and other international categories
+
+[Upcoming list of industries by location](/localsite/info/#state=CA)
+[Upcoming list of industries by location](/localsite/info/#state=CA&beta=true) - React drops state
 
 Sample use of [Product HS Codes for Georgia Exporter Directory](https://model.georgia.org/display/exporters/)
 
+TO DO: Insert and pull HS tables from Exiobase supabase  
+[Javascript form to pull from Supabase SQL](../prep/sql/supabase/)  
+
+
 ## Concordance
 
-The Concordance R-library is the leading process for lookups:
+We're using the files they maintain as our source.  
+The Concordance R-library is a leading process for relating:
 Harmonized System (HS), ISIC/SITC and NAICS
 
 
