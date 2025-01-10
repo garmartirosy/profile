@@ -26,7 +26,8 @@ The Industry is 5-char and the Commodity is 6-char.
 [Exiobase To Github Pipeline](https://colab.research.google.com/drive/1N47_pfTUyOzeukgf4KYX1pmN_Oj1N3r_?usp=sharing) - Pulls zip of year from Exiobase and unzips 
 [Create Database from Panda Dataframe](https://colab.research.google.com/drive/1IMpOYzT6oXbZXaJKugi5vCmUB_tIHo0J?usp=sharing) - Output SQL 
 [Pymrio Exiobase Industry Final](https://colab.research.google.com/drive/1bXUO1iXyBGbmZODmnl0NVn3yFpWwBCOi?usp=sharing) - Send to Supabase
-[Satwick's PYMRIO.ipynb CoLab](https://colab.research.google.com/drive/1AZPfBlG0iUKmKRZjlNxn8uOuvtAfEarn?usp=sharing)
+[Satwick's PYMRIO.ipynb CoLab](https://colab.research.google.com/drive/1AZPfBlG0iUKmKRZjlNxn8uOuvtAfEarn?usp=sharing)  
+[New: Inserting Factors and Sectors into Supabase](https://colab.research.google.com/drive/1INHz02V-cU_y_nAlS-BWxQQtz8Qg_lLi#scrollTo=KUnI-Va8M1Nl) - Invite only
 
 TO DO: Send about 8 countries to unique Supabase instances for the year 2020.
 TO DO: Send to DuckDB instances for a country and year - See DuckDB example in our [zip code processing](https://model.earth/community-zipcodes/) 
