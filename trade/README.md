@@ -6,8 +6,11 @@ Our International Trade Flow projects use [MARIO Input-Output Analysis](https://
 <b>Exiobase International Trade Data and Visualization</b>
 Our SQL Team has been generating <a href="/OpenFootprint/prep/sql/supabase/">Supabase</a> ([Javascript frontend](../impacts/)) and <a href="/OpenFootprint/prep/sql/duckdb/">DuckDB</a> databases for comparing industries and identifying imports with positive environmental impacts.
 
-We're imitating the data migration in [generate\_import\_factors.py](https://github.com/ModelEarth/USEEIO/tree/master/import_factors_exio) but we're push directly to Supabase (avoiding csv files).  We're changing FlowUUID to FactorID to reduce the data size.
+We've also output [DuckDB parquet files from USEEIO](https://github.com/ModelEarth/OpenFootprint/tree/main/impacts/useeio) - dev by Satyabrat<!-- When readme added: [DuckDB parquet files from USEEIO](../impacts/useeio) -->
+DuckDB supports SQL JOINs in any browser via [WebAssembly WASM](https://duckdb.org/docs/api/wasm/overview.html)
 
+
+We're imitating the data pull from Exiobase in [generate\_import\_factors.py](https://github.com/ModelEarth/USEEIO/tree/master/import_factors_exio) but we're pushing directly to Supabase (avoiding csv files).  We're using [Mario](https://mario-suite.readthedocs.io/en/latest/intro.html), a friendly version of Pymrio.
 
 Each database instance (for a country-year) will contain these tables:
 
