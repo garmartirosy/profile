@@ -1,6 +1,11 @@
 [Open Data Panels](../../../) and [International Trade Flow](../../../../OpenFootprint/trade/)
 
-# DuckDB from Exiobase .csv files
+# DuckDB 
+
+We've also output [DuckDB parquet files from USEEIO](https://github.com/ModelEarth/OpenFootprint/tree/main/impacts/useeio) - dev by Satyabrat
+<!-- When readme added: [DuckDB parquet files from USEEIO](../../../impacts/useeio) -->
+
+## From Exiobase .csv files
 
 View our DuckDB parquet tables in [ObservableHQ Dashboard](https://observablehq.com/d/2898d01446cefef1) and [Static Framework](/data-commons/dist/innovation/)
 We recommend [DBeaver](https://dbeaver.io/) - a free universal SQL database desktop app
