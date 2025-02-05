@@ -10,10 +10,10 @@ But parquet files can be processed from static files using Js.
 - **Indicators Table**: The first example demonstrates reading the **Indicators** table, which contains 16 entries.  
 - **Sector & Production Complete Amount**: The second example combines data from two tables—**Sector** and **Production Complete Amount**—based on a selected state.  
 
-### Images  
+### Refer Images and Html files
+First example shows the Indicators (total 16) table 
 
-First example shows the Indicators (total 16) table:  
-![Indicator](impacts/useeio/read_parquet_duckwasm_js/indicator.jpg)  
+Second example combining Sector and Production Complete Amount using a selected State
 
-Second example combining Sector and Production Complete Amount using a selected State:  
-![Sector](impacts/useeio/read_parquet_duckwasm_js/sector.jpg)  
+## To do
+Use a Constant Js file to store all constant values (like State's code) and Parquet file's urls instead of hard-coding in the static files.
