@@ -1,10 +1,19 @@
-This files shows examples of reading parquet files using duck-wasm and javascript
-Initial idea was to use DuckDB along with DBeaver but dbeaver would require a server to host
+# Reading Parquet Files with DuckDB-WASM and JavaScript  
 
-First example shows the Indicators (total 16) table
-![indicator](impacts/useeio/read_parquet_duckwasm_js/indicator.jpg)
+These files provide examples of reading Parquet files using DuckDB-WASM and JavaScript.  
 
+Initially, the plan was to use DuckDB with DBeaver, but DBeaver requires a server for hosting.
+But parquet files can be processed from static files using Js. 
 
-Second example uses 2 tables - Sector and Production Complete Amount, and combined them using 
-a selected State value
-![sector](impacts/useeio/read_parquet_duckwasm_js/sectorproduction.jpg)
+## Examples  
+
+- **Indicators Table**: The first example demonstrates reading the **Indicators** table, which contains 16 entries.  
+- **Sector & Production Complete Amount**: The second example combines data from two tables—**Sector** and **Production Complete Amount**—based on a selected state.  
+
+### Images  
+
+First example shows the Indicators (total 16) table:  
+![Indicator](impacts/useeio/read_parquet_duckwasm_js/indicator.jpg)  
+
+Second example combining Sector and Production Complete Amount using a selected State:  
+![Sector](impacts/useeio/read_parquet_duckwasm_js/sector.jpg)  
