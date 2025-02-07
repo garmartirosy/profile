@@ -9,6 +9,7 @@ Our SQL Team has been generating <a href="/OpenFootprint/prep/sql/supabase/">Sup
 We've also output [DuckDB parquet files from USEEIO](https://github.com/ModelEarth/OpenFootprint/tree/main/impacts/useeio) - dev by Satyabrat<!-- When readme added: [DuckDB parquet files from USEEIO](../impacts/useeio) -->
 DuckDB supports SQL JOINs in any browser via [WebAssembly WASM](https://duckdb.org/docs/api/wasm/overview.html)
 
+There are examples of using [Apache Parquet](../impacts/useeio/read_parquet_duckwasm_js/) files from static html files using DuckDB-Wasm and JavaScript
 
 We're imitating the data pull from Exiobase in [generate\_import\_factors.py](https://github.com/ModelEarth/USEEIO/tree/master/import_factors_exio) but we're pushing directly to Supabase (avoiding csv files).  We're using [Mario](https://mario-suite.readthedocs.io/en/latest/intro.html), a friendly version of Pymrio.
 
