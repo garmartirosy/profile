@@ -2,7 +2,7 @@
 
 # DuckDB 
 
-We've also output [DuckDB parquet files from USEEIO](https://github.com/ModelEarth/OpenFootprint/tree/main/impacts/useeio) - dev by Satyabrat
+Learn about our [Parquet DuckDB from USEEIO data](../../../impacts/useeio/parquet) and [view related python in the GitHub repo](https://github.com/ModelEarth/OpenFootprint/tree/main/impacts/useeio/parquet) - dev by Satyabrat
 <!-- When readme added: [DuckDB parquet files from USEEIO](../../../impacts/useeio) -->
 
 ## From Exiobase .csv files

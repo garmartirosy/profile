@@ -1,3 +1,5 @@
+[DuckDB Prep](../../../prep/sql/duckdb/)
+
 # Reading Parquet Files with DuckDB-WASM and JavaScript  
 
 These files provide examples of reading Parquet files using DuckDB-WASM and JavaScript.  
@@ -17,3 +19,5 @@ Second example combining Sector and Production Complete Amount using a selected 
 
 ## To do
 Use a Constant Js file to store all constant values (like State's code) and Parquet file's urls instead of hard-coding in the static files.
+
+[View related python in the GitHub repo](https://github.com/ModelEarth/OpenFootprint/tree/main/impacts/useeio/parquet) - dev by Satyabrat
