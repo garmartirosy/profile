@@ -83,6 +83,9 @@
 
       const button = document.getElementById('loadButton');
       button.style.display = 'none';
+
+      const loadingData = document.getElementById('loadingData');
+      loadingData.style.display = 'none';
     }
 
 
@@ -92,12 +95,14 @@
       button.h
     });
 
+    loadData();
 
   </script>
 </head>
 <body>
   <h1>Indicators Table</h1>
-  <button id="loadButton">Load Data</button>
+  <button id="loadButton" style="display:none">Load Data</button>
+  <div id="loadingData">Loading Data...</div>
   <div id="tbl"></div>
 </body>
 </html>
