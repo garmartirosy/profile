@@ -18,6 +18,8 @@ But parquet files can be processed from static files using Js.
 
 2. [Combines Sector and Production Complete Amount](SectorvsProductionComplete.html) using a selected State
 
+3. [Join Example Using Sector](JoinExampleUsingSector.html)
+
 ## To do
 Use a Constant Js file to store all constant values (like State's code) and Parquet file's urls instead of hard-coding in the static files.
 
