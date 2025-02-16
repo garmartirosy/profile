@@ -61,10 +61,20 @@
     const DuckDB = await instantiate(duckdb);
     const db = await DuckDB.connect();
 
+    
     await db.query(`
     create table sector as select * from "https://raw.githubusercontent.com/ModelEarth/OpenFootprint/main/impacts/useeio/parquet/files/Sector.parquet";
     create table prod as select * from "https://raw.githubusercontent.com/ModelEarth/OpenFootprint/main/impacts/useeio/parquet/files/Production_Complete.parquet";
     `);
+    
+
+    // the server responded with a status of 404 (File not found)
+    /*
+    await db.query(`
+    create table sector as select * from "files/Sector.parquet";
+    create table prod as select * from "files/Production_Complete.parquet";
+    `);
+    */
 
     const values = await db.query(`
     select p.Amount, s.SectorName
@@ -107,9 +117,10 @@
             }
         })
 
+        // INIT
+        dropdown.value = "AL";
+        loadData("AL")
     });
-
-
   </script>
 </head>
 <body>
