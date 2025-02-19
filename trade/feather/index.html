@@ -1,0 +1,34 @@
+<!-- LH added Feb 19, 2025 -->
+
+Add a path to a feather file to the javascript in this page.
+
+<script src="https://cdn.jsdelivr.net/npm/apache-arrow"></script>
+<script>
+  fetch('path/to/your/file.feather')
+    .then(response => response.arrayBuffer())
+    .then(buffer => {
+      const table = arrow.tableFromIPC(new Uint8Array(buffer)); // Corrected function to read Arrow IPC format
+      console.log(table.toString()); // Log table as a string for debugging
+
+      // Convert table to an array of JavaScript objects
+      const data = [];
+      for (let i = 0; i < table.numRows; i++) {
+        const row = {};
+        table.schema.fields.forEach((field, colIndex) => {
+          row[field.name] = table.getChildAt(colIndex).get(i);
+        });
+        data.push(row);
+      }
+
+      console.log(data); // Log parsed data
+
+      // Example: Access specific columns
+      const column1 = table.getChildAt(0).toArray(); // First column as array
+      console.log("Column 1:", column1);
+
+      const columnName = "your_column_name"; // Replace with actual column name
+      const column2 = table.getChild(columnName)?.toArray();
+      console.log(`Column "${columnName}":`, column2);
+    })
+    .catch(error => console.error("Error loading Feather file:", error));
+</script>

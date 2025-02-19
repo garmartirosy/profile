@@ -41,6 +41,8 @@ TO DO: Send to DuckDB instances for a country and year - See DuckDB example in o
 
 TO DO: Experiment in our [Pymiro CoLab](https://colab.research.google.com/drive/1Q9_1AhdY8uPUfLVUN71X6mKbEy_kqPuQ?usp=sharing) using the [Pymiro for Exiobase library](https://pymrio.readthedocs.io/en/latest/). Save DuckDB country-year data instances. Jaya and Satwick are investigating using .feather within the Pymiro CoLab.
 
+TODO: Try the following frontend [javascript with a .feather file](feather).
+
 The [Big Sankey](https://github.com/baptiste-an/Application-mapping-GHG) ([view chart](https://sankey.theshiftproject.org/)) uses Plotly with .feather files. We could do the same with [Anvil](https://anvil.works) and Google Looker. 
 
 [ExiobaseSupabase CoLab](https://colab.research.google.com/drive/1LsEDmXrAAGs40OiAKWH48K63E_2bMGBb?usp=sharing)<!-- Himanshu, Sahil, Ben, Parth, Jack, Satwik, Indrasenareddy--> and [New version by Gary](https://colab.research.google.com/drive/16a2pykb_ycfHhAhxK949giWuVf3c_IeD)
