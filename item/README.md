@@ -1,4 +1,4 @@
-<a href="/profile">Profile Panels</a> - <a href="/io/template">Builder</a>
+<a href="/profile">Profile Panels</a> - <a href="/io/template">IO Template</a>
 
 # Profile YAML
 
