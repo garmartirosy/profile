@@ -1,7 +1,7 @@
-[Active Projects](../../projects/) - [State Javascript](/useeio.js/footprint/) and [State Models](/io/about/)
+[Active Projects](../../projects/)
 # International Trade Flow
 
-Our International Trade Flow projects use [MARIO Input-Output Analysis](https://mario-suite.readthedocs.io/en/latest/intro.html)
+For International Trade Flow pulls, try [MARIO Input-Output Analysis](https://mario-suite.readthedocs.io/en/latest/intro.html)
 
 <b>Exiobase International Trade Data and Visualization</b>
 Our SQL Team has been generating <a href="/OpenFootprint/prep/sql/supabase/">Supabase</a> ([Javascript frontend](../impacts/)) and <a href="/OpenFootprint/prep/sql/duckdb/">DuckDB</a> databases for comparing industries and identifying imports with positive environmental impacts.
