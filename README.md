@@ -1,3 +1,3 @@
-Open Footprint
+Profile
 
 [model.earth Profile](https://model.earth/profile/)
