@@ -4,14 +4,14 @@
 For International Trade Flow pulls, try [MARIO Input-Output Analysis](https://mario-suite.readthedocs.io/en/latest/intro.html)
 
 <b>Exiobase International Trade Data and Visualization</b>
-Our SQL Team has been generating <a href="/profile/prep/sql/supabase/">Supabase</a> ([Javascript frontend](../impacts/)) and <a href="/profile/prep/sql/duckdb/">DuckDB</a> databases for comparing industries and identifying imports with positive environmental impacts.
+Our IO Team has been generating <a href="/profile/prep/sql/duckdb/">DuckDB</a> and <a href="/profile/prep/sql/supabase/">Supabase</a> ([Javascript frontend](../impacts/))  databases for comparing industries and identifying imports with positive environmental impacts.
 
 We've also output [DuckDB parquet files from USEEIO](https://github.com/ModelEarth/profile/tree/main/impacts/useeio) - dev by Satyabrat<!-- When readme added: [DuckDB parquet files from USEEIO](../impacts/useeio) -->
 DuckDB supports SQL JOINs in any browser via [WebAssembly WASM](https://duckdb.org/docs/api/wasm/overview.html)
 
 There are examples of using [Apache Parquet](../impacts/useeio/parquet/) files from static html files using DuckDB-Wasm and JavaScript
 
-We're imitating the data pull from Exiobase in [generate\_import\_factors.py](https://github.com/ModelEarth/USEEIO/tree/master/import_factors_exio) but we're pushing directly to Supabase (avoiding csv files).  We're using [Mario](https://mario-suite.readthedocs.io/en/latest/intro.html), a friendly version of Pymrio.
+We're imitating the data pull from Exiobase in [generate\_import\_factors.py](https://github.com/ModelEarth/USEEIO/tree/master/import_factors_exio) but we're pushing directly to Supabase (avoiding csv files).  We're also using [Mario](https://mario-suite.readthedocs.io/en/latest/intro.html), a friendly version of Pymrio. (Mario may lack some of Pymrio provides.)
 
 Each database instance (for a country-year) will contain these tables:
 
@@ -29,15 +29,16 @@ ImportMultiplierFactor
 The Industry is 5-char and the Commodity is 6-char.
 
 **Contribute to these CoLabs:**   
+<!-- these 2 also reside on DuckDB page -->
 [NEW - Parquet To Github](https://colab.research.google.com/drive/1Pqpdebj4rY06E6NAgqJskgt-G4HBHPUZ?usp=sharing)
 [NEW - Colab to Github](https://colab.research.google.com/drive/1mnZKBypCBlVLXiCuSpGj0JZf4NZzNR7h?usp=sharing)
 [Exiobase To Github Pipeline](https://colab.research.google.com/drive/1N47_pfTUyOzeukgf4KYX1pmN_Oj1N3r_?usp=sharing) - Pulls zip of year from Exiobase and unzips 
 [Create Database from Panda Dataframe](https://colab.research.google.com/drive/1IMpOYzT6oXbZXaJKugi5vCmUB_tIHo0J?usp=sharing) - Output SQL 
-[Pymrio Exiobase Industry Final](https://colab.research.google.com/drive/1bXUO1iXyBGbmZODmnl0NVn3yFpWwBCOi?usp=sharing) - Send to Supabase
-[Satwick's PYMRIO.ipynb CoLab](https://colab.research.google.com/drive/1AZPfBlG0iUKmKRZjlNxn8uOuvtAfEarn?usp=sharing)  
+[Pymrio Exiobase Industry](https://colab.research.google.com/drive/1bXUO1iXyBGbmZODmnl0NVn3yFpWwBCOi?usp=sharing) - Sends to Supabase
 [Inserting Factors and Sectors into Supabase](https://colab.research.google.com/drive/1INHz02V-cU_y_nAlS-BWxQQtz8Qg_lLi#scrollTo=KUnI-Va8M1Nl) - Invite only
+[Satwick's PYMRIO.ipynb CoLab](https://colab.research.google.com/drive/1AZPfBlG0iUKmKRZjlNxn8uOuvtAfEarn?usp=sharing)  
 
-TO DO: Send about 8 countries to unique Supabase instances for the year 2020.
+TO DO: Send about 8 countries to unique datasets for the year 2020.
 TO DO: Send to DuckDB instances for a country and year - See DuckDB example in our [zip code processing](https://model.earth/community-zipcodes/) 
 
 

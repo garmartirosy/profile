@@ -1,14 +1,18 @@
-[International Trade Flow](/profile/trade/) and [SQL Data Loaders](../../)
+[International Trade Flow](/profile/trade/) and [IO Data Prep](../../)
 
 # Supabase from Exiobase .csv files
 
 We're replacing the [supabase-db-loader2.py](https://github.com/ModelEarth/profile/tree/main/prep/sql/supabase) csv-pull script with the new direct [create-database-direct.yaml](https://github.com/ModelEarth/profile/blob/main/impacts/exiobase/US-source/create-database-direct.yaml) process.
 
-The new CoLab will load directly into the [Supabase PostgreSQL](https://supabase.com) from the Exiobase API based on configuration on the YAML file. It will also provide options to load data from URLs. We'll have a toggle in the CoLab to send to DuckDB .parquet files (or .feather files), similar to the prior [DuckDB from .csv files](../duckdb/). Here's our [SQL TO DOs](../../../trade/).
+[Some of our CoLabs](../../../trade/) push into the [Supabase PostgreSQL](https://supabase.com) from the Exiobase API based on configuration on the YAML file. It will also provide options to load data from URLs. We'll have a toggle in the CoLab to send to DuckDB .parquet files (or .feather files), similar to the prior [DuckDB from .csv files](../duckdb/). Here's our [SQL TO DOs](../../../trade/).
 
-<a href="../../../impacts" class="btn btn-success" style="float:left">View Impacts (New)</a><a href="SupabaseWebpage.html" class="btn btn-warning" style="float:left">View Tables</a><div style="clear:both"></div>
+These are inactive because Supabase's free version turns off. (Probably every 14 days?.)
+<a href="../../../impacts" class="btn btn-success" style="float:left">View Impacts (Inactive)</a><a href="SupabaseWebpage.html" class="btn btn-warning" style="float:left">View Tables (Inactive)</a><div style="clear:both"></div>
 
 [Backup of Supabase SQL](database_backup.sql) - Contains a backup of the data stored in Supabase. This backup file can be imported directly into a new Supabase instance, eliminating the need to load the data using the supabase-db-loader.py script manually. We're also creating [starters for Tableau and PowerBI](/panels/).
+
+There's also [DBeaver](https://dbeaver.io/) - a free universal SQL database desktop app
+[Google Looker Studio](https://lookerstudio.google.com/) may require lowercase table names.
 
 ## Features
 

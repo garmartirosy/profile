@@ -1,22 +1,26 @@
 [Profile Panels](../../../) and [International Trade Flow](../../../../profile/trade/)
 
-# DuckDB 
+# DuckDB Parquet
 
 ## Parquet files from USEEIO json (forerunner to Exiobase pull)
 
-View our [Parquet using WASM javascript from USEEIO data](../../../impacts/useeio/parquet) and [view related python in the GitHub repo](https://github.com/ModelEarth/profile/tree/main/impacts/useeio/parquet) - dev by Satyabrat
+View our [Parquet using WASM javascript from USEEIO data](../../../impacts/useeio/parquet) and [in GitHub repo](https://github.com/ModelEarth/profile/tree/main/impacts/useeio/parquet) - dev by Satyabrat
 <!-- When readme added: [DuckDB parquet files from USEEIO](../../../impacts/useeio) -->
+[Another DuckDB parquet via Javascript](parquet-sample.html) - These are slow due to WASM speed in browser. Json is quicker.
 
-There's also [DBeaver](https://dbeaver.io/) - a free universal SQL database desktop app
-[Google Looker Studio](https://lookerstudio.google.com/) may require lowercase table names.
+<!-- these 2 also reside on trade page -->
+[NEW - Parquet To Github](https://colab.research.google.com/drive/1Pqpdebj4rY06E6NAgqJskgt-G4HBHPUZ?usp=sharing)
+[NEW - Colab to Github](https://colab.research.google.com/drive/1mnZKBypCBlVLXiCuSpGj0JZf4NZzNR7h?usp=sharing)
 
-We shifted away from starting from the merged .csv files created with the US EPA script. Our newer work above focuses just on the international exiobase data pull (which includes Comtrade data).
+
 
 ## Prior Notes
 
 View our DuckDB parquet tables in [ObservableHQ Dashboard](https://observablehq.com/d/2898d01446cefef1) and [Static Framework](/data-commons/dist/innovation/)  
 
-Our 8.4MB **US-2020-17schema.duckdb** output resides in [profile/impacts/exiobase/US-source](https://github.com/ModelEarth/profile/tree/main/impacts/exiobase/US-source). 
+We shifted away from starting from the merged US Economy .csv files created with the US EPA script. Our newer work pulls from the international exiobase data (which includes Comtrade) using Colabs to push to Github.
+
+Our prior 8.4MB **US-2020-17schema.duckdb** output resides in [profile/impacts/exiobase/US-source](https://github.com/ModelEarth/profile/tree/main/impacts/exiobase/US-source). 
 We're moving it into the 2020 subfolder and adding parquet files there also.
 
 Also see our [Supabase from .csv files page](../../sql/supabase), the resulting upcoming [Impact Charts](../../../impacts/) and our [Related Projects TO DO List](../../../prep/)
