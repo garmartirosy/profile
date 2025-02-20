@@ -1,4 +1,4 @@
-<a href="/profile">Open Footprint</a> - <a href="/io/template">Builder</a>
+<a href="/profile">Profile Panels</a> - <a href="/io/template">Builder</a>
 
 # Profile YAML
 

@@ -1,6 +1,6 @@
 # Label Builder
 
-[Food Label](/data-commons/docs/food/) - [YAML Profile Parser](/io/template/parser/)  
+[YAML Object](/profile/item/) - [Food API](/data-commons/docs/food/) - [YAML Profile Parser](/io/template/parser/)  
 <!--
 [Balanced Diet](/balance/) visualizations  
 [Food Waste Methane Reuse](https://www.epa.gov/system/files/documents/2024-06/epa_usda_methane_and_food_waste_fact_sheet.pdf) - 1/3 of food goes uneaten
