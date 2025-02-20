@@ -26,3 +26,6 @@ To Develop
 <a href="/io/about/">USEEIO State Models</a>
 <a href="https://model.earth/io/charts/">React IO Widgets</a>
 <a href="/OpenFootprint/trade/">International Trade Flow</a>
+
+<b>Item</b>
+<a href="../../OpenFootprint/item/">Profile YAML</a></a>
