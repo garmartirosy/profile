@@ -68,7 +68,7 @@
 
     async function loadDuckDBFile() {
       try {
-        const response = await fetch('https://github.com/ModelEarth/OpenFootprint/blob/main/impacts/exiobase/US-source/US-2020-17schema.duckdb');
+        const response = await fetch('https://github.com/ModelEarth/profile/blob/main/impacts/exiobase/US-source/US-2020-17schema.duckdb');
         const arrayBuffer = await response.arrayBuffer();
         await db.open({ source: new Uint8Array(arrayBuffer) });
 

@@ -8,7 +8,7 @@ Name array was manually copied from the Excel file in Feb 2024 report.
 
 TO DO: Copy this folder. Name it "chord-diagram-sectors" and use the L Matrix for Sector to Sector.  
 TO DO: Build array of colors using a D3 loop that matches the number of names.  
-TO DO: Pull matrix data directly from [Github files](https://github.com/ModelEarth/OpenFootprint/tree/main/impacts/2020/GAEEIOv1.0-s-20/matrix) via [D Matrix raw URL](https://raw.githubusercontent.com/ModelEarth/OpenFootprint/main/impacts/2020/GAEEIOv1.0-s-20/matrix/D.json)  
+TO DO: Pull matrix data directly from [Github files](https://github.com/ModelEarth/profile/tree/main/impacts/2020/GAEEIOv1.0-s-20/matrix) via [D Matrix raw URL](https://raw.githubusercontent.com/ModelEarth/profile/main/impacts/2020/GAEEIOv1.0-s-20/matrix/D.json)  
 TO DO: Activate rollovers like [nivo.rocks/chord](https://nivo.rocks/chord/)
 
 Important: To avoid breaking Github Pages build, deleted "env" folder from original download.
@@ -146,8 +146,8 @@ export default function define(runtime, observer) {
 
 // The Q Matrix had NAN values. Need a script to remove.
 // USEEIO Georgia D Matrix (50K), 
-// https://github.com/ModelEarth/OpenFootprint/blob/main/impacts/2020/GAEEIOv1.0-s-20/matrix/D.json
-// https://raw.githubusercontent.com/ModelEarth/OpenFootprint/main/impacts/2020/GAEEIOv1.0-s-20/matrix/D.json
+// https://github.com/ModelEarth/profile/blob/main/impacts/2020/GAEEIOv1.0-s-20/matrix/D.json
+// https://raw.githubusercontent.com/ModelEarth/profile/main/impacts/2020/GAEEIOv1.0-s-20/matrix/D.json
 
 function _data(){return(
 Object.assign([

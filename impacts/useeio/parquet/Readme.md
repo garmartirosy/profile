@@ -23,4 +23,4 @@ But parquet files can be processed from static files using Js.
 ## To do
 Use a Constant Js file to store all constant values (like State's code) and Parquet file's urls instead of hard-coding in the static files.
 
-[View related python in the GitHub repo](https://github.com/ModelEarth/OpenFootprint/tree/main/impacts/useeio/parquet) - dev by Satyabrat
+[View related python in the GitHub repo](https://github.com/ModelEarth/profile/tree/main/impacts/useeio/parquet) - dev by Satyabrat

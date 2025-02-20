@@ -57,7 +57,7 @@ Demand:
     - year
 
 SectorCrosswalk:
-  source: /OpenFootprint/impacts/2020/sectorcrosswalk.csv
+  source: /profile/impacts/2020/sectorcrosswalk.csv
   columns:
     SectorID: BEA_Summary
     NAICS: NAICS
@@ -69,7 +69,7 @@ SectorCrosswalk:
     ModelSchema
 
 CommodityCrosswalk:
-  source: /OpenFootprint/impacts/2020/sectorcrosswalk.csv
+  source: /profile/impacts/2020/sectorcrosswalk.csv
   columns:
     CommodityID: BEA_Detail
     NAICS: NAICS

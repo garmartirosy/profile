@@ -1,8 +1,8 @@
 <b>International</b>
-<a href="../../OpenFootprint/prep/">Data Prep</a>
+<a href="../../profile/prep/">Data Prep</a>
 
 To Develop
-<a href="../../OpenFootprint/trade/map/">Trade Flow Map</a>
+<a href="../../profile/trade/map/">Trade Flow Map</a>
 <a href="../charts/d3/chord-diagram/">Chord (D3)</a><!-- https://nivo.rocks/chord/ -->
 <a href="../charts/echarts/sankey-nodeAlign-left.html">Sankey (eCharts)</a>
 
@@ -25,7 +25,7 @@ To Develop
 <a href="/useeio.js/">About USEEIO.js</a>
 <a href="/io/about/">USEEIO State Models</a>
 <a href="https://model.earth/io/charts/">React IO Widgets</a>
-<a href="/OpenFootprint/trade/">International Trade Flow</a>
+<a href="/profile/trade/">International Trade Flow</a>
 
 <b>Item</b>
-<a href="../../OpenFootprint/item/">Profile YAML</a></a>
+<a href="../../profile/item/">Profile YAML</a></a>

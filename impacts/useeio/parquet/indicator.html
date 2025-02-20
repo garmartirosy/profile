@@ -58,7 +58,7 @@
     const db = await DuckDB.connect();
 
     await db.query(`
-    create table indicator as select * from "https://raw.githubusercontent.com/ModelEarth/OpenFootprint/main/impacts/useeio/parquet/files/Indicator.parquet";
+    create table indicator as select * from "https://raw.githubusercontent.com/ModelEarth/profile/main/impacts/useeio/parquet/files/Indicator.parquet";
     `);
 
     const values = await db.query(`

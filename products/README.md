@@ -1,26 +1,26 @@
-[Footprint Builder](/io/template) and [Open Data Panels](../)
+[IO Template](/io/template) and [Profile Panels](../)
 # Product Comparisons
 
 **Environmental Product Declarations (EPD)**
 From BuildingTransparency.org API
 
 [Our latest profile label](/food) - [About our Nutrition-style Labels](/io/template/)  
-[View state .csv files pulled from API](https://github.com/ModelEarth/OpenFootprint/tree/main/products/US)  
+[View state .csv files pulled from API](https://github.com/ModelEarth/profile/tree/main/products/US)  
 [View parsed YAML-TO-JSON-TO-HTML](/io/template/parser/)  
 [BuildingTransparency Feed View (Static EPD json)](/feed/view/#feed=epd)  
 [Product Feed API](/io/template/feed) - [Current product profile in BuildingTransparency.org](https://buildingtransparency.org/ec3/epds/ec3mmgup)  
 <!--[View as Markdown](/io/template/product/product-concrete.html)-->
 
-TO CONTRIBUTE: [Fork and run two repos](/localsite/start/steps) (localsite and OpenFootprint) in a webroot on your computer.  
+TO CONTRIBUTE: [Fork and run two repos](/localsite/start/steps) (localsite and profile) in a webroot on your computer.  
 Add your first name after the project you are working on below, send a PR and email Loren to pull.
 
-TO DO: The token expires every 72 hours, so switch our ["Update Data" GitHub Action](https://github.com/ModelEarth/OpenFootprint/actions) to use an email and password as the secrets which generate the token. (Look at how we use a myconfig file locally to get a new token and create a similar process in the GitHub Action.) Test in a fork and document steps for adding the secrets here. The URL for the API may need to be updated to https://buildingtransparency.org/api/epds
+TO DO: The token expires every 72 hours, so switch our ["Update Data" GitHub Action](https://github.com/ModelEarth/profile/actions) to use an email and password as the secrets which generate the token. (Look at how we use a myconfig file locally to get a new token and create a similar process in the GitHub Action.) Test in a fork and document steps for adding the secrets here. The URL for the API may need to be updated to https://buildingtransparency.org/api/epds
 
 TO DO: product-footprints.py and update\_csv\_and\_yaml.py are very similar. Add "-DELETE" to the name of one (as long as we can use the other file two ways: locally and with the GitHub Action workflow). If retaining update_csv_and_yaml.py, change underscores to dashes.
 
-TO DO: Send the cement product rows to their own files in new state folders in OpenFootprint/cement/US. Save the cement listings within the same process that saves non-cement for states. (Avoid loading and process the CSV file containing all states.)
+TO DO: Send the cement product rows to their own files in new state folders in profile/cement/US. Save the cement listings within the same process that saves non-cement for states. (Avoid loading and process the CSV file containing all states.)
 
-TO DO: Use Postman to test pulling CO2 for products. Update csv list output with product emission impacts for all states by updating our [Python Profile pull](https://github.com/ModelEarth/OpenFootprint/tree/main/products/pull/)<!-- product-footprints.py -->. View [Resulting Data](https://github.com/ModelEarth/OpenFootprint/tree/main/products/US).
+TO DO: Use Postman to test pulling CO2 for products. Update csv list output with product emission impacts for all states by updating our [Python Profile pull](https://github.com/ModelEarth/profile/tree/main/products/pull/)<!-- product-footprints.py -->. View [Resulting Data](https://github.com/ModelEarth/profile/tree/main/products/US).
 
 TO DO: Save emissions info within our indvidual YAML files. Include all the impact (emmissions, etc) in each profile. Login to BuildingTransparency.org to view a [detail sample](https://buildingtransparency.org/ec3/epds/ec3mmgup).  Update our notes with your findings and progress. You can use Postman or another app to explore the BuildingTransparency APIs.
 
@@ -31,16 +31,16 @@ TO DO: We can also experimenting with [pulling directly to json](pull/get-json/)
 
 ## Fetch Product Data
 
-1. Fork and clone the [Openfootprint Repo](https://github.com/ModelEarth/OpenFootprint) for 
+1. Fork and clone the [Profile Repo](https://github.com/ModelEarth/profile) for 
 
 2. In our products/pull folder myconfig.py file, you'll add a username and password.
 
 3. Get your login (and token) from the [BuildingTransparency.org](https://BuildingTransparency.org) website
 
-For products/pull/product-footprints.py set your BuildingTransparency email and password in [myconfig.py](https://github.com/ModelEarth/OpenFootprint/tree/main/products/pull/) to call the API.
+For products/pull/product-footprints.py set your BuildingTransparency email and password in [myconfig.py](https://github.com/ModelEarth/profile/tree/main/products/pull/) to call the API.
 
 
-**Run in your OpenFootprint folder**  
+**Run in your Profile folder**  
 We have not yet tested "pip install functools" below yet
 
     python3 -m venv env
@@ -51,7 +51,7 @@ For Windows
     python3 -m venv env
     .\env\Scripts\activate
 
-Run the following in the root of the OpenFootprint repo. Takes over 30 minutes.
+Run the following in the root of the Profile repo. Takes over 30 minutes.
 
     pip install requests pandas pyyaml
     pip install functools
@@ -64,7 +64,7 @@ Current Error: Max retries exceeded with url: /api/rest-auth/login (Caused by Co
 
 
 <!--
-June 3, 2024 - We copied [product-footprints.py](https://github.com/ModelEarth/OpenFootprint/tree/main/products/pull/) into [Product Footprints Colab](https://colab.research.google.com/drive/1TJ1fn0-_8EBryN3ih5hZiKLISomOrWDW?usp=sharing) (We haven't run as CoLab yet.)
+June 3, 2024 - We copied [product-footprints.py](https://github.com/ModelEarth/profile/tree/main/products/pull/) into [Product Footprints Colab](https://colab.research.google.com/drive/1TJ1fn0-_8EBryN3ih5hZiKLISomOrWDW?usp=sharing) (We haven't run as CoLab yet.)
 -->
 
 

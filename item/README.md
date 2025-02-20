@@ -1,10 +1,10 @@
-<a href="/OpenFootprint">Open Footprint</a> - <a href="/io/template">Builder</a>
+<a href="/profile">Open Footprint</a> - <a href="/io/template">Builder</a>
 
 # Profile YAML
 
 Toggle between [Nutrition Layout](#layout=nutrition) and [Product Layout](#layout=product)
 
-TO DO: Add emissions details from [BuildingTransparency.org Products](/OpenFootprint/products/) to the [Product Layout](#layout=product).  
+TO DO: Add emissions details from [BuildingTransparency.org Products](/profile/products/) to the [Product Layout](#layout=product).  
 
 TO DO: Create a list of food linked to the label formatter below using the Food API pull examples in our [Food Data Commons](/data-commons/docs/food/)
 

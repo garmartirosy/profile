@@ -1,4 +1,4 @@
-[International Trade](/OpenFootprint/trade/)
+[International Trade](/profile/trade/)
 # Harmonized System (HS)
 
 <!-- Initial work by Wenjie (and Chen) -->

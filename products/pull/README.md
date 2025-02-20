@@ -1,3 +1,3 @@
 About Script and Workflow
 
-Documentation at: [OpenFootprint/products](http://model.earth/OpenFootprint/products/)
+Documentation at: [profile/products](http://model.earth/profile/products/)

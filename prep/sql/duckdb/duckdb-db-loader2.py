@@ -53,8 +53,8 @@ def map_dtype(dtype):
 load_from_url = input("Do you want to load data from URL? (yes/no): ").strip().lower() == "yes"
 
 if load_from_url:
-    createDatabaseYaml = "https://raw.githubusercontent.com/ModelEarth/OpenFootprint/main/impacts/exiobase/US-source/create-database.yaml"
-    sourcePath = "https://raw.githubusercontent.com/ModelEarth/OpenFootprint/main/impacts/exiobase/US-source/2020/"
+    createDatabaseYaml = "https://raw.githubusercontent.com/ModelEarth/profile/main/impacts/exiobase/US-source/create-database.yaml"
+    sourcePath = "https://raw.githubusercontent.com/ModelEarth/profile/main/impacts/exiobase/US-source/2020/"
 else:
     createDatabaseYaml = input("Enter the path to your local create-database.yaml: ").strip()
     sourcePath = input("Enter the path to your local CSV files directory: ").strip()

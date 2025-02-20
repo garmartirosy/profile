@@ -1,8 +1,8 @@
-[International Trade Flow](/OpenFootprint/trade/) and [SQL Data Loaders](../../)
+[International Trade Flow](/profile/trade/) and [SQL Data Loaders](../../)
 
 # Supabase from Exiobase .csv files
 
-We're replacing the [supabase-db-loader2.py](https://github.com/ModelEarth/OpenFootprint/tree/main/prep/sql/supabase) csv-pull script with the new direct [create-database-direct.yaml](https://github.com/ModelEarth/OpenFootprint/blob/main/impacts/exiobase/US-source/create-database-direct.yaml) process.
+We're replacing the [supabase-db-loader2.py](https://github.com/ModelEarth/profile/tree/main/prep/sql/supabase) csv-pull script with the new direct [create-database-direct.yaml](https://github.com/ModelEarth/profile/blob/main/impacts/exiobase/US-source/create-database-direct.yaml) process.
 
 The new CoLab will load directly into the [Supabase PostgreSQL](https://supabase.com) from the Exiobase API based on configuration on the YAML file. It will also provide options to load data from URLs. We'll have a toggle in the CoLab to send to DuckDB .parquet files (or .feather files), similar to the prior [DuckDB from .csv files](../duckdb/). Here's our [SQL TO DOs](../../../trade/).
 
@@ -13,7 +13,7 @@ The new CoLab will load directly into the [Supabase PostgreSQL](https://supabase
 ## Features
 
 - Load CSV files from URLs or local file paths.
-- Configure data loading via a [YAML file](https://github.com/ModelEarth/OpenFootprint/blob/main/impacts/exiobase/US-source/create-database.yaml).
+- Configure data loading via a [YAML file](https://github.com/ModelEarth/profile/blob/main/impacts/exiobase/US-source/create-database.yaml).
 - Option to delete existing data or append to it if the table already exists.
 - Handles large datasets by inserting data in batches.
 
@@ -53,7 +53,7 @@ python supabase-db-loader.py
 ### Prompts
 
 1. **Data Source:** The script will ask if you want to load data from URLs. Answer `yes` or `no`.
-2. **Local YAML File Path:** If you chose `no` for the previous prompt, provide the path to your local [create-database.yaml](https://github.com/ModelEarth/OpenFootprint/blob/main/impacts/exiobase/US-source/create-database.yaml) file.
+2. **Local YAML File Path:** If you chose `no` for the previous prompt, provide the path to your local [create-database.yaml](https://github.com/ModelEarth/profile/blob/main/impacts/exiobase/US-source/create-database.yaml) file.
 3. **Local CSV Files Directory:** If you chose `no` for the data source prompt, provide the path to your local CSV files directory.
 4. **Table Exists:** If a table already exists, the script will ask if you want to delete existing data or append to it. Answer `delete` or `append`.
 

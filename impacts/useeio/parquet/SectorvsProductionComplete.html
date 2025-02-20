@@ -64,8 +64,8 @@
 
     
     await db.query(`
-    create table sector as select * from "https://raw.githubusercontent.com/ModelEarth/OpenFootprint/main/impacts/useeio/parquet/files/Sector.parquet";
-    create table prod as select * from "https://raw.githubusercontent.com/ModelEarth/OpenFootprint/main/impacts/useeio/parquet/files/Production_Complete.parquet";
+    create table sector as select * from "https://raw.githubusercontent.com/ModelEarth/profile/main/impacts/useeio/parquet/files/Sector.parquet";
+    create table prod as select * from "https://raw.githubusercontent.com/ModelEarth/profile/main/impacts/useeio/parquet/files/Production_Complete.parquet";
     `);
     
 

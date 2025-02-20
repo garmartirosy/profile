@@ -1,4 +1,4 @@
-[Open Data Panels](../../../) and [International Trade Flow](../../../../OpenFootprint/trade/)
+[Profile Panels](../../../) and [International Trade Flow](../../../../profile/trade/)
 
 # DuckDB from .csv files
 

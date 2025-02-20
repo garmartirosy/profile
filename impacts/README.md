@@ -1,7 +1,7 @@
 TO DO: We'll update our [Supabase data display](../impacts) to include the trade flow map, Chord and Sandkey charts. 
 We'll display the 3 charts using javascript added to our [earthscape.js Tabulator](/data-pipeline/timelines/training/naics/) that are shared with other pages.
 
-TO DO: <a href="../../OpenFootprint/trade/map/">Trade Flow Map</a>  
+TO DO: <a href="../../profile/trade/map/">Trade Flow Map</a>  
 TO DO: <a href="../charts/d3/chord-diagram/">Chord (D3)</a><!-- https://nivo.rocks/chord/ -->  
 TO DO: <a href="../charts/echarts/sankey-nodeAlign-left.html">Sankey (eCharts)</a>
 
@@ -25,7 +25,7 @@ TO DO: Use <a href="https://github.com/ModelEarth/USEEIO/tree/master/import_fact
 
 TO DO: From BEA API within <a href="https://github.com/ModelEarth/USEEIO/tree/master/import_factors_exio">generate\_import\_factors.py</a> generate Sector.csv with 2 to 5 character SectorID and SectorName column.
 
-[Current Source](https://github.com/ModelEarth/OpenFootprint/blob/main/impacts/2020/USEEIOv2.0.1-411/sectors.json) - We'll find a .csv file instead in the USEPA repos.
+[Current Source](https://github.com/ModelEarth/profile/blob/main/impacts/2020/USEEIOv2.0.1-411/sectors.json) - We'll find a .csv file instead in the USEPA repos.
 
 
 <hr><br>

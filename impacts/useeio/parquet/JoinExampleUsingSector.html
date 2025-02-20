@@ -46,8 +46,8 @@
 
                 // Create tables
                 await db.query(`
-                    create table sector as select * from "https://raw.githubusercontent.com/ModelEarth/OpenFootprint/main/impacts/useeio/parquet/files/Sector.parquet";
-                    create table consump as select * from "https://raw.githubusercontent.com/ModelEarth/OpenFootprint/main/impacts/useeio/parquet/files/Consumption_Complete.parquet";
+                    create table sector as select * from "https://raw.githubusercontent.com/ModelEarth/profile/main/impacts/useeio/parquet/files/Sector.parquet";
+                    create table consump as select * from "https://raw.githubusercontent.com/ModelEarth/profile/main/impacts/useeio/parquet/files/Consumption_Complete.parquet";
                 `);
 
                 // Perform join

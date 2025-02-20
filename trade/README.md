@@ -4,9 +4,9 @@
 For International Trade Flow pulls, try [MARIO Input-Output Analysis](https://mario-suite.readthedocs.io/en/latest/intro.html)
 
 <b>Exiobase International Trade Data and Visualization</b>
-Our SQL Team has been generating <a href="/OpenFootprint/prep/sql/supabase/">Supabase</a> ([Javascript frontend](../impacts/)) and <a href="/OpenFootprint/prep/sql/duckdb/">DuckDB</a> databases for comparing industries and identifying imports with positive environmental impacts.
+Our SQL Team has been generating <a href="/profile/prep/sql/supabase/">Supabase</a> ([Javascript frontend](../impacts/)) and <a href="/profile/prep/sql/duckdb/">DuckDB</a> databases for comparing industries and identifying imports with positive environmental impacts.
 
-We've also output [DuckDB parquet files from USEEIO](https://github.com/ModelEarth/OpenFootprint/tree/main/impacts/useeio) - dev by Satyabrat<!-- When readme added: [DuckDB parquet files from USEEIO](../impacts/useeio) -->
+We've also output [DuckDB parquet files from USEEIO](https://github.com/ModelEarth/profile/tree/main/impacts/useeio) - dev by Satyabrat<!-- When readme added: [DuckDB parquet files from USEEIO](../impacts/useeio) -->
 DuckDB supports SQL JOINs in any browser via [WebAssembly WASM](https://duckdb.org/docs/api/wasm/overview.html)
 
 There are examples of using [Apache Parquet](../impacts/useeio/parquet/) files from static html files using DuckDB-Wasm and JavaScript
@@ -59,13 +59,13 @@ See chart starter sample in upper right.
 In the CoLab, add the [Sector table output](https://github.com/ModelEarth/USEEIO/commit/c10d087d916477b3335127de560d4689fa5818ea) Ben created.
 -->
 
-TO DO: Create [interactive versions](/OpenFootprint/impacts/) of the [three Exiobase charts](https://exiobase.eu)  
-See our [SQL Project Overview](/OpenFootprint/prep/) - Three Charts using International Exiobase Data
+TO DO: Create [interactive versions](/profile/impacts/) of the [three Exiobase charts](https://exiobase.eu)  
+See our [SQL Project Overview](/profile/prep/) - Three Charts using International Exiobase Data
 
 
-TO DO: <a href="/OpenFootprint/prep/">Create International Industry Reports</a> - like Energy Consumption in Drying
+TO DO: <a href="/profile/prep/">Create International Industry Reports</a> - like Energy Consumption in Drying
 
-TO DO: Generate SQL for [US States from Matrix table files](/io/about/) with new [50 State USEEIO json](https://github.com/ModelEarth/OpenFootprint/tree/main/impacts/2020)
+TO DO: Generate SQL for [US States from Matrix table files](/io/about/) with new [50 State USEEIO json](https://github.com/ModelEarth/profile/tree/main/impacts/2020)
 
 
 <!--<a href="#reports">Our Javascript USEEIO TO DOs</a>-->
@@ -73,26 +73,26 @@ TO DO: Generate SQL for [US States from Matrix table files](/io/about/) with new
 
 <b>Pulling data into state SQL databases</b>
 New simple table names - for use by elementary school students
-<a href="/OpenFootprint/prep/sql/supabase/">Supabase from .csv files</a>
-<a href="/OpenFootprint/prep/sql/duckdb/">DuckDB from .csv files</a>
+<a href="/profile/prep/sql/supabase/">Supabase from .csv files</a>
+<a href="/profile/prep/sql/duckdb/">DuckDB from .csv files</a>
 <a href="/requests/products/">Harmonized System (HS) codes</a> - <a href="https://colab.research.google.com/drive/1etpn1no8JgeUxwLr_5dBFEbt8sq5wd4v?usp=sharing">Our HS CoLab</a>
 
 <b>View SQL Data</b>
-[Javascript with Supabase](/OpenFootprint/impacts) and [Just Tables](/OpenFootprint/prep/sql/supabase/SupabaseWebpage.html)
+[Javascript with Supabase](/profile/impacts) and [Just Tables](/profile/prep/sql/supabase/SupabaseWebpage.html)
 Our DuckDB parquet tables in [ObservableHQ Dashboard](https://observablehq.com/d/2898d01446cefef1) and [Static Framework](/data-commons/dist/innovation/)
-<a href="/OpenFootprint/impacts/">Sample of JavaScript joining DuckDB Parquet tables</a>
+<a href="/profile/impacts/">Sample of JavaScript joining DuckDB Parquet tables</a>
 <a href="https://model.earth/storm/impact/process.html">SQL Documentation Sample - Storm Tweet Data</a>
 
 <b>Python to pull CSV files into SQL</b>
-<a href="https://colab.research.google.com/drive/1qWgO_UjeoYYB3ZSzT3QdXSfVZb7j09_S?usp=sharing">Generate Supabase Exiobase (Colab)</a> - <a href="https://github.com/ModelEarth/OpenFootprint/tree/main/impacts/exiobase/US-source">Bkup</a>
-<a href="https://colab.research.google.com/drive/1Wm9Bvi9pC66xNtxKHfaJEeIYuXKpb1TA?usp=sharing">Generate DuckDB Exiobase (CoLab) - <a href="https://github.com/ModelEarth/OpenFootprint/tree/main/impacts/exiobase/US-source">Bkup</a>
+<a href="https://colab.research.google.com/drive/1qWgO_UjeoYYB3ZSzT3QdXSfVZb7j09_S?usp=sharing">Generate Supabase Exiobase (Colab)</a> - <a href="https://github.com/ModelEarth/profile/tree/main/impacts/exiobase/US-source">Bkup</a>
+<a href="https://colab.research.google.com/drive/1Wm9Bvi9pC66xNtxKHfaJEeIYuXKpb1TA?usp=sharing">Generate DuckDB Exiobase (CoLab) - <a href="https://github.com/ModelEarth/profile/tree/main/impacts/exiobase/US-source">Bkup</a>
 <br>
 
 # US EPA Trade Data Pipeline
 
 The US EPA also merges in US Bureau of Economic Analysis (BEA) with Exiobase. We'd like to get close to this process for all the countries using just Exiobase (and possibly Google Data Commons).
 
-For the US EPA analysis, their repo generates six [US-2020-17schema CSV files](https://github.com/ModelEarth/OpenFootprint/tree/main/impacts/exiobase/US-source/2022) by running <a href="https://github.com/ModelEarth/USEEIO/tree/master/import_factors_exio">generate\_import\_factors.py</a>. The merge combines US BEA and <a href="https://exiobase.eu">EXIOBASE</a> data emissions factors for annual trade data. (The ExiobaseSupabase CoLab above aims to send the same Exiobase data directly to Supabase and DuckDB for each country and year.)
+For the US EPA analysis, their repo generates six [US-2020-17schema CSV files](https://github.com/ModelEarth/profile/tree/main/impacts/exiobase/US-source/2022) by running <a href="https://github.com/ModelEarth/USEEIO/tree/master/import_factors_exio">generate\_import\_factors.py</a>. The merge combines US BEA and <a href="https://exiobase.eu">EXIOBASE</a> data emissions factors for annual trade data. (The ExiobaseSupabase CoLab above aims to send the same Exiobase data directly to Supabase and DuckDB for each country and year.)
 
 Exiobase provides the equivalent to <a href="https://github.com/USEPA/useeior/blob/master/format_specs/Model.md">M, N, and x</a> which is used in the <a href="/io/about/">USEEIO models</a> for import emissions factors. Exiobase also provides gross trade data which has no equivalent in USEEIO.
 
