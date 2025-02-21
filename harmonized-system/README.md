@@ -15,7 +15,7 @@ Sample use of [Product HS Codes for Georgia Exporter Directory](https://model.ge
 TO DO: Insert and pull HS tables from Exiobase supabase  
 [Javascript form to pull from Supabase SQL](../prep/sql/supabase/)  
 
-[Satwik's Exiobase data output](https://model.earth/exiobase-global-trade/plotly)
+[Satwik's Exiobase data output](https://model.earth/global-trade/plotly)
 
 ## Concordance
 

@@ -11,7 +11,7 @@ Since most .feather files use LZ4 or ZSTD compression, Arquero cannot directly p
 <!--
 <script src="https://cdn.jsdelivr.net/npm/arquero"></script>
 <script>
-  fetch('/exiobase-global-trade/maps/2020/IOT_2020_pxp.feather')
+  fetch('/global-trade/maps/2020/IOT_2020_pxp.feather')
     .then(response => response.arrayBuffer())
     .then(buffer => {
       const table = aq.fromArrow(buffer);
@@ -37,7 +37,7 @@ Since most .feather files use LZ4 or ZSTD compression, Arquero cannot directly p
       const conn = await db.connect();
 
       // Fetch the Feather file
-      const response = await fetch("/exiobase-global-trade/maps/2020/IOT_2020_pxp.feather");
+      const response = await fetch("/global-trade/maps/2020/IOT_2020_pxp.feather");
       const buffer = await response.arrayBuffer();
 
       // Load the Feather file into DuckDB
