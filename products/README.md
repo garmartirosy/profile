@@ -1,6 +1,9 @@
 [IO Template](/io/template) and [Profile Panels](../)
 # Product Comparisons
 
+BUG: US/GA/GA.yaml was too big: 97.3 MB
+Avoid pushing files larger then 25 MB.
+
 **Environmental Product Declarations (EPD)**
 From BuildingTransparency.org API
 
