@@ -8,6 +8,7 @@ To Develop
 <a href="../../profile/charts/echarts/sankey-nodeAlign-left.html">Sankey (eCharts)</a>
 
 <b>US States</b>
+<a href="../../useeio.js/footprint/states.html">State Totals</a></a>
 <a href="../../useeio.js/footprint/commodities.html">Commodities</a></a>
 <a href="../../useeio.js/footprint/sector_profile.html">Sector Profile</a>
 <a href="../../useeio.js/footprint/calculation.html">Impact Calculation</a>
