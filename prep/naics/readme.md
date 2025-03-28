@@ -6,6 +6,7 @@ This Python script processes an Excel file(2022-NAICS-Codes-listed-numerically-2
 ### Input file : 
 2022-NAICS-Codes-listed-numerically-2-Digit-through-6-Digit.xlsx.
 
+source: https://www.naics.com/search/
 2125 rows
 
 
