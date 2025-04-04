@@ -3,7 +3,7 @@
 Colabs that create the tables and send them to supabase, 
 and the last colab sends to github from supabase.
 
-[Import table](https://colab.research.google.com/drive/10FzahLejF2qF13QYX2MZm8SSHIVtmJRk)
+[Import table](https://colab.research.google.com/drive/1Zg9gq4WnEknW6hHGA3aP2BBlneGCqRx5?usp=sharing)
 
 [ImportContributions table](https://colab.research.google.com/drive/1Ms-gDn4U7XdmCRs7zBpmmpSMuoaB-zgU)
 

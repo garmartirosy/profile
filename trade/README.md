@@ -6,6 +6,7 @@ For International Trade Flow pulls, try [MARIO Input-Output Analysis](https://ma
 <b>Exiobase International Trade Data and Visualization</b>
 Our IO Team has been generating <a href="/profile/prep/sql/duckdb/">DuckDB</a> and <a href="/profile/prep/sql/supabase/">Supabase</a> ([Javascript frontend](../impacts/))  databases for comparing industries and identifying imports with positive environmental impacts.
 
+[Trade Impact Colabs](../impacts/json) - New Colabs from Gary for pushing Exiobase to GitHub
 [Global Trade - our Comtrade and Exobase API data pulls](../../global-trade)
 
 We've also output [DuckDB parquet files from USEEIO](https://github.com/ModelEarth/profile/tree/main/impacts/useeio) - dev by Satyabrat<!-- When readme added: [DuckDB parquet files from USEEIO](../impacts/useeio) -->
