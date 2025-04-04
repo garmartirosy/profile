@@ -4,8 +4,10 @@
 
 These files provide examples of reading Parquet files using DuckDB-WASM and JavaScript.  
 
-Initially, the plan was to use DuckDB with DBeaver, but DBeaver requires a server for hosting.
-But parquet files can be processed from static files using Js. 
+DuckDB parquet files can be [displayed using javascript WASM](indicator.html), but load times are slow.  
+NEW: So we're also focused on outputting [json files from exiobase trade data](../../json/). 
+
+DBeaver provides [CloudBeaver](https://dbeaver.com/docs/cloudbeaver/) for web-based database management, allowing multiple users to collaborate on database operations.
 
 ## Examples  
 
