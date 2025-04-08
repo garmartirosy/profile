@@ -1,6 +1,6 @@
 <b>International</b>
 <a href="../../profile/trade/" id="profileTrade">Overview</a>
-<a href="../../profile/prep/">Data Prep</a>
+<a href="../../profile/prep/" id="profilePrep">Data Prep</a>
 
 <b>US States</b>
 <a href="../../useeio.js/footprint/states.html">State Totals</a>
