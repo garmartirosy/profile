@@ -1,10 +1,10 @@
 <b>International</b>
-<a href="../../profile/trade/">Overview</a>
+<a href="../../profile/trade/" id="profileTrade">Overview</a>
 <a href="../../profile/prep/">Data Prep</a>
 
 <b>US States</b>
-<a href="../../useeio.js/footprint/states.html">State Totals</a></a>
-<a href="../../useeio.js/footprint/commodities.html">Commodities</a></a>
+<a href="../../useeio.js/footprint/states.html">State Totals</a>
+<a href="../../useeio.js/footprint/commodities.html">Commodities</a>
 <a href="../../useeio.js/footprint/sector_profile.html">Sector Profile</a>
 <a href="../../useeio.js/footprint/calculation.html">Impact Calculation</a>
 <a href="../../useeio.js/footprint/commodity_vector.html">Commodity Vector</a>

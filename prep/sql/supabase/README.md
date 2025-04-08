@@ -6,7 +6,8 @@ We're replacing the [supabase-db-loader2.py](https://github.com/ModelEarth/profi
 
 [Some of our CoLabs](../../../trade/) push into the [Supabase PostgreSQL](https://supabase.com) from the Exiobase API based on configuration on the YAML file. It will also provide options to load data from URLs. We'll have a toggle in the CoLab to send to DuckDB .parquet files (or .feather files), similar to the prior [DuckDB from .csv files](../duckdb/). Here's our [SQL TO DOs](../../../trade/).
 
-These are inactive because Supabase's free version turns off. (Probably every 14 days?.)
+These are inactive because Supabase's free version turns off. (Probably every 14 days)  
+
 <a href="../../../impacts" class="btn btn-success" style="float:left">View Impacts (Inactive)</a><a href="SupabaseWebpage.html" class="btn btn-warning" style="float:left">View Tables (Inactive)</a><div style="clear:both"></div>
 
 [Backup of Supabase SQL](database_backup.sql) - Contains a backup of the data stored in Supabase. This backup file can be imported directly into a new Supabase instance, eliminating the need to load the data using the supabase-db-loader.py script manually. We're also creating [starters for Tableau and PowerBI](/panels/).
