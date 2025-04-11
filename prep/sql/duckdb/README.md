@@ -1,4 +1,4 @@
-[Profile Panels](../../../) and [International Trade Flow](../../../../profile/trade/)
+[Profile Panels](../../../) and [World Trade Flow](../../../../profile/trade/)
 
 # DuckDB Parquet
 

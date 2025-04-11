@@ -47,7 +47,7 @@ TO DO: Send to DuckDB instances for a country and year - See DuckDB example in o
 
 TO DO: Experiment in our [Pymiro CoLab](https://colab.research.google.com/drive/1Q9_1AhdY8uPUfLVUN71X6mKbEy_kqPuQ?usp=sharing) using the [Pymiro for Exiobase library](https://pymrio.readthedocs.io/en/latest/). Save DuckDB country-year data instances. Jaya and Satwick are investigating using .feather within the Pymiro CoLab.
 
-TODO: Try the following frontend [javascript with a .feather file](feather).
+TO DO: Try the following frontend [javascript with a .feather file](feather).
 
 The [Big Sankey](https://github.com/baptiste-an/Application-mapping-GHG) ([view chart](https://sankey.theshiftproject.org/)) uses Plotly with .feather files. We could do the same with [Anvil](https://anvil.works) and Google Looker. 
 
@@ -55,7 +55,7 @@ The [Big Sankey](https://github.com/baptiste-an/Application-mapping-GHG) ([view 
 
 TO DO: Update the ExiobaseSupabase CoLab above to also pull the BEA data to match the <a href="https://github.com/ModelEarth/USEEIO/tree/master/import_factors_exio">generate\_import\_factors.py</a>. Test with the US.   <!-- Yuhao, Ruolin, Nancy-->
 
-## International Trade Flow/Impact Visualizations
+## World Trade Flow/Impact Visualizations
 
 See chart starter sample in upper right.
 
