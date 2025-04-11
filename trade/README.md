@@ -1,5 +1,5 @@
 [Active Projects](../../projects/)
-# World Trade Flow
+# Trade Flow
 
 [Trade Impact Colabs](../impacts/json) - New Colabs from Gary for pushing Exiobase to GitHub
 [Global Trade - our Comtrade and Exobase API data pulls](../../global-trade)
