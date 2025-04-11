@@ -14,7 +14,11 @@ DuckDB supports SQL JOINs in any browser via [WebAssembly WASM](https://duckdb.o
 
 There are examples of using [Apache Parquet](../impacts/useeio/parquet/) files from static html files using DuckDB-Wasm and JavaScript
 
-We're imitating the data pull into .csv from Exiobase in [generate\_import\_factors.py](https://github.com/ModelEarth/USEEIO/tree/master/import_factors_exio) but we're pushing directly to json, DuckDB .parquet and Supabase.  We're also using [Mario](https://mario-suite.readthedocs.io/en/latest/intro.html), a friendly version of Pymrio. (Mario may lack some of the functionality and/or data Pymrio provides.)
+We're imitating the data pull into .csv from Exiobase in [generate\_import\_factors.py](https://github.com/ModelEarth/USEEIO/tree/master/import_factors_exio) but we're pushing directly to json, DuckDB .parquet and Supabase.  
+
+<!--
+We're also using [Mario](https://mario-suite.readthedocs.io/en/latest/intro.html), a friendly version of Pymrio. (Mario may lack some of the functionality and/or data Pymrio provides.)
+-->
 
 Each database instance (for a country-year) will contain these tables:
 
