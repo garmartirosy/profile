@@ -6,7 +6,7 @@
 [Try MARIO Input-Output library](https://mario-suite.readthedocs.io/en/latest/intro.html) as a striped-down [Pymyrio](https://pymrio.readthedocs.io/en/latest/intro.html)
 
 <b>Exiobase International Trade Data</b>
-Our IO Team has been generating <a href="/profile/prep/sql/duckdb/">DuckDB</a> and <a href="/profile/prep/sql/supabase/">Supabase</a> ([Javascript frontend](../impacts/))  databases for comparing industries and identifying imports with positive environmental impacts.
+Our IO Team has been generating [JSON](../impacts/json/), <a href="/profile/prep/sql/duckdb/">DuckDB Parquet</a> and <a href="/profile/prep/sql/supabase/">Supabase database inserts</a> for comparing industries and identifying imports with positive environmental impacts using [a Javascript frontend](../impacts/).
 
 
 We've also output [DuckDB parquet files from USEEIO](https://github.com/ModelEarth/profile/tree/main/impacts/useeio) - dev by Satyabrat<!-- When readme added: [DuckDB parquet files from USEEIO](../impacts/useeio) -->

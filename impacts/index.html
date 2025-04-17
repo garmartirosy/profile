@@ -228,7 +228,7 @@
                 document.getElementById("query").value = sqlQuery;
 
                 if (error) {
-                    alert('Error fetching data:' + error.message);
+                    //alert('Error fetching data: ' + error.message);
                     console.error('Error fetching data:', error.message);
                     document.getElementById('results').innerHTML = `<p style="color: red;">${error.message}</p>`;
                     return;
@@ -525,12 +525,10 @@
                     });
                     tbody.appendChild(rowElement);
                 });
-
                 table.appendChild(thead);
                 table.appendChild(tbody);
                 resultsDiv.appendChild(table);
             }
-
 
             function clearResults() {
                 document.getElementById('results').innerHTML = '';
@@ -544,6 +542,9 @@
                 fetchViewData('industries');  // Automatically load the first view
             });
         </script>
+
+    TO DO: Default to loading <a href="json">json files</a>. 
+    (Supabase has to be restarted every 14 days to avoid error.)
     </div>
 </body>
 
