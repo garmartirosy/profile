@@ -163,3 +163,43 @@ Object.assign([
 })
 )}
 // namesImpacts is not needed in this page.
+
+/*
+data = (
+  async () => {
+    const matrixURL = "https://raw.githubusercontent.com/ModelEarth/useeio-json/refs/heads/main/models/2020/AKEEIOv1.0-s-20/matrix/L.json";
+    const metaURL = "https://raw.githubusercontent.com/ModelEarth/useeio-json/refs/heads/main/models/2020/AKEEIOv1.0-s-20/sectors.json";
+
+    const [matrix, meta] = await Promise.all([
+      fetch(matrixURL).then(res => res.json()),
+      fetch(metaURL).then(res => res.json())
+    ]);
+
+    const names = meta.map(d => d.id);
+
+    return Object.assign(matrix, {
+      names: names,
+      colors: [
+        "#e6194b","#3cb44b","#ffe119","#4363d8","#f58231","#911eb4","#46f0f0","#f032e6",
+        "#bcf60c","#fabebe","#008080","#e6beff","#9a6324","#fffac8","#800000","#aaffc3",
+        "#808000","#ffd8b1","#000075","#808080","#ffffff","#000000","#a6cee3","#1f78b4",
+        "#b2df8a","#33a02c","#fb9a99","#e31a1c","#fdbf6f","#ff7f00","#cab2d6","#6a3d9a",
+        "#ffff99","#b15928","#8dd3c7","#ffffb3","#bebada","#fb8072","#80b1d3","#fdb462",
+        "#b3de69","#fccde5","#d9d9d9","#bc80bd","#ccebc5","#ffed6f","#1b9e77","#d95f02",
+        "#7570b3","#e7298a","#66a61e","#e6ab02","#a6761d","#666666","#7fc97f","#beaed4",
+        "#fdc086","#ffff99","#386cb0","#f0027f","#bf5b17","#666666","#66c2a5","#fc8d62",
+        "#8da0cb","#e78ac3","#a6d854","#ffd92f","#e5c494","#b3b3b3","#ff34ff","#ff4a46",
+        "#008941","#006fa6","#a30059","#ffdbe5","#7a4900","#0000a6","#63ffac","#b79762",
+        "#004d43","#8fb0ff","#997d87","#5a0007","#809693","#1b4400","#4fc601","#3b5dff",
+        "#4a3b53","#ff2f80","#61615a","#ba0900","#6b7900","#00c2a0","#ffaa92","#ff90c9",
+        "#b903aa","#d16100","#ddefff","#000035","#7b4f4b","#a1c299","#300018","#0aa6d8",
+        "#013349","#00846f","#372101","#ffb500","#c2ffed","#a079bf","#cc0744","#c0b9b2",
+        "#c2ff99","#001e09","#00489c","#6f0062","#0cbd66","#eec3ff","#456d75","#b77b68",
+        "#7a87a1","#788d66","#885578","#fad09f","#ff8a9a","#d157a0","#bec459","#456648",
+        "#0086ed","#886f4c","#34362d","#b4a8bd","#00a6aa","#452c2c","#636375","#a3c8c9",
+        "#ff913f","#938a81","#575329","#00fecf","#b05b6f","#8cd0ff","#3b9700","#04f757"
+      ]
+    });
+  }
+)()
+*/
