@@ -29,11 +29,11 @@ Run and confirm the [steps below video](https://community.suitecrm.com/t/how-to-
 
 Take note of the user and password of the MariaDB database that will be requested.
 
-Had to run for brew errors:
+You may need to run these if you have brew errors:
 
 	brew install --cask temurin
 
-	# Not sure if these two needed
+	# Not sure if these two cmds needed
 	brew untap homebrew/cask-versions
 	brew untap AdoptOpenJDK/openjdk
 
