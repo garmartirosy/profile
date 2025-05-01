@@ -1,4 +1,4 @@
-[Partner Tools](../)
+[Profile Tools](../)
 # SuiteCRM - Database Schema for Azure
 
 <!-- Under Development - SQL table CREATE script for Azure -->

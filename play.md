@@ -1,3 +1,3 @@
 **CRM and Partner Admin**  
-&bullet; [SuiteCRM for Azure Partner Admin tools](crm/)
+&bullet; [SuiteCRM - Database Schema for Azure](crm/)
 &bullet; [Extending Microsoft with Discord API](/panels/)
