@@ -8,8 +8,14 @@
 [Download version 8.7.1](https://suitecrm.com/wpfd_file/suitecrm-8-7-1/) or a more recent [download](https://suitecrm.com/download/) if a matching .sh file is available.
 Unzip the download in your webroot. Rename the folder to **SuiteCRM**.
 
+[Get our .sh fork for Mac and Windows - SuiteCRM 8.7.1](https://github.com/ModelEarth/SuiteCRM_Script/blob/main/SCRM_8.7.1_0.1.4_MacWindowsLinux.sh)  
+Created from the .sh script initially developed by Chris for his 10-minute [Linux install](https://github.com/motaviegas/SuiteCRM_Script) .sh file [video and steps](https://community.suitecrm.com/t/how-to-install-suitecrm-8-6-1-under-10-minutes/93252).  
+
+Place in your local SuiteCRM folder and rename the file to **start.sh**
+
 ## Our quick install script for Mac, Windows and Linux
 
+[Collaborate with Us](/dreamstudio/earth/) using standardized data tables within Microsoft Azure, SQL Express and MariaDB.
 Summary of what's included for each OS within the start.sh script
 
 | OS      | PHP            | Apache        | DB Option                     |
@@ -18,14 +24,9 @@ Summary of what's included for each OS within the start.sh script
 | MacOS   | via brew       | via brew      | MariaDB                       |
 | Windows | via Chocolatey | via Chocolatey| SQL Express / Azure / MariaDB |
 
-<br>[Collaborate with Us](/dreamstudio/earth/) using standardized data tables within Microsoft Azure, SQL Express and MariaDB.
+## Localsite 10-Minute Setup
 
-[Get our .sh fork for Mac and Windows - SuiteCRM 8.7.1](https://github.com/ModelEarth/SuiteCRM_Script/blob/main/SCRM_8.7.1_0.1.4_MacWindowsLinux.sh)  
-Created from the .sh script initially developed by Chris for his 10-minute [Linux install](https://github.com/motaviegas/SuiteCRM_Script) .sh file [video and steps](https://community.suitecrm.com/t/how-to-install-suitecrm-8-6-1-under-10-minutes/93252).  
-
-Place in your local SuiteCRM folder and rename the file to **start.sh**
-
-Open a terminal in your SuiteCRM folder and grant the start.sh file permission within the folder:
+Open a terminal in your SuiteCRM folder and grant the start.sh file (from above) permission within the folder:
 
 	sudo chmod +x ./start.sh
 
