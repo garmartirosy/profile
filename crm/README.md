@@ -5,7 +5,10 @@ Under Development - SQL table CREATE script for Azure
 
 [SuiteCRM](https://SuiteCRM.com) provides a standardized partner admin [database schema](https://schema--suitecrm-docs.netlify.app/schema) with a large [developer community](https://community.SuiteCRM.com).
 
+<!--
+Let us know if Java needed.
 [Download Java for Desktop users](https://www.java.com/en/download/)
+-->
 
 [Download version 8.7.1](https://suitecrm.com/wpfd_file/suitecrm-8-7-1/) or a more recent [download](https://suitecrm.com/download/) if a matching .sh file is available.
 Unzip in your webroot. Rename the folder to **SuiteCRM**.
