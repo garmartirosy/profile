@@ -1,5 +1,5 @@
 [Partner Tools](../)
-# SuiteCRM with Azure
+# SuiteCRM - Database Schema for Azure
 
 <!-- Under Development - SQL table CREATE script for Azure -->
 
@@ -12,13 +12,13 @@ Unzip the download in your webroot. Rename the folder to **SuiteCRM**.
 
 Summary of what's included for each OS within the start.sh script
 
-| OS      | PHP            | Apache        | DB Option                    |
-|---------|----------------|---------------|------------------------------|
-| Linux   | via apt        | via apt       | MariaDB                      |
-| MacOS   | via brew       | via brew      | MariaDB                      |
-| Windows | via Chocolatey | via Chocolatey| MariaDB                      |
+| OS      | PHP            | Apache        | DB Option                     |
+|---------|----------------|---------------|-------------------------------|
+| Linux   | via apt        | via apt       | MariaDB                       |
+| MacOS   | via brew       | via brew      | MariaDB                       |
+| Windows | via Chocolatey | via Chocolatey| SQL Express / Azure / MariaDB |
 
-<br>TODO: Let's add "SQL Server Express / Azure" as DB options.
+<br>[Contact us](/dreamstudio/earth/) to collaborate using the database schema for "SQL Server Express / Azure"
 
 [Get our .sh fork for Mac and Windows - SuiteCRM 8.7.1](https://github.com/ModelEarth/SuiteCRM_Script/blob/main/SCRM_8.7.1_0.1.4_MacWindowsLinux.sh)  
 Created from the .sh script initially developed by Chris for his 10-minute [Linux install](https://github.com/motaviegas/SuiteCRM_Script) .sh file [video and steps](https://community.suitecrm.com/t/how-to-install-suitecrm-8-6-1-under-10-minutes/93252).  
@@ -78,7 +78,7 @@ Most likely it needs to be:
 
 	sudo mariadb-secure-installation
 
-First enter your machine password, then blank for the root password
+First enter your machine password, then blank for the MariaDB database's root password
 
 Without making any additional changes, initial login response says:
 You already have your root account protected, so you can safely answer 'n'.
