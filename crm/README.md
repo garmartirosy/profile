@@ -10,10 +10,23 @@ Under Development - SQL table CREATE script for Azure
 [Download version 8.7.1](https://suitecrm.com/wpfd_file/suitecrm-8-7-1/) or a more recent [download](https://suitecrm.com/download/) if a matching .sh file is available.
 Unzip in your webroot. Rename the folder to **SuiteCRM**.
 
-[Get the .sh install file](https://github.com/motaviegas/SuiteCRM_Script) developed by Chris for his 10 minute install [video](https://www.youtube.com/watch?v=eycqCChZ8nI).
+## Our quick install with shell script
+
+Summary of what's included for each OS within the start.sh script
+
+| OS      | PHP            | Apache        | DB Option                    |
+|---------|----------------|---------------|------------------------------|
+| Linux   | via apt        | via apt       | MariaDB                      |
+| macOS   | via brew       | via brew      | MariaDB                      |
+| Windows | via Chocolatey | via Chocolatey| SQL Server Express / Azure   |
+
+<br>
+
+[Get our .sh fork](https://github.com/motaviegas/SuiteCRM_Script) - Initially developed by Chris for his 10 minute install [video](https://www.youtube.com/watch?v=eycqCChZ8nI) for Linux.  
+
 Rename to **start.sh**
 
-Run to give .sh file permission within the SuiteCRM folder:
+Give the .sh file permission within the SuiteCRM folder:
 
 	sudo chmod +x ./start.sh
 
@@ -22,7 +35,7 @@ Run to give .sh file permission within the SuiteCRM folder:
 	sudo chmod -R 755 .
 -->
 
-Run and confirm the [steps below video](https://community.suitecrm.com/t/how-to-install-suitecrm-8-6-1-under-10-minutes/93252) occur.
+Run and confirm with the [steps below video](https://community.suitecrm.com/t/how-to-install-suitecrm-8-6-1-under-10-minutes/93252).
 
 
 	./start.sh
@@ -42,7 +55,7 @@ You may need to run these if you have brew errors:
 
 
 For Error: Permission denied @ apply2files - /usr/local/lib/docker/cli-plugins
-Deleting the folder was necessary (better than granting Docker permission)
+Deleting the folder was necessary (better than adding user permissions on Docker folder)
 
 	sudo rm -rf /usr/local/lib/docker
 	brew cleanup
@@ -62,4 +75,6 @@ When the .sh script finishes successfully, run the cmd:
 
 	Can't connect to local MySQL server through socket '/tmp/mysql.sock'
 
+<!--
 Is there a solution [in this post](https://community.suitecrm.com/t/suitecrm-8-install-problem-mysql-connection/83267/18)?
+-->
