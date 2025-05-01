@@ -1,5 +1,5 @@
 [Profile Tools](../)
-# SuiteCRM - Database Schema for Azure
+# SuiteCRM - Partner Database for Azure
 
 <!-- Under Development - SQL table CREATE script for Azure -->
 
@@ -18,7 +18,7 @@ Summary of what's included for each OS within the start.sh script
 | MacOS   | via brew       | via brew      | MariaDB                       |
 | Windows | via Chocolatey | via Chocolatey| SQL Express / Azure / MariaDB |
 
-<br>[Contact us](/dreamstudio/earth/) to collaborate using the database schema for "SQL Server Express / Azure"
+<br>[Collaborate with Us](/dreamstudio/earth/) using standardized data tables within Microsoft Azure, SQL Express and MariaDB.
 
 [Get our .sh fork for Mac and Windows - SuiteCRM 8.7.1](https://github.com/ModelEarth/SuiteCRM_Script/blob/main/SCRM_8.7.1_0.1.4_MacWindowsLinux.sh)  
 Created from the .sh script initially developed by Chris for his 10-minute [Linux install](https://github.com/motaviegas/SuiteCRM_Script) .sh file [video and steps](https://community.suitecrm.com/t/how-to-install-suitecrm-8-6-1-under-10-minutes/93252).  
