@@ -1,4 +1,4 @@
-**Data Sources**
+**Open Data Panels**
 &bullet; [World Trade Flow](/profile/trade/)  
 &bullet; [US State Data ](/io/about)
 &bullet; [Product Comparisons](products)
