@@ -1,4 +1,4 @@
-[IO Template](/io/template) and [Profile Panels](../)
+[IO Template](/io/template) and [Profile Tools](../)
 # Product Comparisons
 
 **BuildingTransparency.org API**
