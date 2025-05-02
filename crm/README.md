@@ -37,7 +37,7 @@ Open a terminal in your SuiteCRM folder and grant the start.sh file (from above)
 
 As you run the start.sh install, also follow the [steps below video](https://community.suitecrm.com/t/how-to-install-suitecrm-8-6-1-under-10-minutes/93252).
 
-We're avoiding sudo here for better security:
+We're avoiding sudo here for better security, however you'll need to do additional manual steps below.
 
 	./start.sh
 
@@ -100,6 +100,11 @@ Mac webroot:
 Default Apache port for Homebrew says "It works!"
 [http://localhost:8080](http://localhost:8080)
 
+## PHP Site Activation
+
+If you ran `./start.sh` without sudo, you'll likely need to do manual activation here.  
+
+Please share the steps you use by posting an issue in our [profile repo](https://github.com/ModelEarth/profile/tree/main/crm), or fork and send a PR.
 
 The first time you may need to run `./start.sh` again, since database did not initially exist.
 
