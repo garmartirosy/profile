@@ -160,6 +160,7 @@ TODO: Create a get.sh file that automatically pulls the .sh file from GitHub, sa
 -->
 <br>
 
+
 # macOS Installation Script
 
 This script automates the installation and configuration of SuiteCRM 8.7.1 on macOS environments. It handles the complete setup process including web server, database, and application deployment.
@@ -261,6 +262,88 @@ If you encounter issues during installation:
 - Consider setting up SSL for production environments
 - Review Apache and PHP configurations for additional security hardening
 - Regularly update all components with `brew update` and `brew upgrade`
+
+<br>
+
+# Linux Installation Script
+
+A comprehensive installation script for automatically deploying SuiteCRM 8.7.1 on Linux systems (Ubuntu/Debian). Includes system updates, required dependencies, database configuration, web server setup, and security hardening.
+
+## Prerequisites
+
+- A fresh installation of Ubuntu/Debian Linux
+- Root/sudo access
+- Internet connectivity to download packages
+
+## Full Stack Installation
+
+- PHP 8.2 with required extensions
+- Apache web server
+- MariaDB database server
+- SuiteCRM 8.7.1
+
+## Security Enhancements
+
+- Apache directory listing disabled
+- Optimized file permissions
+- Security headers configuration
+- Firewall setup (if UFW is available)
+- PHP security settings
+
+## Performance Optimization
+
+- Tuned PHP configuration (memory limits, execution time)
+- Optimal file permissions
+
+## Verification Steps
+
+- Database creation verification
+- Database user verification
+- Permissions validation
+- Health check page
+
+## Usage
+
+1. Download the setup script
+2. Make the script executable: `chmod +x setup.sh`
+3. Run with sudo privileges: `sudo ./setup.sh`
+
+## Post-Installation Tasks
+
+After successful installation:
+
+1. Run `mysql_secure_installation` to secure your MariaDB installation
+2. Complete the SuiteCRM web-based setup by navigating to `http://YOUR_SERVER_IP`
+3. Verify the installation with the health check: `http://YOUR_SERVER_IP/health.php`
+
+## Configuration Details
+
+- **Web Server**: Apache with mod_rewrite and security headers
+- **Database**: MariaDB with dedicated CRM database and user
+- **PHP**: Version 8.2 with optimized settings:
+  - 512MB memory limit
+  - 50MB upload file size
+  - 300 seconds max execution time
+  - Production-ready error settings
+
+## Troubleshooting
+
+The script includes extensive error handling and will provide specific error messages if any step fails. Common issues may include:
+
+- Network connectivity problems
+- Insufficient disk space
+- Port conflicts
+- Missing dependencies
+
+## Security Notes
+
+This installation includes basic security measures, but for production environments consider implementing:
+
+- SSL/TLS certificates
+- Regular system updates
+- Database backups
+- Network access restrictions
+- Additional firewall rules
 
 <br>
 
