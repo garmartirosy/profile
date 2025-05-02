@@ -158,170 +158,205 @@ If you need to have this software first in your PATH instead consider running:
 <!--
 TODO: Create a get.sh file that automatically pulls the .sh file from GitHub, saves, renames to start.sh and runs the script.
 -->
+<br>
 
-## About MacOS Install
+# macOS Installation Script
 
-1. PHP Installation & Configuration
+This script automates the installation and configuration of SuiteCRM 8.7.1 on macOS environments. It handles the complete setup process including web server, database, and application deployment.
 
-Uses the existing install_php_macos function with better version checking
-Properly configures php.ini with optimal settings for SuiteCRM
+## Prerequisites
 
+- macOS operating system (compatible with both Intel and Apple Silicon Macs)
+- Regular user account (do not run as root)
+- Internet connection for downloading packages
 
-2. Apache (httpd) Installation & Configuration
+## Components Installed
 
-Installs Apache via Homebrew
-Configures necessary modules like mod_rewrite
-Sets up PHP handling in Apache
-Disables directory listing for security
+- **Homebrew**: Package manager for macOS
+- **Apache HTTP Server**: Web server to host SuiteCRM
+- **PHP 8.2**: Required programming language for SuiteCRM
+- **MariaDB**: Database server for storing CRM data
+- **SuiteCRM 8.7.1**: The CRM application itself
 
+## Installation Process
 
-3. MariaDB Database Setup
+### System Preparation
+- Checks against running as root (for security)
+- Installs Homebrew if not present
+- Updates and upgrades existing Homebrew packages
 
-Installs MariaDB via Homebrew
-Creates the CRM database with proper character set
-Sets up database user with appropriate permissions
-Includes verification steps
+### Software Installation
+- Installs essential tools (wget, unzip)
+- Installs or updates PHP 8.2
+- Installs and configures Apache HTTP Server
+- Installs and starts MariaDB database server
 
+### Apache Configuration
+- Configures Apache to use port 8080 (Homebrew default)
+- Enables required modules (rewrite, headers)
+- Configures PHP integration with Apache
+- Sets up virtual hosts
+- Implements security headers:
+  - X-Content-Type-Options
+  - X-XSS-Protection
+  - X-Frame-Options
 
-4. SuiteCRM Installation
+### PHP Configuration
+- Sets optimal PHP parameters:
+  - Memory limit: 512M
+  - Upload max filesize: 50M
+  - Post max size: 50M
+  - Max execution time: 300 seconds
+  - Disables error display and PHP version exposure
 
-Creates the document root directory
-Downloads and extracts SuiteCRM
-Sets proper ownership and permissions
+### Database Setup
+- Creates a CRM database with UTF-8 Unicode support
+- Creates a database user with appropriate privileges
+- Verifies database and user creation
 
+### SuiteCRM Installation
+- Downloads SuiteCRM 8.7.1
+- Extracts files to the configured document root
+- Sets appropriate file and directory permissions
+- Makes console scripts executable
+- Ensures storage and cache directories are writable
 
-5. Virtual Host Configuration
+## Security Measures
 
-Creates a VirtualHost for the CRM
-Uses port 8080 (default for Homebrew's httpd)
-Sets up proper directory permissions and options
+- Disables directory listing in Apache
+- Sets secure file permissions (750 for directories, 640 for files)
+- Implements HTTP security headers
+- Provides reminder to run `mysql_secure_installation`
 
+## Post-Installation
 
-6. Final Configuration
+### Verification
+- Creates a health check PHP file
+- Restarts Apache and MariaDB services
+- Verifies that services are running correctly
 
-Restarts services
-Makes final permission adjustments
-Provides user instructions for accessing the CRM
+### Accessing SuiteCRM
+- SuiteCRM will be available at: http://[your-server-ip]:8080
+- Health check URL: http://[your-server-ip]:8080/health.php
 
+## Platform-Specific Notes
 
-## Key Differences from Linux Implementation:
+- Automatically detects and configures for either Intel or Apple Silicon Macs
+- Uses appropriate paths based on the architecture:
+  - Apple Silicon: `/opt/homebrew/...`
+  - Intel: `/usr/local/...`
+- Creates backups of all configuration files before modifications
 
-Uses Homebrew instead of apt for package management
-Apache and MariaDB paths are different on macOS
-User/group handling is specific to macOS
-Apache runs on port 8080 by default with Homebrew
+## Troubleshooting
 
+If you encounter issues during installation:
+- Check Apache logs: `/opt/homebrew/var/log/httpd/` or `/usr/local/var/log/httpd/`
+- Verify MariaDB is running: `brew services list`
+- Ensure permissions are set correctly for the CRM directory
+- Verify PHP integration with Apache is working correctly
 
-Further Improvements by Claude
+## Security Recommendations
 
-1. Improved Error Handling
+- Run `mysql_secure_installation` to secure your MariaDB installation
+- Consider setting up SSL for production environments
+- Review Apache and PHP configurations for additional security hardening
+- Regularly update all components with `brew update` and `brew upgrade`
 
-Added extensive error checking with descriptive messages throughout the script
-Implemented proper exit conditions when critical operations fail
-Added fallback mechanisms for common issues (e.g., trying paths for both Intel and Apple Silicon Macs)
-Used the || operator to detect and handle command failures with appropriate messages
+<br>
 
-2. Security Enhancements
+# Windows Installation Script
 
-Updated database character set from utf8 to utf8mb4 for better Unicode support
-Added security headers in Apache VirtualHost configuration
-Configured more restrictive file permissions (750 for directories, 640 for files)
-Enhanced PHP security settings (display_errors = Off, expose_php = Off)
-Added explicit security reminders and recommendations
+This script automates the installation and configuration of 
+SuiteCRM 8.7.1 on Windows environments using Git Bash or Cygwin.
 
-3. Reliability Improvements
+## Prerequisites
 
-Prevented running as root, explaining why it's not recommended on macOS
-Created a more robust package installation function with better error handling
-Added verification for services running before proceeding with dependent operations
-Created backups of configuration files before modification
-Added proper path detection for both Intel and Apple Silicon Macs
+- Windows operating system
+- Git Bash or Cygwin installed
+- Administrative privileges
+- Chocolatey package manager
 
-4. User Experience Improvements
+## Components Installed
 
-Added more informative status messages with emoji indicators
-Created a health check page for easy verification after installation
-Added a detailed configuration summary at the end
-Provided clearer instructions for post-installation steps
-Implemented better progress indicators and meaningful success/failure notifications
+- **Apache HTTP Server**: Web server to host SuiteCRM
+- **PHP 8.2**: Required programming language for SuiteCRM
+- **MariaDB**: Database server for storing CRM data
+- **SuiteCRM 8.7.1**: The CRM application itself
 
-5. Performance Optimizations
+## Installation Process
 
-Added caching for SuiteCRM download (checking if already present before downloading)
-Better organized package installation with dependency checking
-Improved Apache configuration for better performance
+### System Preparation
+- Checks for administrative privileges
+- Verifies Chocolatey installation
+- Sets up necessary paths for Apache and PHP
 
-6. macOS-Specific Improvements
+### Software Installation
+- Installs essential tools (wget, unzip)
+- Installs and configures Apache HTTP Server
+- Installs and configures PHP 8.2
+- Installs and starts MariaDB database server
 
-Added proper detection of processor architecture (Intel vs Apple Silicon)
-Properly handled Homebrew paths based on architecture
-Better handling of permissions with appropriate sudo usage
-Improved PHP module detection for Apache integration
-Added proper checks for Homebrew PATH configuration
+### Apache Configuration
+- Loads the PHP module in Apache configuration
+- Enables required modules (rewrite, headers)
+- Configures virtual hosts
+- Sets security headers (XSS protection, content-type options, etc.)
 
-These improvements make the macOS implementation more robust, secure, and user-friendly, while still maintaining compatibility with the approach used in the Linux version. The script now handles the differences between Intel and Apple Silicon Macs more gracefully and provides better guidance throughout the installation process.
+### PHP Configuration
+- Sets optimal PHP parameters:
+  - Memory limit: 512M
+  - Upload max filesize: 50M
+  - Post max size: 50M
+  - Max execution time: 300 seconds
+  - Disables displaying errors and PHP version exposure
+- Enables essential PHP extensions (curl, gd, mbstring, mysqli, pdo_mysql, soap, xml)
 
+### Database Setup
+- Creates a CRM database with UTF-8 Unicode support
+- Creates a database user with appropriate privileges
+- Verifies database and user creation
 
-## Key Features of the Windows Implementation
+### SuiteCRM Installation
+- Downloads SuiteCRM 8.7.1
+- Extracts files to the configured document root
+- Sets appropriate file permissions using Windows ACLs
 
-Environment Prerequisites
+### Security & Network Configuration
+- Configures Windows Firewall to allow HTTP traffic (port 80)
+- Sets secure file permissions
+- Creates a health check file for monitoring
 
-Checks for Chocolatey and provides instructions if not installed
-Defines standard paths for Apache, PHP, and document roots
+## Post-Installation
 
+### Verification
+- Ensures Apache is running on port 80
+- Verifies MariaDB is running on port 3306
+- Provides a summary of the installation with important paths and credentials
 
-Apache Installation & Configuration
+### Security Recommendations
+- Run `mysql_secure_installation` to further secure MariaDB
+- Review Apache and PHP configurations for production environments
+- Check log files for troubleshooting:
+  - Apache logs: Located in the Apache logs directory
+  - MariaDB logs: Available in Windows Event Viewer
 
-Installs Apache HTTP Server via Chocolatey
-Properly configures Apache to work with PHP
-Enables the rewrite module for URL rewriting
+## Completing the Installation
 
+After the script runs successfully, you can:
+1. Access SuiteCRM via web browser: http://[your-server-ip]
+2. Complete the web-based installation wizard
+3. Verify system operation with the health check: http://[your-server-ip]/health.php
 
-PHP Configuration
+## Error Handling
 
-Leverages the existing install_php_PC function
-Configures php.ini with appropriate settings for SuiteCRM
-Enables required PHP extensions
+The script handles various error conditions throughout the process:
+- Creates backups of configuration files before modification
+- Provides detailed error messages if any step fails
+- Offers fallback options for certain operations
 
+## Troubleshooting
 
-Database Installation & Setup
-
-Installs MariaDB when not using --no-local-sql option
-Creates the CRM database with proper character set
-Sets up database user with appropriate permissions
-Includes verification steps
-
-
-SuiteCRM Installation
-
-Creates directory structure
-Downloads and extracts SuiteCRM
-Sets proper permissions using Windows commands
-
-
-Virtual Host Configuration
-
-Creates a VirtualHost for the CRM
-Sets up proper directory permissions and options
-Disables directory listing for security
-
-
-Service Management
-
-Restarts Apache and ensures MariaDB is running
-Provides guidance on firewall configuration
-
-
-### Key Differences from Linux Implementation:
-
-Uses Chocolatey instead of apt for package management
-Handles Windows-specific file paths with proper escaping
-Uses Windows-specific commands for permission management (icacls)
-Provides Windows-specific service management commands
-
-Windows-Specific Challenges Addressed:
-
-Path handling in Windows (using forward slashes for compatibility with Git Bash)
-Service management using Windows commands
-Apache module configuration for Windows
-Windows file permission handling
+If you encounter issues during installation:
+- Check the Apache and MariaDB log files
+- Verify all prerequisites are correctly installed
+- Ensure you're running the script with administrative privileges
