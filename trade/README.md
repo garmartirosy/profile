@@ -1,8 +1,8 @@
 [Active Projects](../../projects/)
 # Trade Flow
 
-[SuiteCRM setup](../crm) - Salesforce-like data schema for use with Azure
-[Trade Impact Colabs](../impacts/json) - New Colabs from Gary for pushing Exiobase to GitHub
+[SuiteCRM](../crm) - Partner Data analysis using Azure, SQL Express and MariaDB.
+[Trade Impact Colabs](../impacts/json) - Deploys Exiobase international data to GitHub as JSON
 [Global Trade - our Comtrade and Exobase API data pulls](../../global-trade)
 [Try MARIO Input-Output library](https://mario-suite.readthedocs.io/en/latest/intro.html) as a striped-down [Pymyrio](https://pymrio.readthedocs.io/en/latest/intro.html)
 
