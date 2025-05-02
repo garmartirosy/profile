@@ -1,3 +1,3 @@
-Profile
+# Profile Tools
 
-[model.earth Profile](https://model.earth/profile/)
+View details online at [model.earth/profile](https://model.earth/profile/)
