@@ -13,17 +13,18 @@ Created from the .sh script initially developed by Chris for his 10-minute [Linu
 
 Place in your local SuiteCRM folder and rename the file to **start.sh**
 
-## Our quick install script for Mac, Windows and Linux
+## Quick install script for Mac, Linux and Windows
 
 [Collaborate with Us](/dreamstudio/earth/) using standardized data tables within Microsoft Azure, SQL Express and MariaDB.
 Summary of what's included for each OS within the start.sh script
 
 | OS      | PHP            | Apache        | DB Option                     |
 |---------|----------------|---------------|-------------------------------|
-| Linux   | via apt        | via apt       | MariaDB                       |
-| MacOS   | via brew       | via brew      | MariaDB                       |
-| Windows | via Chocolatey | via Chocolatey| SQL Express / Azure / MariaDB |
+| <a href="#mac">MacOS</a>   | via brew       | via brew      | MariaDB                       |
+| <a href="#linux">Linux</a>   | via apt        | via apt       | MariaDB                       |
+| <a href="#windows">Windows</a> | via Chocolatey | via Chocolatey| SQL Express / Azure / MariaDB |
 
+<br>
 ## Localsite 10-Minute Setup
 
 Open a terminal in your SuiteCRM folder and grant the start.sh file (from above) permission within the folder:
@@ -158,10 +159,9 @@ If you need to have this software first in your PATH instead consider running:
 <!--
 TODO: Create a get.sh file that automatically pulls the .sh file from GitHub, saves, renames to start.sh and runs the script.
 -->
-<br>
+<br id="mac">
 
-
-# macOS Installation Script
+# MacOS - SuiteCRM Install
 
 This script automates the installation and configuration of SuiteCRM 8.7.1 on macOS environments. It handles the complete setup process including web server, database, and application deployment.
 
@@ -263,9 +263,9 @@ If you encounter issues during installation:
 - Review Apache and PHP configurations for additional security hardening
 - Regularly update all components with `brew update` and `brew upgrade`
 
-<br>
+<br id="linux">
 
-# Linux Installation Script
+# Linux - SuiteCRM Install
 
 A comprehensive installation script for automatically deploying SuiteCRM 8.7.1 on Linux systems (Ubuntu/Debian). Includes system updates, required dependencies, database configuration, web server setup, and security hardening.
 
@@ -345,9 +345,9 @@ This installation includes basic security measures, but for production environme
 - Network access restrictions
 - Additional firewall rules
 
-<br>
+<br id="windows">
 
-# Windows Installation Script
+# Windows - SuiteCRM Install
 
 This script automates the installation and configuration of 
 SuiteCRM 8.7.1 on Windows environments using Git Bash or Cygwin.
