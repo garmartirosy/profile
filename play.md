@@ -1,2 +1,3 @@
-**Panels**  
-&bullet; [Improving Microsoft with Discord API](/panels/)
+**CRM and Partner Admin**  
+&bullet; [SuiteCRM - Partner Database for&nbsp;Azure](crm/)
+&bullet; [Extending Microsoft with Discord&nbsp;API](/panels/)

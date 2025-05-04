@@ -1,21 +1,26 @@
-[IO Template](/io/template) and [Profile Panels](../)
+[Profile Tools](../) and [IO Template](/io/template)
+
 # Product Comparisons
 
-BUG: US/GA/GA.yaml was too big: 97.3 MB
-Avoid pushing files larger then 25 MB.
-
-**Environmental Product Declarations (EPD)**
-From BuildingTransparency.org API
-
-[Our latest profile label](/food) - [About our Nutrition-style Labels](/io/template/)  
-[View state .csv files pulled from API](https://github.com/ModelEarth/profile/tree/main/products/US)  
-[View parsed YAML-TO-JSON-TO-HTML](/io/template/parser/)  
+**BuildingTransparency.org API**
+[IO Template: Nutrition-style Labels](/io/template/)  
+[State .csv files pulled from BuildingTransparency API](https://github.com/ModelEarth/profile/tree/main/products/US)
+[YAML-TO-JSON-TO-HTML parser](/io/template/parser/)  
 [BuildingTransparency Feed View (Static EPD json)](/feed/view/#feed=epd)  
 [Product Feed API](/io/template/feed) - [Current product profile in BuildingTransparency.org](https://buildingtransparency.org/ec3/epds/ec3mmgup)  
+<!-- Environmental Product Declarations (EPD) -->
+
 <!--[View as Markdown](/io/template/product/product-concrete.html)-->
+
+
+ 
+
 
 TO CONTRIBUTE: [Fork and run two repos](/localsite/start/steps) (localsite and profile) in a webroot on your computer.  
 Add your first name after the project you are working on below, send a PR and email Loren to pull.
+
+US/GA/GA.yaml was too big: 97.3 MB
+Avoid pushing files larger then 25 MB.
 
 TO DO: The token expires every 72 hours, so switch our ["Update Data" GitHub Action](https://github.com/ModelEarth/profile/actions) to use an email and password as the secrets which generate the token. (Look at how we use a myconfig file locally to get a new token and create a similar process in the GitHub Action.) Test in a fork and document steps for adding the secrets here. The URL for the API may need to be updated to https://buildingtransparency.org/api/epds
 

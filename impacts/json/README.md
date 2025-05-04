@@ -19,4 +19,8 @@ Then we send to GitHub...
 
 [Supabase tables to Github](https://colab.research.google.com/drive/18xCRO35WvLAZR1eDvMpgSw4asMDMQqF3#scrollTo=adFIMfPWNH2D) - Sends tables above from Supabase to impacts folder in json and parquet format.
 
+TO DO:  
+[JSON Output](https://github.com/ModelEarth/profile/tree/main/impacts/json) - For [javascript form frontend](../).
+
+
 Developed by [Gary](https://dreamstudio.com/earth/)
