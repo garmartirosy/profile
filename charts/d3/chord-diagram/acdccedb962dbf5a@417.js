@@ -7,7 +7,7 @@ function _1(md) {
     Name array was manually copied from the Excel file in Feb 2024 report.
     
     TO DO: Copy this folder. Name it "chord-diagram-sectors" and use the L Matrix for Sector to Sector.  
-    TO DO: Build array of colors using a D3 loop that matches the number of names.  
+    TO DO: Build array of colors using a D3 loop that matches the number of names. - Trinadh Rayala
     TO DO: Pull matrix data directly from [Github files](https://github.com/ModelEarth/profile/tree/main/impacts/2020/GAEEIOv1.0-s-20/matrix) via [D Matrix raw URL](https://raw.githubusercontent.com/ModelEarth/profile/main/impacts/2020/GAEEIOv1.0-s-20/matrix/D.json)  
     TO DO: Activate rollovers like [nivo.rocks/chord](https://nivo.rocks/chord/)
     
@@ -121,9 +121,14 @@ async function _data() {
 
   const names = meta.map(d => d.id);
 
-  const colors = d3.scaleOrdinal()
-    .domain(names)
-    .range(d3.schemeCategory10); // Use D3's color scale (Category10 for example)
+  // const colors = d3.scaleOrdinal()
+  //   .domain(names)
+  //   .range(d3.schemeCategory10); // Use D3's color scale (Category10 for example)
+
+   // Generate an array of colors, cycling through D3 schemes if needed
+   
+   const colorScheme = d3.schemeCategory10;
+   const colors = names.map((_, i) => colorScheme[i % colorScheme.length]);
 
   return Object.assign(matrix, {
     names: names,
