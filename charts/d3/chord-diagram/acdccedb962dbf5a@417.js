@@ -7,9 +7,9 @@ function _1(md) {
     Name array was manually copied from the Excel file in Feb 2024 report.
     
     TO DO: Copy this folder. Name it "chord-diagram-sectors" and use the L Matrix for Sector to Sector.  
-    TO DO: Build array of colors using a D3 loop that matches the number of names.  
+    Completed : Build array of colors using a D3 loop that matches the number of names. - Trinadh Rayala
     TO DO: Pull matrix data directly from [Github files](https://github.com/ModelEarth/profile/tree/main/impacts/2020/GAEEIOv1.0-s-20/matrix) via [D Matrix raw URL](https://raw.githubusercontent.com/ModelEarth/profile/main/impacts/2020/GAEEIOv1.0-s-20/matrix/D.json)  
-    TO DO: Activate rollovers like [nivo.rocks/chord](https://nivo.rocks/chord/)
+    Completed : Activate rollovers like [nivo.rocks/chord](https://nivo.rocks/chord/) - Trinadh Rayala
     
     Important: To avoid breaking Github Pages build, deleted "env" folder from original download.
     `
@@ -57,22 +57,45 @@ function _chart(data, d3, groupTicks) {
     .attr("viewBox", [-width / 2, -height / 2, width, height])
     .attr("style", "width: 100%; height: auto; font: 10px sans-serif;");
 
+  //  Tooltip div 
+  const tooltip = d3.select("body")
+    .append("div")
+    .attr("class", "tooltip")
+    .style("position", "absolute")
+    .style("visibility", "hidden")
+    .style("background", "#fff")
+    .style("border", "1px solid #ccc")
+    .style("padding", "8px")
+    .style("border-radius", "4px")
+    .style("font", "12px sans-serif")
+    .style("pointer-events", "none")
+    .style("z-index", "10");
+
   const chords = chord(data);
 
+  //  Group Arcs
   const group = svg.append("g")
-    .selectAll()
+    .selectAll("g")
     .data(chords.groups)
     .join("g");
 
   group.append("path")
     .attr("fill", d => color(names[d.index]))
-    .attr("d", arc);
-
-  group.append("title")
-    .text(d => `${names[d.index]}\n${formatValue(d.value)}`);
+    .attr("d", arc)
+    .on("mouseover", (event, d) => {
+      tooltip
+        .html(`<strong>${names[d.index]}</strong><br/>Total: ${formatValue(d.value)}`)
+        .style("visibility", "visible");
+    })
+    .on("mousemove", event => {
+      tooltip
+        .style("top", (event.pageY + 10) + "px")
+        .style("left", (event.pageX + 10) + "px");
+    })
+    .on("mouseout", () => tooltip.style("visibility", "hidden"));
 
   const groupTick = group.append("g")
-    .selectAll()
+    .selectAll("g")
     .data(d => groupTicks(d, tickStep))
     .join("g")
     .attr("transform", d => `rotate(${d.angle * 180 / Math.PI - 90}) translate(${outerRadius},0)`);
@@ -88,14 +111,19 @@ function _chart(data, d3, groupTicks) {
     .attr("text-anchor", d => d.angle > Math.PI ? "end" : null)
     .text(d => formatValue(d.value));
 
-  group.select("text")
-    .attr("font-weight", "bold")
-    .text(function (d) {
-      return this.getAttribute("text-anchor") === "end"
-        ? `↑ ${names[d.index]}`
-        : `${names[d.index]} ↓`;
-    });
+  group.append("text")
+    .attr("dy", "-1em")
+    .attr("text-anchor", "middle")
+    .attr("transform", d => {
+      const angle = (d.startAngle + d.endAngle) / 2;
+      const rotate = angle * 180 / Math.PI - 90;
+      const x = Math.cos(angle) * (outerRadius + 10);
+      const y = Math.sin(angle) * (outerRadius + 10);
+      return `translate(${x},${y}) rotate(${rotate})`;
+    })
+    .text(d => names[d.index]);
 
+  //  Ribbons
   svg.append("g")
     .attr("fill-opacity", 0.8)
     .selectAll("path")
@@ -104,8 +132,20 @@ function _chart(data, d3, groupTicks) {
     .style("mix-blend-mode", "multiply")
     .attr("fill", d => color(names[d.source.index]))
     .attr("d", ribbon)
-    .append("title")
-    .text(d => `${formatValue(d.source.value)} ${names[d.target.index]} → ${names[d.source.index]}${d.source.index === d.target.index ? "" : `\n${formatValue(d.target.value)} ${names[d.source.index]} → ${names[d.target.index]}`}`);
+    .on("mouseover", (event, d) => {
+      tooltip
+        .html(
+          `<strong>${names[d.source.index]}</strong> → <strong>${names[d.target.index]}</strong><br/>
+          Value: ${formatValue(d.source.value)}`
+        )
+        .style("visibility", "visible");
+    })
+    .on("mousemove", event => {
+      tooltip
+        .style("top", (event.pageY + 10) + "px")
+        .style("left", (event.pageX + 10) + "px");
+    })
+    .on("mouseout", () => tooltip.style("visibility", "hidden"));
 
   return svg.node();
 }
@@ -121,9 +161,14 @@ async function _data() {
 
   const names = meta.map(d => d.id);
 
-  const colors = d3.scaleOrdinal()
-    .domain(names)
-    .range(d3.schemeCategory10); // Use D3's color scale (Category10 for example)
+  // const colors = d3.scaleOrdinal()
+  //   .domain(names)
+  //   .range(d3.schemeCategory10); // Use D3's color scale (Category10 for example)
+
+   // Generate an array of colors, cycling through D3 schemes if needed
+
+   const colorScheme = d3.schemeCategory10;
+   const colors = names.map((_, i) => colorScheme[i % colorScheme.length]);
 
   return Object.assign(matrix, {
     names: names,
