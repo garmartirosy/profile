@@ -38,7 +38,8 @@ Open a terminal in your SuiteCRM folder and grant the start.sh file (from above)
 
 As you run the start.sh install, also follow the [steps below video](https://community.suitecrm.com/t/how-to-install-suitecrm-8-6-1-under-10-minutes/93252).
 
-Sudo is needed for php install.
+We have not yet determined if Sudo is needed for php install permissions.
+Results on Mac OS seem the same with and without - http server gets deactivated after php portion.
 
 	sudo ./start.sh
 
@@ -79,10 +80,11 @@ If you installed ImageMagick via Homebrew (which is common), you can safely pres
 
 When the .sh script finishes successfully, run the cmd:<!-- sudo mysql_secure_installation -->
 
+<!--
 	mariadb-secure-installation
 
 Most likely it needs to be:
-
+-->
 	sudo mariadb-secure-installation
 
 First enter your machine password, then blank for the MariaDB database's root password
@@ -92,13 +94,13 @@ You already have your root account protected, so you can safely answer 'n'.
 
 However the steps under the video:
 
-Switch to unix_socket authentication [Y/n] Y
+Switch to unix_socket authentication [Y/n] y
 Change the root password? [Y/n] y
 put your DB root password and take note of it!!!
-Remove anonymous users? [Y/n] Y
-Disallow root login remotely? [Y/n] Y
-Remove test database and access to it? [Y/n] Y
-Reload privilege tables now? [Y/n] Y
+Remove anonymous users? [Y/n] y
+Disallow root login remotely? [Y/n] y
+Remove test database and access to it? [Y/n] y
+Reload privilege tables now? [Y/n] y
 
 Get "IP retrieved" displayed near the start of your start.sh terminal.
 
