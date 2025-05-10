@@ -38,9 +38,14 @@ Open a terminal in your SuiteCRM folder and grant the start.sh file (from above)
 
 As you run the start.sh install, also follow the [steps below video](https://community.suitecrm.com/t/how-to-install-suitecrm-8-6-1-under-10-minutes/93252).
 
-We're avoiding sudo here for better security, however you'll need to do additional manual steps below.
+Sudo is needed for php install.
 
-	./start.sh
+	sudo ./start.sh
+
+<!--
+Will sudo be needed if php was installed previously?
+We could provide an option to avoid sudo here, with additional manual steps below.
+-->
 
 Take note of the user and password of the MariaDB database that will be requested.
 
