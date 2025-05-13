@@ -2,9 +2,9 @@
 
 # Profile YAML and JS
 
-[View Label JavaScript](https://github.com/ModelEarth/profile/blob/main/item/js/label.js)
-
 Toggle between [Nutrition Layout](#layout=nutrition) and [Product Layout](#layout=product)
+
+[View Profile Label JavaScript](https://github.com/ModelEarth/profile/blob/main/item/js/label.js)
 
 TO DO: Add emissions details from [BuildingTransparency.org Products](/profile/products/) to the [Product Layout](#layout=product).  
 
