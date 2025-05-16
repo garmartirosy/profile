@@ -5,21 +5,21 @@
 
 [SuiteCRM](https://SuiteCRM.com) provides a standardized partner admin [database schema](https://schema--suitecrm-docs.netlify.app/schema) with a [large developer community](https://community.SuiteCRM.com).
 
-Help us automate installing PHP to complete the quick install steps...
+Help us automate including PHP and a remote Azure database init within our start.sh install steps...
 
-1. [Download version 8.7.1](https://suitecrm.com/wpfd_file/suitecrm-8-7-1/) and unzip in your webroot.  
-There are more recent [downloads](https://suitecrm.com/download/), but for now we're matching the version in our .sh file.
+1. [Download SuiteCRM version 8.7.1](https://suitecrm.com/wpfd_file/suitecrm-8-7-1/) and unzip in your webroot.  
+There are [more recent versions](https://suitecrm.com/download/), but we're matching the version in our .sh file for now.
 
 2. Rename the folder to **SuiteCRM**
 
 3. [Get our .sh fork for Mac and Windows - SuiteCRM 8.7.1](https://github.com/ModelEarth/SuiteCRM_Script/blob/main/SCRM_8.7.1_0.1.4_MacLinuxWindows.sh)  
-Created from the .sh script initially developed by Chris for his 10-minute [Linux install](https://github.com/motaviegas/SuiteCRM_Script) .sh file [video and steps](https://community.suitecrm.com/t/how-to-install-suitecrm-8-6-1-under-10-minutes/93252).  
+The .sh script was initially developed by Chris for his 10-minute [Linux install](https://github.com/motaviegas/SuiteCRM_Script) .sh file [video and steps](https://community.suitecrm.com/t/how-to-install-suitecrm-8-6-1-under-10-minutes/93252).  
 
 4. Place the .sh file in your local SuiteCRM folder and rename the file to **start.sh**
 
 ## Quick install script for Mac, Linux and Windows
 
-[Collaborate with Us](/dreamstudio/earth/) using standardized data tables within Microsoft Azure, SQL Express and MariaDB.
+[Collaborate with us](/dreamstudio/earth/) using standardized data tables within Microsoft Azure, SQL Express and MariaDB.
 Summary of what's included for each OS within the start.sh script
 
 | OS      | PHP            | Apache        | DB Option                     |
