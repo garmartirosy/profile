@@ -5,13 +5,17 @@
 
 [SuiteCRM](https://SuiteCRM.com) provides a standardized partner admin [database schema](https://schema--suitecrm-docs.netlify.app/schema) with a [large developer community](https://community.SuiteCRM.com).
 
-[Download version 8.7.1](https://suitecrm.com/wpfd_file/suitecrm-8-7-1/) or a more recent [download](https://suitecrm.com/download/) if a matching .sh file is available.
-Unzip the download in your webroot. Rename the folder to **SuiteCRM**.
+Help us automate installing PHP to complete the quick install steps...
 
-[Get our .sh fork for Mac and Windows - SuiteCRM 8.7.1](https://github.com/ModelEarth/SuiteCRM_Script/blob/main/SCRM_8.7.1_0.1.4_MacLinuxWindows.sh)  
+1. [Download version 8.7.1](https://suitecrm.com/wpfd_file/suitecrm-8-7-1/) and unzip in your webroot.  
+There are more recent [downloads](https://suitecrm.com/download/), but for now we're matching the version in our .sh file.
+
+2. Rename the folder to **SuiteCRM**
+
+3. [Get our .sh fork for Mac and Windows - SuiteCRM 8.7.1](https://github.com/ModelEarth/SuiteCRM_Script/blob/main/SCRM_8.7.1_0.1.4_MacLinuxWindows.sh)  
 Created from the .sh script initially developed by Chris for his 10-minute [Linux install](https://github.com/motaviegas/SuiteCRM_Script) .sh file [video and steps](https://community.suitecrm.com/t/how-to-install-suitecrm-8-6-1-under-10-minutes/93252).  
 
-Place in your local SuiteCRM folder and rename the file to **start.sh**
+4. Place the .sh file in your local SuiteCRM folder and rename the file to **start.sh**
 
 ## Quick install script for Mac, Linux and Windows
 
@@ -25,7 +29,7 @@ Summary of what's included for each OS within the start.sh script
 | <a href="#windows">Windows</a> | via Chocolatey | via Chocolatey| SQL Express / Azure / MariaDB |
 
 <br>
-## Localsite 10-Minute Setup
+## 10-Minute SuiteCRM Setup
 
 Open a terminal in your SuiteCRM folder and grant the start.sh file (from above) permission within the folder:
 
@@ -38,8 +42,9 @@ Open a terminal in your SuiteCRM folder and grant the start.sh file (from above)
 
 As you run the start.sh install, also follow the [steps below video](https://community.suitecrm.com/t/how-to-install-suitecrm-8-6-1-under-10-minutes/93252).
 
-We have not yet determined if Sudo is needed for php install permissions.
-Results on Mac OS seem the same with and without - http server gets deactivated after php portion.
+Including "sudo" below before `./start.sh` may not be needed.
+The http server currently gets deactivated AFTER php portion regardless of sudo on MacOS.  
+Please document how to include permissions for PHP.
 
 	sudo ./start.sh
 
@@ -80,20 +85,16 @@ If you installed ImageMagick via Homebrew (which is common), you can safely pres
 
 When the .sh script finishes successfully, run the cmd:<!-- sudo mysql_secure_installation -->
 
-<!--
-	mariadb-secure-installation
-
-Most likely it needs to be:
--->
 	sudo mariadb-secure-installation
+
+The older name for the cmd above was: mysql_secure_installation
 
 First enter your machine password, then blank for the MariaDB database's root password
 
-Without making any additional changes, initial login response says:
+Initial login response says:
 You already have your root account protected, so you can safely answer 'n'.
 
-However the steps under the video:
-
+However the steps under [the 10-minute video](https://community.suitecrm.com/t/how-to-install-suitecrm-8-6-1-under-10-minutes/93252) are:
 Switch to unix_socket authentication [Y/n] y
 Change the root password? [Y/n] y
 put your DB root password and take note of it!!!
@@ -102,19 +103,20 @@ Disallow root login remotely? [Y/n] y
 Remove test database and access to it? [Y/n] y
 Reload privilege tables now? [Y/n] y
 
-Get "IP retrieved" displayed near the start of your start.sh terminal.
+**IP retrieved**
+Get your "IP retrieved" near the start of your start.sh terminal.
 
-Mac webroot:
-Default Apache port for Homebrew says "It works!"
+**Webroot at localhost:8080**
+The Apache port for Homebrew says "It works!"  
+But broke (stopped) when running the PHP install portion.
+
 [http://localhost:8080](http://localhost:8080)
 
 ## PHP Site Activation
+ 
+Please document steps that work for you by posting an issue in our [profile repo](https://github.com/ModelEarth/profile/tree/main/crm), or fork and send a PR.
 
-If you ran `./start.sh` without sudo, you'll likely need to do manual activation here.  
-
-Please share the steps you use by posting an issue in our [profile repo](https://github.com/ModelEarth/profile/tree/main/crm), or fork and send a PR.
-
-The first time you may need to run `./start.sh` again, since database did not initially exist.
+The first time you may need to run `./start.sh` again - if the database did not initially exist.
 
 BUG: When running a second time, the webroot stopped working.
 
@@ -124,7 +126,9 @@ PHP module not found. PHP may not work correctly with Apache.
 ✅ Directory listing disabled.
 
 
-brew services start php@8.2
+## To Try for PHP...
+
+    brew services start php@8.2
 
 To enable PHP in Apache add the following to httpd.conf and restart Apache:
     LoadModule php_module /usr/local/opt/php@8.2/lib/httpd/modules/libphp.so
@@ -151,16 +155,20 @@ For compilers to find php@8.2 you may need to set:
   export CPPFLAGS="-I/usr/local/opt/php@8.2/include"
 
 To start php@8.2 now and restart at login:
-  brew services start php@8.2
+
+    brew services start php@8.2
 
 Or, if you don't want/need a background service you can just run:
-  /usr/local/opt/php@8.2/sbin/php-fpm --nodaemonize
+
+    /usr/local/opt/php@8.2/sbin/php-fpm --nodaemonize
+
 🔧 Updating PATH to use PHP 8.2...
 Linking /usr/local/Cellar/php@8.2/8.2.28_1... 25 symlinks created.
 
 If you need to have this software first in your PATH instead consider running:
-  echo 'export PATH="/usr/local/opt/php@8.2/bin:$PATH"' >> ~/.zshrc
-  echo 'export PATH="/usr/local/opt/php@8.2/sbin:$PATH"' >> ~/.zshrc
+
+    echo 'export PATH="/usr/local/opt/php@8.2/bin:$PATH"' >> ~/.zshrc
+    echo 'export PATH="/usr/local/opt/php@8.2/sbin:$PATH"' >> ~/.zshrc
 
 
 <!--
