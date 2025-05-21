@@ -32,19 +32,19 @@ category:
   openepd_name: PrecastConcrete >> ArchitecturalPrecast
   parents: []
   pct10_gwp: 172.5164861 kgCO2e
-  pct20_gwp: 189.7105956 kgCO2e
-  pct30_gwp: 202.6487682 kgCO2e
-  pct40_gwp: 215.6523658 kgCO2e
-  pct50_gwp: 228.4245463 kgCO2e
-  pct60_gwp: 243.2545152 kgCO2e
-  pct70_gwp: 255.1333466 kgCO2e
-  pct80_gwp: 277.1225035 kgCO2e
-  pct90_gwp: 304.2277412 kgCO2e
+  pct20_gwp: 189.8643753 kgCO2e
+  pct30_gwp: 203.2030997 kgCO2e
+  pct40_gwp: 218.3694795 kgCO2e
+  pct50_gwp: 229.4875446 kgCO2e
+  pct60_gwp: 243.2571775 kgCO2e
+  pct70_gwp: 260.2641252 kgCO2e
+  pct80_gwp: 276.4585397 kgCO2e
+  pct90_gwp: 304.199452 kgCO2e
   requires_mass_per_declared_unit: false
   short_name: Architectural
   short_service_life_disclaimer: false
   subcategories: []
-  updated_on: '2025-05-20T10:23:22.931709Z'
+  updated_on: '2025-05-21T11:59:42.974562Z'
   use_stored_carbon: ABSENT
 confirmable_fields: []
 confirmed_fields: []
@@ -257,7 +257,7 @@ pcr:
   short_link: buildingtransparency.org/p/ec3r08uctb
   short_name: Concrete
   status: Expired
-  updated_on: '2025-05-21T09:30:12.049578Z'
+  updated_on: '2025-05-21T21:00:06.033037Z'
   version: 2.3 extension
 plant_geography:
 - US-OR
@@ -432,8 +432,8 @@ program_operator:
   password_login_allowed: true
   pilot_all_employees: false
   po_geography:
-  - US
   - CA
+  - US
   postal_code: '19428'
   primary_activity_builder: false
   primary_activity_design: false

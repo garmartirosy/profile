@@ -36,21 +36,21 @@ category:
   openepd_name: ManufacturingInputs >> CementitiousMaterials >> Cement
   parents: []
   pct10_gwp: 417.631822 kgCO2e
-  pct20_gwp: 647.537648 kgCO2e
-  pct30_gwp: 730.1669607 kgCO2e
-  pct40_gwp: 776.119979 kgCO2e
-  pct50_gwp: 821.0541189 kgCO2e
-  pct60_gwp: 864.4087596 kgCO2e
-  pct70_gwp: 909.5797637 kgCO2e
-  pct80_gwp: 966.0435188 kgCO2e
-  pct90_gwp: 1050.225845 kgCO2e
+  pct20_gwp: 647.7940937 kgCO2e
+  pct30_gwp: 730.8806362 kgCO2e
+  pct40_gwp: 777.0644636 kgCO2e
+  pct50_gwp: 821.0856603 kgCO2e
+  pct60_gwp: 864.7122273 kgCO2e
+  pct70_gwp: 909.78098 kgCO2e
+  pct80_gwp: 966.3234433 kgCO2e
+  pct90_gwp: 1050.354014 kgCO2e
   requires_mass_per_declared_unit: false
   short_name: Cement
   short_service_life_disclaimer: false
   subcategories: []
   template_builders: []
   unspsc: '30111601'
-  updated_on: '2025-05-20T10:23:24.397327Z'
+  updated_on: '2025-05-21T11:59:44.702814Z'
   use_stored_carbon: ABSENT
 confirmable_fields: []
 confirmed_fields: []
