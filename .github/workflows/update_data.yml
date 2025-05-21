@@ -12,11 +12,13 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # Fetch all history so we can commit properly
 
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.x' # Replace with your required Python version
+        python-version: '3.10'
 
     - name: Install dependencies
       run: |
@@ -25,13 +27,22 @@ jobs:
 
     - name: Run update script
       run: python products/pull/update_csv_and_yaml.py
+      env:
+        BT_EMAIL: ${{ secrets.BT_EMAIL }}
+        BT_PASSWORD: ${{ secrets.BT_PASSWORD }}
+
+    - name: Check for changes
+      id: check_changes
+      run: |
+        git diff --quiet || echo "changes=true" >> $GITHUB_OUTPUT
 
     - name: Commit and push changes
+      if: steps.check_changes.outputs.changes == 'true'
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
         git add .
-        git commit -m "Update CSV and YAML files with new data"
+        git commit -m "Update CSV and YAML files with new data [skip ci]"
         git push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
