@@ -51,7 +51,7 @@ category:
   subcategories: []
   template_builders: []
   unspsc: '30141500'
-  updated_on: '2025-05-21T11:59:55.930147Z'
+  updated_on: '2025-05-22T10:44:06.545812Z'
   use_stored_carbon: OPTIONAL
 confirmable_fields:
 - impacts__gwp
@@ -318,8 +318,8 @@ pct80_gwp_per_category_declared_unit: 56.9422496 kgCO2e
 plant_geography:
 - CA-QC
 - US-OR
-- US-OH
 - US-IL
+- US-OH
 - MX
 plant_or_group:
   categories: []
@@ -332,8 +332,8 @@ plant_or_group:
   jurisdiction:
   - CA-QC
   - US-OR
-  - US-OH
   - US-IL
+  - US-OH
   - MX
   name: Tallmadge OH, Rockford, IL, Monterrey, Gresham, Valleyfield
   owned_by:
