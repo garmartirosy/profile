@@ -19,7 +19,7 @@ category:
   id: e0e179593b504a1b986e849cade3ff15
   includes_b1_stage: false
   lcia_uncertainty: 0.03
-  mass_per_declared_unit: 14.5 kg
+  mass_per_declared_unit: 14.4 kg
   massless: false
   masterformat: 07 40 00 Roofing and Siding Panels
   may_contain_trusted_vendor_declarations: false
@@ -29,22 +29,22 @@ category:
   openepd: Cladding
   openepd_name: Cladding
   parents: []
-  pct10_gwp: 5.139751552 kgCO2e
-  pct20_gwp: 10.57700929 kgCO2e
-  pct30_gwp: 15.28160644 kgCO2e
-  pct40_gwp: 21.09336396 kgCO2e
-  pct50_gwp: 26.87804715 kgCO2e
-  pct60_gwp: 32.4776403 kgCO2e
-  pct70_gwp: 40.05203756 kgCO2e
-  pct80_gwp: 50.97000216 kgCO2e
-  pct90_gwp: 74.05116706 kgCO2e
+  pct10_gwp: 5.169160537 kgCO2e
+  pct20_gwp: 10.69711331 kgCO2e
+  pct30_gwp: 15.47629544 kgCO2e
+  pct40_gwp: 21.28399663 kgCO2e
+  pct50_gwp: 27.25135336 kgCO2e
+  pct60_gwp: 33.26068741 kgCO2e
+  pct70_gwp: 40.36691895 kgCO2e
+  pct80_gwp: 51.23175949 kgCO2e
+  pct90_gwp: 73.12329382 kgCO2e
   requires_mass_per_declared_unit: false
   short_name: Cladding
   short_service_life_disclaimer: false
   subcategories: []
   template_builders: []
   unspsc: '30151800'
-  updated_on: '2025-05-22T10:44:07.964250Z'
+  updated_on: '2025-05-23T10:09:06.575270Z'
   use_stored_carbon: ABSENT
 confirmable_fields: []
 confirmed_fields: []
@@ -187,8 +187,8 @@ impacts: {}
 is_downloadable: false
 is_failed: false
 jurisdiction:
-- US-GA
 - '021'
+- US-GA
 language: en
 lowest_plausible_gwp: 11.76695079 kgCO2e
 manufacturer:
