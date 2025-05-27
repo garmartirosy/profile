@@ -106,10 +106,7 @@ Create the missing log directory
     sudo apachectl start
 
 
-In /usr/local/etc/httpd/httpd.conf you could try changing:
-/usr/local/var/www
-
-To the path to your profile/crm
+In /usr/local/etc/httpd/httpd.conf you could try changing "/usr/local/var/www" to the path to your "[webroot]/profile/crm/account" folder.
 
 If no effect, try the other httpd.conf file here:
 /opt/homebrew/etc/httpd/extra
