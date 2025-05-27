@@ -2,6 +2,46 @@
 
 # Developed by Loren Heyns and Claude, extending Linux 10-min install by Chris.
 
+# Parse command line arguments
+VERSION="8.8.0"  # Default version
+INSTANCE_FOLDER="account"  # Default subfolder
+
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --version)
+            VERSION="$2"
+            shift 2
+            ;;
+        --subfolder)
+            INSTANCE_FOLDER="$2"
+            shift 2
+            ;;
+        -h|--help)
+            echo "Usage: $0 [--version VERSION] [--subfolder INSTANCE_FOLDER]"
+            echo "  --version    SuiteCRM version (default: 8.8.0)"
+            echo "  --subfolder  Installation subfolder (default: account)"
+            echo "Example: $0 --version 8.8.0 --subfolder account"
+            exit 0
+            ;;
+        *)
+            echo "Unknown option: $1"
+            echo "Use -h or --help for usage information"
+            exit 1
+            ;;
+    esac
+done
+
+# Convert version to zip file format (replace dots with dashes)
+ZIP_VERSION=$(echo "$VERSION" | sed 's/\./-/g')
+ZIP_FILENAME="suitecrm-${ZIP_VERSION}.zip"
+
+echo "🚀 SuiteCRM Installation Script"
+#echo "📦 Version: $VERSION"
+#echo "📁 Subfolder: $INSTANCE_FOLDER"
+echo "📎 ZIP file: $ZIP_FILENAME"
+echo ""
+
 # Detect platform
 platform="$(uname)"
 case "$platform" in
@@ -33,7 +73,7 @@ if [[ "$EUID" -eq 0 ]]; then
     echo "  - Security risks"
     echo ""
     echo "Please run this script as your regular user (without sudo):"
-    echo "  ./$(basename "$0")"
+    echo "  ./$(basename "$0") --version $VERSION --subfolder $INSTANCE_FOLDER"
     echo ""
     exit 1
 fi
@@ -132,6 +172,10 @@ configure_database_enhanced() {
     else
         MYSQL_CMD="mysql -u root -p$MYSQL_ROOT_PASS"
     fi
+    # Tried both $db_pass and $MYSQL_ROOT_PASS with "admin" (Failed to configure database.))
+    # "admin" is prbobably correct for root password. Because hitting Enter returned "Invalid root password. Database configuration failed."
+    # Could Failed message be because database already exists?
+    MYSQL_CMD="$MYSQL_CMD ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '$MYSQL_ROOT_PASS'; FLUSH PRIVILEGES; EXIT;"
 
     # Create database and user with comprehensive permissions
     if ! $MYSQL_CMD <<EOF
@@ -356,6 +400,49 @@ set_proper_permissions() {
     done
     
     echo "✅ Permissions set successfully."
+    return 0
+}
+
+# Function to download and extract SuiteCRM
+download_and_extract_suitecrm() {
+    local download_url="$1"
+    local target_dir="$2"
+    
+    echo "📦 Downloading SuiteCRM version $VERSION..."
+    
+    # Create subfolder if it doesn't exist
+    mkdir -p "$target_dir" || {
+        echo "❌ Failed to create target directory: $target_dir"
+        exit 1
+    }
+    
+    cd "$target_dir" || {
+        echo "❌ Failed to change to target directory: $target_dir"
+        exit 1
+    }
+    
+    # Download SuiteCRM if not already present
+    if [ ! -f "$ZIP_FILENAME" ]; then
+        echo "📦 Downloading $ZIP_FILENAME..."
+        wget -O "$ZIP_FILENAME" "$download_url" || {
+            echo "❌ Failed to download SuiteCRM from $download_url"
+            echo "Please check your internet connection and the download URL."
+            exit 1
+        }
+        echo "✅ Downloaded $ZIP_FILENAME successfully."
+    else
+        echo "✅ $ZIP_FILENAME already exists, using cached version."
+    fi
+    
+    # Extract SuiteCRM in the same directory
+    echo "📦 Extracting $ZIP_FILENAME..."
+    unzip -o "$ZIP_FILENAME" || {
+        echo "❌ Failed to extract $ZIP_FILENAME"
+        echo "The ZIP file may be corrupted. Try deleting it and running the script again."
+        exit 1
+    }
+    echo "✅ SuiteCRM extracted successfully to $target_dir"
+    
     return 0
 }
 
@@ -609,57 +696,32 @@ EOF
         fi
     fi
 
-    # Define document root and directories
-    DOCUMENT_ROOT="/opt/homebrew/var/www"
-    if [ ! -d "$DOCUMENT_ROOT" ]; then
-        DOCUMENT_ROOT="/usr/local/var/www"
-        if [ ! -d "$DOCUMENT_ROOT" ]; then
-            echo "🔧 Creating document root directory..."
-            mkdir -p "$DOCUMENT_ROOT"
-        fi
-    fi
-    
-    CRM_ROOT="$DOCUMENT_ROOT/crm"
-    
+    DOCUMENT_ROOT="$(pwd)"
+    echo "Current working directory: $DOCUMENT_ROOT"
+    INSTANCE_FOLDER="$INSTANCE_FOLDER" # account folder
+
     # Get current user and group
     CURRENT_USER=$(whoami)
     GROUP=$(id -gn)
     
     # Create directories if they don't exist with proper ownership
     echo "🔧 Creating CRM directories..."
-    mkdir -p "$CRM_ROOT" || {
+    mkdir -p "$INSTANCE_FOLDER" || {
         echo "❌ Failed to create CRM directory."
         exit 1
     }
     
     # Download and install SuiteCRM
     echo "🔧 Installing and configuring SuiteCRM..."
-    cd "$CRM_ROOT" || {
-        echo "❌ Failed to change to CRM directory."
-        exit 1
-    }
     
-    # Download SuiteCRM if not already present
-    if [ ! -f "suitecrm-8-8-0.zip" ]; then
-        echo "📦 Downloading SuiteCRM..."
-        wget https://suitecrm.com/download/148/suite87/564667/suitecrm-8-8-0.zip || {
-            echo "❌ Failed to download SuiteCRM."
-            exit 1
-        }
-    else
-        echo "✅ SuiteCRM archive already exists, using cached version."
-    fi
+    # Construct download URL - you may need to adjust this based on SuiteCRM's actual download URLs
+    DOWNLOAD_URL="https://suitecrm.com/download/148/suite87/564667/$ZIP_FILENAME"
     
-    # Extract SuiteCRM
-    echo "📦 Extracting SuiteCRM..."
-    unzip -o suitecrm-8-8-0.zip || {
-        echo "❌ Failed to extract SuiteCRM."
-        exit 1
-    }
-    echo "✅ SuiteCRM extracted successfully."
+    # Download and extract to the subfolder
+    download_and_extract_suitecrm "$DOWNLOAD_URL" "$DOCUMENT_ROOT/$INSTANCE_FOLDER"
     
     # Set proper permissions without locking
-    set_proper_permissions "$CRM_ROOT" "$CURRENT_USER" "$GROUP" || {
+    set_proper_permissions "$DOCUMENT_ROOT/$INSTANCE_FOLDER" "$CURRENT_USER" "$GROUP" || {
         echo "❌ Failed to set proper permissions."
         exit 1
     }
@@ -695,10 +757,10 @@ EOF
 # CRM virtual host
 <VirtualHost *:8080>
     ServerAdmin admin@example.com
-    DocumentRoot "$CRM_ROOT/public"
+    DocumentRoot "$DOCUMENT_ROOT/$INSTANCE_FOLDER/public"
     ServerName $server_ip
     
-    <Directory "$CRM_ROOT/public">
+    <Directory "$DOCUMENT_ROOT/$INSTANCE_FOLDER/public">
         Options -Indexes +FollowSymLinks +MultiViews
         AllowOverride All
         Require all granted
@@ -781,8 +843,8 @@ EOF
     restart_services
     
     # Create a simple health check
-    echo "<?php echo 'CRM Health Check: ' . date('Y-m-d H:i:s'); ?>" > "$CRM_ROOT/public/health.php"
-    chmod 644 "$CRM_ROOT/public/health.php" || {
+    echo "<?php echo 'CRM Health Check: ' . date('Y-m-d H:i:s'); ?>" > "$DOCUMENT_ROOT/$INSTANCE_FOLDER/public/health.php"
+    chmod 644 "$DOCUMENT_ROOT/$INSTANCE_FOLDER/public/health.php" || {
         echo "⚠️ Failed to create health check file."
     }
     
@@ -795,7 +857,7 @@ EOF
     echo "  - Database: CRM"
     echo "  - Database User: $db_user (with full privileges)"
     echo "  - Server IP: $server_ip"
-    echo "  - Document Root: $CRM_ROOT"
+    echo "  - Document Root: $DOCUMENT_ROOT/$INSTANCE_FOLDER"
     echo "  - Apache port: 8080 (Homebrew default)"
     echo ""
     
@@ -839,7 +901,7 @@ elif [[ "$os" == "windows" ]]; then
     APACHE_PATH=$(cygpath -w "/c/tools/apache24" | sed 's/\\/\//g')
     PHP_PATH=$(cygpath -w "/c/tools/php82" | sed 's/\\/\//g')
     DOCUMENT_ROOT="$APACHE_PATH/htdocs"
-    CRM_ROOT="$DOCUMENT_ROOT/crm"
+    INSTANCE_FOLDER="$DOCUMENT_ROOT/$INSTANCE_FOLDER"
     
     # Configuration files
     APACHE_CONF="$APACHE_PATH/conf/httpd.conf"
@@ -1057,14 +1119,14 @@ EOF
 
     # Create directories for SuiteCRM with error handling
     echo "🔧 Creating directories for SuiteCRM..."
-    mkdir -p "$CRM_ROOT" || {
+    mkdir -p "$DOCUMENT_ROOT/$INSTANCE_FOLDER" || {
         echo "❌ Failed to create CRM directory. Check permissions."
         exit 1
     }
     
     # Download and extract SuiteCRM with robust error handling
     echo "📦 Downloading SuiteCRM..."
-    cd "$CRM_ROOT" || {
+    cd "$DOCUMENT_ROOT/$INSTANCE_FOLDER" || {
         echo "❌ Failed to change to CRM directory."
         exit 1
     }
@@ -1104,10 +1166,10 @@ EOF
         cat << EOF > "$tmpfile"
 <VirtualHost *:80>
     ServerAdmin webmaster@localhost
-    DocumentRoot "$CRM_ROOT/public"
+    DocumentRoot "$DOCUMENT_ROOT/$INSTANCE_FOLDER/public"
     ServerName $server_ip
 
-    <Directory "$CRM_ROOT/public">
+    <Directory "$DOCUMENT_ROOT/$INSTANCE_FOLDER/public">
         Options -Indexes +FollowSymLinks +MultiViews
         AllowOverride All
         Require all granted
@@ -1148,27 +1210,27 @@ EOF
         fi
         
         # Set permissions - Full control for Apache user, Read/Execute for Everyone
-        icacls "$CRM_ROOT" /grant:r "$APACHE_USER:(OI)(CI)F" /grant:r "SYSTEM:(OI)(CI)F" /grant:r "Everyone:(OI)(CI)RX" /T || {
+        icacls "$DOCUMENT_ROOT/$INSTANCE_FOLDER" /grant:r "$APACHE_USER:(OI)(CI)F" /grant:r "SYSTEM:(OI)(CI)F" /grant:r "Everyone:(OI)(CI)RX" /T || {
             echo "⚠️ Failed to set Windows permissions with icacls."
             echo "Falling back to simpler permissions..."
-            icacls "$CRM_ROOT" /grant Everyone:F /T
+            icacls "$DOCUMENT_ROOT/$INSTANCE_FOLDER" /grant Everyone:F /T
         }
         
         # Make storage and cache directories writable
-        if [ -d "$CRM_ROOT/storage" ]; then
-            icacls "$CRM_ROOT/storage" /grant:r "$APACHE_USER:(OI)(CI)F" /T
+        if [ -d "$DOCUMENT_ROOT/$INSTANCE_FOLDER/storage" ]; then
+            icacls "$DOCUMENT_ROOT/$INSTANCE_FOLDER/storage" /grant:r "$APACHE_USER:(OI)(CI)F" /T
         fi
-        if [ -d "$CRM_ROOT/cache" ]; then
-            icacls "$CRM_ROOT/cache" /grant:r "$APACHE_USER:(OI)(CI)F" /T
+        if [ -d "$DOCUMENT_ROOT/$INSTANCE_FOLDER/cache" ]; then
+            icacls "$DOCUMENT_ROOT/$INSTANCE_FOLDER/cache" /grant:r "$APACHE_USER:(OI)(CI)F" /T
         fi
     else
         echo "⚠️ icacls command not found. Using generic permissions."
-        chmod -R 755 "$CRM_ROOT"
+        chmod -R 755 "$DOCUMENT_ROOT/$INSTANCE_FOLDER"
     fi
     echo "✅ Permissions set."
 
     # Create a simple health check
-    echo "<?php echo 'CRM Health Check: ' . date('Y-m-d H:i:s'); ?>" > "$CRM_ROOT/public/health.php" || {
+    echo "<?php echo 'CRM Health Check: ' . date('Y-m-d H:i:s'); ?>" > "$DOCUMENT_ROOT/$INSTANCE_FOLDER/public/health.php" || {
         echo "⚠️ Failed to create health check file."
     }
     
@@ -1231,7 +1293,7 @@ EOF
     echo "📋 Configuration summary:"
     echo "  - Database: CRM"
     echo "  - Database User: $db_user"
-    echo "  - Document Root: $CRM_ROOT"
+    echo "  - Document Root: $DOCUMENT_ROOT/$INSTANCE_FOLDER"
     echo "  - Apache Configuration: $APACHE_CONF"
     echo "  - PHP Configuration: $PHP_INI"
     echo "⚠️ Important: If you encounter issues, check Apache and MariaDB logs."
