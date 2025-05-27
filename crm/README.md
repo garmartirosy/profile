@@ -17,7 +17,10 @@ For a proper SuiteCRM installation, you'll want Apache or Nginx configured with 
 - More robust handling of concurrent users
 - Better security controls
 
-So we're NOT using this cmd to Launch a PHP server in account/public
+So we're trying to AVOID using this cmd to Launch a PHP server in crm/account/public at [http://localhost:8000](http://localhost:8000/)
+
+But it's the only PHP approach we have working so far (but not with MariaDB yet).
+You can run the 10-minute setup below first to download and unzip the SuiteCRM files into the account folder.
 
     php -S localhost:8000 -t ./account/public
 
