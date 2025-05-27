@@ -192,18 +192,19 @@ If you installed ImageMagick via Homebrew (which is common), you can safely pres
 
 [View steps](https://community.suitecrm.com/t/how-to-install-suitecrm-8-6-1-under-10-minutes/93252).
 
-When the .sh script finishes successfully, run the cmd:<!-- sudo mysql_secure_installation -->
+The following cmd is included in the suite.sh file. 
+It only runs if the MariaDB is not yet installed.
+The older name for the cmd was: mysql\_secure\_installation
 
 	sudo mariadb-secure-installation
-
-The older name for the cmd above was: mysql\_secure\_installation
 
 First enter your machine password, then (possibly) blank for the MariaDB database's root password
 
 Initial login response says:
 You already have your root account protected, so you can safely answer 'n'.
+But we enter all Y's.
 
-However the steps under [the 10-minute video](https://community.suitecrm.com/t/how-to-install-suitecrm-8-6-1-under-10-minutes/93252) are:
+The steps under [the 10-minute video](https://community.suitecrm.com/t/how-to-install-suitecrm-8-6-1-under-10-minutes/93252) are:
 Switch to unix_socket authentication [Y/n] y
 Change the root password? [Y/n] y
 put your DB root password and take note of it!!!
@@ -216,14 +217,17 @@ Reload privilege tables now? [Y/n] y
 Get your "IP retrieved" near the start of your suite.sh terminal.
 
 **Webroot at localhost:8080**
-The Apache port for Homebrew says "It works!"  
-But broke (stopped) when running the PHP install portion.
+The Apache port at localhost:8080 says "It works!"  
+<!-- previously it broke (stopped) when running the PHP install portion. -->
+But it doesn't point at the correct path in /profile/crm/account yet.
 
 [http://localhost:8080](http://localhost:8080)
 
 ## PHP Site Activation
  
 Please document steps that work for you by posting an issue in our [profile repo](https://github.com/ModelEarth/profile/tree/main/crm), or fork and send a PR.
+
+Older note, not sure this still applies...
 
 The first time you may need to run `./suite.sh` again - if the database did not initially exist.
 

@@ -129,7 +129,7 @@ check_mysql_root_status() {
             MYSQL_ROOT_PASS=""
             MYSQL_SECURE_NEEDED=true
         else
-            echo "🔑 MariaDB root password appears to be set."
+            echo "🔑 MariaDB root password appears to be set. (It's not empty.)"
             ROOT_PASS_SET=true
             MYSQL_SECURE_NEEDED=false
             read -sp "Enter MariaDB root password: " MYSQL_ROOT_PASS
@@ -268,7 +268,8 @@ setup_mysql_security() {
             echo "Recommended answers: Y, Y, Y, Y, Y"
             echo ""
             
-            if command -v mysql_secure_installation &>/dev/null; then
+            # Was mysql_secure_installation
+            if command -v mariadb-secure-installation &>/dev/null; then
                 mysql_secure_installation || {
                     echo "⚠️ mysql_secure_installation encountered issues. Please run it manually later."
                 }
