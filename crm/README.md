@@ -73,6 +73,8 @@ Take note of the user and password of the MariaDB database that will be requeste
 
 TO DO: Apache port 8080 still points at the default /usr/local/var/www/.  Point it at [webroot]/profile/crm/account instead.
 
+TO DO: Try opening MariaDB with [DBeaver](https://dbeaver.io) and adjust permissions.
+
 TO DO: Add DOCUMENT_ROOT for Windows.
 <!--
 TO DO: Possible [fix for PHP install](https://claude.ai/share/645e14b8-78ed-4130-8907-9b8f3ddbf671) from Claude.
@@ -287,10 +289,6 @@ If you need to have this software first in your PATH instead consider running:
     echo 'export PATH="/usr/local/opt/php@8.2/bin:$PATH"' >> ~/.zshrc
     echo 'export PATH="/usr/local/opt/php@8.2/sbin:$PATH"' >> ~/.zshrc
 
-
-TODO:
-
-Set parameter with version = "8-8-0" and include prompt to change.
 
 <br id="mac">
 
