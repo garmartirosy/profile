@@ -66,16 +66,16 @@ changed root password from blank (enter) to admin2
 Take note of the user and password of the MariaDB database that will be requested.
 
 
-TO FIX: Apache still points at the default /usr/local/var/www/
+[http://localhost:8080](http://localhost:8080/) - Apache site
 
-http://localhost:8080/
+TO DO: Apache port 8080 still points at the default /usr/local/var/www/.  Point it at [webroot]/profile/crm/account instead.
 
 TO DO: Add DOCUMENT_ROOT for Windows.
 <!--
 TO DO: Possible [fix for PHP install](https://claude.ai/share/645e14b8-78ed-4130-8907-9b8f3ddbf671) from Claude.
 -->
 
-## Apache
+## Apache Investigations
 
 Attempting to figure out why Apache is not pointing at profile/crm/account running suite.sh script.
 
@@ -196,9 +196,9 @@ When the .sh script finishes successfully, run the cmd:<!-- sudo mysql_secure_in
 
 	sudo mariadb-secure-installation
 
-The older name for the cmd above was: mysql_secure_installation
+The older name for the cmd above was: mysql\_secure\_installation
 
-First enter your machine password, then blank for the MariaDB database's root password
+First enter your machine password, then (possibly) blank for the MariaDB database's root password
 
 Initial login response says:
 You already have your root account protected, so you can safely answer 'n'.
