@@ -9,24 +9,7 @@ The original .sh [Linux install](https://github.com/motaviegas/SuiteCRM_Script) 
 
 Remote Azure database init has not yet been added to suite.sh. [Send a PR](https://github.com/ModelEarth/profile/tree/main/crm).
 
-For a proper SuiteCRM installation, you'll want Apache or Nginx configured with PHP-FPM rather than a PHP server since:
-
-- SuiteCRM expects certain URL rewriting rules and directory access controls
-- Better handling of file uploads and larger requests
-- Support for .htaccess files that control access to sensitive directories
-- More robust handling of concurrent users
-- Better security controls
-
-So we're trying to AVOID using this cmd to Launch a PHP server in crm/account/public at [http://localhost:8000](http://localhost:8000/)
-
-But it's the only PHP approach we have working so far (but not with MariaDB yet).
-You can run the 10-minute setup below first to download and unzip the SuiteCRM files into the account folder.
-
-    php -S localhost:8000 -t ./account/public
-
 <!--
-Plus we'd need to launch on port 8080 to use with Apache init in suite.sh
-
 Some coders may prefere to work in the default Apache www root:
 /usr/local/var/www/crm/public
 -->
@@ -50,7 +33,6 @@ As you run the suite.sh install, you may want to also check the [steps below vid
   sudo chmod -R 755 .
 -->
 
-
 2.) Run suite.sh in your crm folder. 
 SuiteCRM 8.8.0 will be pulled from [downloads](https://suitecrm.com/download/)
 
@@ -69,18 +51,45 @@ changed root password from blank (enter) to admin2
 Take note of the user and password of the MariaDB database that will be requested.
 
 
-[http://localhost:8080](http://localhost:8080/) - Apache site
+**Resulting Apache site:** [http://localhost:8080](http://localhost:8080/)
 
-TO DO: Apache port 8080 still points at the default /usr/local/var/www/.  Point it at [webroot]/profile/crm/account instead.
+TO DO: Apache port 8080 still points at the default /usr/local/var/www/.  
+Document how to point it at [webroot]/profile/crm/account instead.
 
 TO DO: Try opening MariaDB with [DBeaver](https://dbeaver.io) and adjust permissions.
 
-TO DO: Add DOCUMENT_ROOT for Windows.
+TO DO: Add/test DOCUMENT_ROOT for Windows.
 <!--
 TO DO: Possible [fix for PHP install](https://claude.ai/share/645e14b8-78ed-4130-8907-9b8f3ddbf671) from Claude.
 -->
 
-## Apache Investigations
+## PHP and link to SuiteCRM site
+
+For a proper SuiteCRM installation, you'll want Apache or Nginx configured with PHP-FPM rather than a PHP server since:
+
+- SuiteCRM expects certain URL rewriting rules and directory access controls
+- Better handling of file uploads and larger requests
+- Support for .htaccess files that control access to sensitive directories
+- More robust handling of concurrent users
+- Better security controls
+
+So we're trying to AVOID using this cmd to Launch a PHP server in crm/account/public at [http://localhost:8000](http://localhost:8000/)
+
+But it's the only PHP approach we have working so far (but not with MariaDB yet).
+You can run the 10-minute setup below first to download and unzip the SuiteCRM files into the account folder.
+
+    php -S localhost:8000 -t ./account/public
+
+Note that the port above is 8000, and not the 8080 used with suite.sh download/installer.
+
+<!--
+Plus we'd need to launch on port 8080 to use with Apache init in suite.sh
+-->
+
+**Resulting PHP SuiteCRM site:** [http://localhost:8000](http://localhost:8000/)
+
+
+## Apache PHP-FPM Investigations
 
 Attempting to figure out why Apache is not pointing at profile/crm/account running suite.sh script.
 
