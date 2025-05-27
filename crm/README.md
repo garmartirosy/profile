@@ -34,6 +34,10 @@ Some coders may prefere to work in the default Apache www root:
 
 ## 10-Minute SuiteCRM Setup
 
+As you run the suite.sh install, you may want to also check the [steps below video](https://community.suitecrm.com/t/how-to-install-suitecrm-8-6-1-under-10-minutes/93252).
+
+
+
 1.) Open a terminal in the "profile/crm" folder and grant the suite.sh file permission within the folder:
 
     sudo chmod +x ./suite.sh
@@ -42,8 +46,6 @@ Some coders may prefere to work in the default Apache www root:
   Not from video, probably don't need.
   sudo chmod -R 755 .
 -->
-
-As you run the suite.sh install, you may want also follow the [steps below video](https://community.suitecrm.com/t/how-to-install-suitecrm-8-6-1-under-10-minutes/93252).
 
 
 2.) Run suite.sh in your crm folder. 
@@ -64,14 +66,20 @@ changed root password from blank (enter) to admin2
 Take note of the user and password of the MariaDB database that will be requested.
 
 
-TO DO: Add DOCUMENT_ROOT for Windows.
+TO FIX: Apache still points at the default /usr/local/var/www/
 
+http://localhost:8080/
+
+TO DO: Add DOCUMENT_ROOT for Windows.
+<!--
 TO DO: Possible [fix for PHP install](https://claude.ai/share/645e14b8-78ed-4130-8907-9b8f3ddbf671) from Claude.
+-->
 
 ## Apache
 
-Attempting to figure out why Apache is not available after running suite.sh script.
+Attempting to figure out why Apache is not pointing at profile/crm/account running suite.sh script.
 
+<!--
 This issue could be limited to Macs that are 2020 and older.
 Apple began transitioning its Mac computers from Intel processors to Apple silicon starting in late 2020.
 Intel (older computers): /usr/local/...
@@ -80,6 +88,7 @@ Apple Silicon: /opt/homebrew/...
 Run the following and you'll see "It works!" at http://localhost:8080/
 
 Create the missing file and update the httpd.conf file.
+-->
 
 For installations through Homebrew, files are at /usr/local/etc/httpd/httpd.conf.
 Otherwise the Apache httpd.conf file might are at /etc/apache2/httpd.conf. 
@@ -100,34 +109,29 @@ Create the missing log directory
 In /usr/local/etc/httpd/httpd.conf you could try changing:
 /usr/local/var/www
 
-To:
-/Users/[your account]/Library/Data/SuiteCRM/public
+To the path to your profile/crm
 
-No effect, so try the other httpd.conf file here:
+If no effect, try the other httpd.conf file here:
 /opt/homebrew/etc/httpd/extra
 
+<!--
 That had:
 /usr/local/var/www/crm/public
-
-Let's honor that path by placing files in www.
-
-Created hello.php containing:
-
-<?php
-echo "Hello World!";
-?>
 
 Gave it permissions (this was a Hello World test file):
 sudo chmod 644 /usr/local/var/www/crm/index.php
 sudo chown $(whoami):staff /usr/local/var/www/hello.php
 
 EDIT /usr/local/etc/httpd/httpd.conf
+-->
 
-IMPORTANT: Both of these need to be in /usr/local/etc/httpd/httpd.conf
+Both of these need to be in /usr/local/etc/httpd/httpd.conf
 Listen 8080
 ServerName 192.168.1.202:8080
 
-Also add:
+Try in /opt/homebrew too
+
+Also try adding:
 LoadModule php_module /usr/local/lib/httpd/modules/libphp.so
 
 And make sure this is not getting added multiple times by suite.sh
