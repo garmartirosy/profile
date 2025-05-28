@@ -552,6 +552,12 @@
     <script type="text/javascript" src="https://unpkg.com/tabulator-tables@6.3.1/dist/js/tabulator.min.js"></script>
  
 
+
+        <!-- Tabulator Section      
+        -->
+
+
+
 <h2>Select a Table</h2>
     <select id="numberSelect">
         <option value="">-- Choose a Table --</option>
@@ -560,6 +566,9 @@
     <br />
     <br />
     <br />
+
+    <input type="text" id="txtcty">
+
     <div id="tabulator-table"></div>
 
 
@@ -571,28 +580,27 @@
         'Industry' : 'https://raw.githubusercontent.com/ModelEarth/profile/refs/heads/main/impacts/json/industry.json'
  };
        
+        const textCity = document.getElementById('txtcty');
+
         const select = document.getElementById('numberSelect');
         let selectedValue = "";
         tbl = document.getElementById('tabulator-table')
 
-        // Populate the select
-        for (const [name, jsonurl] of Object.entries(numberMap)) {
-            const option = document.createElement('option');
-            option.value = name;
-            option.textContent = `${name}`;
-            select.appendChild(option);
-        }
 
-        // Add change event listener
-        select.addEventListener('change', function () {
-            selectedValue = this.value;
+         function fetchTableData () 
+          {
+            selectedValue = select.value;
+            cityValue = textCity.value;
            
 
         
       fetch(numberMap[selectedValue])
       .then(response => response.text())
       .then(text => {
-        const data = text.trim().split("\n").map(line => JSON.parse(line));
+        const originalData = text.trim().split("\n").map(line => JSON.parse(line));
+        const data = cityValue
+  ? originalData.filter(d => d.country && d.country.toLowerCase().includes(cityValue.toLowerCase()))
+  : originalData;
 
 
         
@@ -605,11 +613,38 @@
             });
 
         });
+    }
             
-   });
+
+        // Populate the select
+        for (const [name, jsonurl] of Object.entries(numberMap)) {
+            const option = document.createElement('option');
+            option.value = name;
+            option.textContent = `${name}`;
+            select.appendChild(option);
+        }
+
+
+
+        // Add change event listener
+        select.addEventListener('change', fetchTableData);
+        textCity.addEventListener('change', fetchTableData);
+
+
+
+         
+
+
+        
+      
+
     </script>
 
 
+
+
+        <!-- Tabulator Section      
+        -->
 
     TO DO: Default to loading <a href="json">json files</a>. 
     (Supabase has to be restarted every 14 days to avoid error.)
