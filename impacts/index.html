@@ -567,24 +567,26 @@
         <!-- Tabulator Section      
         -->
 
-
-
 <h2>Select a Table</h2>
     <select id="numberSelect">
         <option value="">-- Choose a Table --</option>
     </select>
 
-  <h3>Filter by Country</h3>
-    <input type="text" id="txtcty">
+    <br />
+    <br />
+    <br />
+<h3>Select a Table</h3>
 
-    <br />
-    <br />
-    <br />
+    <input type="text" id="txtcty">
 
     <div id="tabulator-table"></div>
 
 
      <script>
+
+        const params = new URLSearchParams(window.location.search);
+const p_country = params.get('country');
+
         // Data: key = number, value = name
         const numberMap = {
         'Commodity' : 'https://raw.githubusercontent.com/ModelEarth/profile/refs/heads/main/impacts/json/commodity.json',
@@ -602,8 +604,8 @@
          function fetchTableData () 
           {
             selectedValue = select.value;
-            cityValue = textCity.value;
-           
+           const hashParams = new URLSearchParams(window.location.hash.substring(1));
+      cityValue = hashParams.get("country") || "";
 
         
       fetch(numberMap[selectedValue])
@@ -640,20 +642,20 @@
 
         // Add change event listener
         select.addEventListener('change', fetchTableData);
-        textCity.addEventListener('change', fetchTableData);
+        textCity.addEventListener("input", function () {
+    const typedValue = this.value.trim();
+    window.location.hash = "country=" + encodeURIComponent(typedValue);
+    fetchTableData();
+  });
 
 
+
+    </script>
 
          
 
 
         
-      
-
-    </script>
-
-
-
 
         <!-- Tabulator Section      
         -->
