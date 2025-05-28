@@ -71,6 +71,17 @@
     .settings-icon {
         cursor: pointer;
     }
+    #txtcty {
+    font-size: 18px;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-family: inherit;
+    width: 200px; /* match width to your select box */
+    box-sizing: border-box;
+}
+
 </style>
 
 </head>
@@ -563,11 +574,12 @@
         <option value="">-- Choose a Table --</option>
     </select>
 
-    <br />
-    <br />
-    <br />
-
+  <p>Filter by country</p>
     <input type="text" id="txtcty">
+
+    <br />
+    <br />
+    <br />
 
     <div id="tabulator-table"></div>
 
