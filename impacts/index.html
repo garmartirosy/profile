@@ -601,34 +601,43 @@ const p_country = params.get('country');
         tbl = document.getElementById('tabulator-table')
 
 
-         function fetchTableData () 
-          {
-            selectedValue = select.value;
-           const hashParams = new URLSearchParams(window.location.hash.substring(1));
-      cityValue = hashParams.get("country") || "";
+    
+var availableCountries = [];
 
-        
-      fetch(numberMap[selectedValue])
-      .then(response => response.text())
-      .then(text => {
-        const originalData = text.trim().split("\n").map(line => JSON.parse(line));
-        const data = cityValue
-  ? originalData.filter(d => d.country && d.country.toLowerCase().includes(cityValue.toLowerCase()))
-  : originalData;
+async function populate_availableCountries() {
+  const selectedValue = select.value;
+  
+  const response = await fetch(numberMap[selectedValue]);
+  const text = await response.text();
+  const data = text.trim().split("\n").map(line => JSON.parse(line));
+  const countryNames = data.map(d => d.country);
+  availableCountries  = [...new Set(countryNames)];
+  
+}
 
 
-        
-        //create Tabulator on DOM element with id "example-table"
-            var table = new Tabulator("#tabulator-table", {
-                height: 700, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
-                data:data, //assign data to table
-                layout:"fitColumns", //fit columns to width of table (optional)
-                autoColumns:true,
-            });
+async function fetchTableData() {
+    selectedValue = select.value;
+    const hashParams = new URLSearchParams(window.location.hash.substring(1));
+    cityValue = hashParams.get("country") || "";
 
-        });
-    }
-            
+    await populate_availableCountries(); // wait for it to finish
+
+    const response = await fetch(numberMap[selectedValue]);
+    const text = await response.text();
+    const originalData = text.trim().split("\n").map(line => JSON.parse(line));
+    const data = cityValue
+        ? originalData.filter(d => d.country && d.country.toLowerCase().includes(cityValue.toLowerCase()))
+        : originalData;
+
+    var table = new Tabulator("#tabulator-table", {
+        height: 700,
+        data: data,
+        layout: "fitColumns",
+        autoColumns: true,
+    });
+}
+    
 
         // Populate the select
         for (const [name, jsonurl] of Object.entries(numberMap)) {
