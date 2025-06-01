@@ -50,39 +50,41 @@
 const params = new URLSearchParams(window.location.hash.substring(1));
 let p_tables = params.get('tables').split(",");
 let p_join = params.get('join');
-let p_country = params.get('country');
-
-const supabaseUrl = "https://uegyoueekxdhzslpcmum.supabase.co"
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVlZ3lvdWVla3hkaHpzbHBjbXVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU5MTYyNzMsImV4cCI6MjA1MTQ5MjI3M30.BooxZGqHQhuR0oaoVDvax2EfMUYTPFS9Jpqb3AJ60pI" 
-
+let p_country = params.get('country'); // now allowed
 
 const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
-async function getDynamicJoin(table1, table2, joincol) {
+async function getDynamicJoin(table1, table2, joincol, country_list) {
   const { data, error } = await supabaseClient.rpc('dynamic_join_select', {
     table1,
     table2,
     joincol,
-    p_country
+    country_list
   });
 
-    const formatted = data.map(row => row.result); // row.result is the merged JSON
+  if (error) {
+    console.error('Supabase RPC error:', error);
+    alert('Failed to fetch data');
+    return;
+  }
 
-    // Display in Tabulator
-    new Tabulator("#tabulator-table", {
-      height: 700,
-      data: formatted,
-      layout: "fitColumns",
-      autoColumns: true
-    });
+  if (!data) {
+    console.warn('No data returned');
+    return;
+  }
+
+  const formatted = data.map(row => row.result);
+
+  new Tabulator("#tabulator-table", {
+    height: 700,
+    data: formatted,
+    layout: "fitColumns",
+    autoColumns: true
+  });
 }
 
-
-
-
-// Call it like this:
 window.onload = function () {
-  getDynamicJoin(p_tables[0], p_tables[1], p_join);
+  getDynamicJoin(p_tables[0], p_tables[1], p_join, p_country);
 };
 
 
