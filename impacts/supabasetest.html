@@ -46,32 +46,7 @@
         tbl = document.getElementById('tabulator-table')
 
 
-            
-        var availableCountries = [];
-
-        async function populate_availableCountries() {
-            const selectedValue = select.value;
-            
-            const response = await fetch(numberMap[selectedValue]);
-            const text = await response.text();
-            const data = text.trim().split("\n").map(line => JSON.parse(line));
-            const countryNames = data.map(d => d.country);
-            availableCountries  = [...new Set(countryNames)];
-            
-}
-
-
-
-        // Populate the select
-        for (const [name, jsonurl] of Object.entries(numberMap)) {
-            const option = document.createElement('option');
-            option.value = name;
-            option.textContent = `${name}`;
-            select.appendChild(option);
-        }
-
-
-const hash = window.location.hash.substring(1);
+      
 const params = new URLSearchParams(window.location.hash.substring(1));
 let p_tables = params.get('tables').split(",");
 let p_join = params.get('join');
