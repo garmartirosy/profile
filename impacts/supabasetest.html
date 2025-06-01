@@ -52,6 +52,10 @@ let p_tables = params.get('tables').split(",");
 let p_join = params.get('join');
 let p_country = params.get('country'); // now allowed
 
+const supabaseUrl = "https://uegyoueekxdhzslpcmum.supabase.co"
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVlZ3lvdWVla3hkaHpzbHBjbXVtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU5MTYyNzMsImV4cCI6MjA1MTQ5MjI3M30.BooxZGqHQhuR0oaoVDvax2EfMUYTPFS9Jpqb3AJ60pI" 
+
+
 const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
 async function getDynamicJoin(table1, table2, joincol, country_list) {
